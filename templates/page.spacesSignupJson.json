@@ -1,0 +1,247 @@
+{
+  "sections": {
+    "1644222918abc7ed3a": {
+      "type": "annoucementBarShowHide",
+      "settings": {
+        "showHideAnnoucementBar": true
+      }
+    },
+    "164422335672c38294": {
+      "type": "spaces-banner",
+      "settings": {
+        "showHideSelectMenu": true,
+        "banner": "shopify:\/\/shop_images\/Vector_6129c24b-ca0a-43a8-bfee-5a5bbe978087.png",
+        "title": "Business and the arts supporting each other.",
+        "detail": "Art connects us all. Improve access to art in your community and create interest for your customers by featuring art from local artists.",
+        "btnLabel": "Sign Up Now",
+        "btnLink": "\/pages\/space-sign-up-form",
+        "titleColor": "#000000",
+        "detailColor": "#000000",
+        "borderColor": "#000000",
+        "bgColor": "#ffc3bf"
+      }
+    },
+    "main": {
+      "type": "genericPageSec",
+      "settings": {
+      }
+    },
+    "16443914556ffcf693": {
+      "type": "spaces-list",
+      "blocks": {
+        "6b7e23ad-ac68-492a-8cd8-a6df8bc897d9": {
+          "type": "list",
+          "settings": {
+            "title": "The art is compelling.",
+            "detail": "We represent a wide variety of talented artists – making it possible to host one, or a series, of rotating shows. Our curation team will recommend art that best fits your needs and space, but the final decision will be made by you.",
+            "btnLabel": "",
+            "btnLink": ""
+          }
+        },
+        "9516000d-0055-497a-ba4e-82ec4cabf135": {
+          "type": "list",
+          "settings": {
+            "title": "It’s easy.",
+            "detail": "Our e-commerce tools enable buyers to learn more about the artist or purchase instantly. We handle installation, all contactless payments and processing, and shipping of any sold artwork. You and your team can focus on running your business.",
+            "btnLabel": "",
+            "btnLink": ""
+          }
+        },
+        "05f0c49a-cf1b-48bb-8b9b-6fbf596319b3": {
+          "type": "list",
+          "settings": {
+            "title": "A show can generate revenue.",
+            "detail": "We’ll promote the show through our site, our social media channels, and through our network of artists and collectors – attracting new customers to your business. You can also generate revenue through a commission on any art sold in your space.",
+            "btnLabel": "",
+            "btnLink": ""
+          }
+        },
+        "608aa92c-a74c-48b3-bbda-20b461a17f91": {
+          "type": "list",
+          "settings": {
+            "title": "Contact us to get started.",
+            "detail": "",
+            "btnLabel": "Sign Up Now",
+            "btnLink": "https:\/\/loca.art\/pages\/space-sign-up-form"
+          }
+        }
+      },
+      "block_order": [
+        "6b7e23ad-ac68-492a-8cd8-a6df8bc897d9",
+        "9516000d-0055-497a-ba4e-82ec4cabf135",
+        "05f0c49a-cf1b-48bb-8b9b-6fbf596319b3",
+        "608aa92c-a74c-48b3-bbda-20b461a17f91"
+      ],
+      "settings": {
+        "showHideSec": true,
+        "title": "Why host a LoCA show?"
+      }
+    },
+    "16450870404bb17c4f": {
+      "type": "slider",
+      "blocks": {
+        "df6b5d82-8aa9-44a2-9427-4a9d89694a8e": {
+          "type": "slide",
+          "settings": {
+            "slideImage": "shopify:\/\/shop_images\/morFire_Loopstra_1_1.png",
+            "title": "Esther Loopstra @ morFire"
+          }
+        },
+        "7e3b591f-e2a1-41c6-80a8-735e1a38a9a0": {
+          "type": "slide",
+          "settings": {
+            "slideImage": "shopify:\/\/shop_images\/Bellden_Blinderman_1_1.png",
+            "title": "Lana Blinderman @ Bellden Cafe"
+          }
+        },
+        "0bfcd930-3677-4aef-9d1c-b96d262445d9": {
+          "type": "slide",
+          "settings": {
+            "slideImage": "shopify:\/\/shop_images\/Intentions_Aileen_3_1.png",
+            "title": "Sarah Aileen @ Intentions Juice & Smoothie Bar"
+          }
+        },
+        "24f157a0-1586-4c94-93d4-a37ac5137a26": {
+          "type": "slide",
+          "settings": {
+            "slideImage": "shopify:\/\/shop_images\/Remedium_Xiao_1_3.png",
+            "title": "Zoee Xiao @ Remedium Island Grill"
+          }
+        },
+        "44825ccb-9333-4f5c-897a-fa5a34cdc4b6": {
+          "type": "slide",
+          "settings": {
+            "slideImage": "shopify:\/\/shop_images\/Redhook_Ross_1_1.png",
+            "title": "Carol Ross @ Redhook Brewlab"
+          }
+        },
+        "c6d6b3de-a0b2-445b-b73b-c595826e8874": {
+          "type": "slide",
+          "settings": {
+            "slideImage": "shopify:\/\/shop_images\/HoneyHoleCD_Riesland_1_1.png",
+            "title": "Nick Riesland @ HoneyHole Sandwiches"
+          }
+        },
+        "805ad088-9342-4fd6-9437-f7376b4a4152": {
+          "type": "slide",
+          "settings": {
+            "slideImage": "shopify:\/\/shop_images\/WhiteLotus_Gasper_1_1.png",
+            "title": "Christopher Gasper @ White Lotus Salon"
+          }
+        },
+        "654f64be-7ab1-43d9-b65c-83d481147715": {
+          "type": "slide",
+          "settings": {
+            "slideImage": "shopify:\/\/shop_images\/Taproot_King_1_1.png",
+            "title": "Rodney H. King @ Taproot Cafe & Bar"
+          }
+        },
+        "e96bbe7b-2d23-478b-944e-b830e91af010": {
+          "type": "slide",
+          "settings": {
+            "slideImage": "shopify:\/\/shop_images\/TheWoods_Wang_1_1.png",
+            "title": "JoEllen Wang @ The Woods Tasting Room"
+          }
+        }
+      },
+      "block_order": [
+        "df6b5d82-8aa9-44a2-9427-4a9d89694a8e",
+        "7e3b591f-e2a1-41c6-80a8-735e1a38a9a0",
+        "0bfcd930-3677-4aef-9d1c-b96d262445d9",
+        "24f157a0-1586-4c94-93d4-a37ac5137a26",
+        "44825ccb-9333-4f5c-897a-fa5a34cdc4b6",
+        "c6d6b3de-a0b2-445b-b73b-c595826e8874",
+        "805ad088-9342-4fd6-9437-f7376b4a4152",
+        "654f64be-7ab1-43d9-b65c-83d481147715",
+        "e96bbe7b-2d23-478b-944e-b830e91af010"
+      ],
+      "settings": {
+        "title": "",
+        "maxWidth": 800
+      }
+    },
+    "1644476997982e36b8": {
+      "type": "spaces-testimonials",
+      "blocks": {
+        "48c1b327-3922-4431-a10a-daefa4b77c0e": {
+          "type": "testimonial",
+          "settings": {
+            "title": "\"You were so intentional about choosing the perfect pieces to complement our in-house decor, the \"vibe,\" and the cultural aspects of our space. Working with LoCA was easy. Your communication was excellent at every step of the process. Gracias.\"\n\nJulie Davidson, \nOwner-Operator, Komadre Kombucha"
+          }
+        },
+        "f5b00d35-a4ef-4bc4-91c4-df55e21fdc27": {
+          "type": "testimonial",
+          "settings": {
+            "title": "“The ease of entry! Communication was super simple, and then POOF! there you were with beautiful artwork.”\n\nJake Devincenzi, Owner, NW Peaks Brewery"
+          }
+        },
+        "1b873218-d713-49eb-876a-fef786550dbb": {
+          "type": "testimonial",
+          "settings": {
+            "title": "“It's great to be introduced to local artists that I would normally not know of otherwise. LoCA is such a great platform to spread talent and creates a wonderful atmosphere in our business as well as giving clients something to discuss.”\n\nMorgan Powers, Robert Leonard Salon & Day Spa"
+          }
+        },
+        "9b71db46-bd99-4a78-8c97-52761d83bd3e": {
+          "type": "testimonial",
+          "settings": {
+            "title": "\"Your artist-to-location connection is brilliant and something I have been searching for!\"\n\nIngrid McCrum, Stylist, Haven Salon"
+          }
+        }
+      },
+      "block_order": [
+        "48c1b327-3922-4431-a10a-daefa4b77c0e",
+        "f5b00d35-a4ef-4bc4-91c4-df55e21fdc27",
+        "1b873218-d713-49eb-876a-fef786550dbb",
+        "9b71db46-bd99-4a78-8c97-52761d83bd3e"
+      ],
+      "settings": {
+        "showHideSec": true,
+        "title": "What our partners say:"
+      }
+    },
+    "16444802344ea3394d": {
+      "type": "commonQuestions",
+      "blocks": {
+        "16444802346244d077-0": {
+          "type": "question",
+          "settings": {
+            "title": "Can any space host a LoCA show?",
+            "answer": "We believe art is best appreciated when it’s seen in person, but that doesn’t mean it needs to be viewed in a formal museum or gallery setting. Our shows take place in a wide variety of spaces – from elegant, modern hotels to vintage-inspired coffee shops. We look for inviting spaces that serve as cultural hubs within your community. When in doubt, reach out! We’re happy to advise on whether your space is a good fit for a LoCA show."
+          }
+        },
+        "8bea8bc9-9723-434d-ac19-1ffce0d2c640": {
+          "type": "question",
+          "settings": {
+            "title": "How long does each show last?",
+            "answer": "Our average show length is three months, but a show can run from anywhere between 30 and 120 days. We can work with you and the artist to determine the appropriate length."
+          }
+        },
+        "6aa135bb-bcd6-4412-b650-31ba8f001027": {
+          "type": "question",
+          "settings": {
+            "title": "Does the art featured always need to be up for sale?",
+            "answer": "Yes. We built LoCA to help drive the discovery and sales of local artists. Featuring pieces that are for sale provides the artist the best opportunity to generate revenue from their show."
+          }
+        }
+      },
+      "block_order": [
+        "16444802346244d077-0",
+        "8bea8bc9-9723-434d-ac19-1ffce0d2c640",
+        "6aa135bb-bcd6-4412-b650-31ba8f001027"
+      ],
+      "settings": {
+        "showHideSec": true,
+        "title": "Common Questions"
+      }
+    }
+  },
+  "order": [
+    "1644222918abc7ed3a",
+    "164422335672c38294",
+    "main",
+    "16443914556ffcf693",
+    "16450870404bb17c4f",
+    "1644476997982e36b8",
+    "16444802344ea3394d"
+  ]
+}

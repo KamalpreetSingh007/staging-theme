@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "1643373035bcc1268c": {
+      "type": "annoucementBarShowHide",
+      "settings": {
+        "showHideAnnoucementBar": true
+      }
+    },
+    "main": {
+      "type": "genericPageSec",
+      "settings": {
+      }
+    },
+    "1643008521c550a717": {
+      "type": "thenkYou-head",
+      "disabled": true,
+      "settings": {
+        "showHideSelectMenu": true,
+        "title": "Thank You!",
+        "detail": "By hosting a LoCA show, you will be directly supporting local artists and expanding access and engagement with the arts in your community. We are excited to partner with you. So, what happens next?"
+      }
+    },
+    "1643011199ecbd9095": {
+      "type": "thenkYou-body",
+      "disabled": true,
+      "settings": {
+        "showHideSelectMenu": true,
+        "title": "A LoCA team member will be in touch shortly to schedule your first show and begin the art selection process.",
+        "title_2": "You can manage your account, including updating any contact or billing information, by going to your profile page here.",
+        "linkLabel": "(link to profile page)",
+        "link": "#__link",
+        "bottomContent": "<p>And we can always be reached,<\/p><p>at <a href=\"mailto:help@loca.art\" title=\"mailto:help@loca.art\">help@loca.art<\/a>.<\/p>",
+        "bgColor": "#ffc3bf"
+      }
+    },
+    "1643702289bd036ecb": {
+      "type": "thankYou-1",
+      "settings": {
+        "showHideSelectMenu": true,
+        "title": "Thank You!",
+        "detail": "By hosting a LoCA show, you will be directly supporting local artists and expanding access and engagement with the arts in your community. We are excited to partner with you. So, what happens next?\n\nA LoCA team member will be in touch shortly to schedule your first show and begin the art selection process.\n\nYou can manage your account, including updating any contact or billing information, by going to your profile page here.",
+        "linkLabel": "Manage Your Account",
+        "link": "#__manageAccount",
+        "chargebeeBtn": true,
+        "chargebeeBtnContent": "<a href=\"javascript:void(0)\" data-cb-type=\"portal\" class=\"thankYou1__link\">Manage your Subscriptions<\/a>",
+        "bottomContent": "<p>And we can always be reached at <a href=\"mailto:help@loca.art\" title=\"mailto:help@loca.art\">help@loca.art<\/a>.<\/p>",
+        "bgColor": "#000000",
+        "textColor": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "1643373035bcc1268c",
+    "main",
+    "1643008521c550a717",
+    "1643011199ecbd9095",
+    "1643702289bd036ecb"
+  ]
+}

@@ -1,0 +1,79 @@
+{%-liquid
+  layout none
+
+  assign soldOut                  =   'products.product.sold_out' | t
+  assign unavailable              =   'general.temporarily_unavailable' | t
+
+  capture dontUse
+
+    form 'localization'
+
+      assign currencyIs           =   form.current_currency.iso_code
+
+    endform
+
+  endcapture
+
+  capture isDemo
+
+    render '__getParam' with { paramStart: 'demo=' }
+
+  endcapture
+
+  paginate collection.products by 12
+
+    capture prodObject
+
+      for product in collection.products
+
+        capture getProductData__
+
+          render '__productJson' with { product: product, soldOut: soldOut, unavailable: unavailable, currencyIs: currencyIs, isDemo: isDemo, collectionIs: collection.handle }
+
+        endcapture
+
+        assign getProductData__   =   getProductData__ | strip
+
+        if getProductData__ != blank
+
+          echo getProductData__
+          unless forloop.last
+            echo ','
+          endunless
+
+        endif
+
+      endfor
+
+    endcapture
+
+    capture isAvailableNextPage
+
+      assign isAvailable          =   paginate.next.is_link
+
+      if isAvailable == true
+
+        echo true
+
+      else
+
+        echo false
+
+      endif
+
+    endcapture
+
+  endpaginate
+-%}
+
+{% capture combileAllObjects %}
+{
+  "allProducts": [{{ prodObject }}],
+  "total_products": {{ collection.all_products_count }},
+  "isAvailableNextPage": {{ isAvailableNextPage }}
+}
+{% endcapture %}
+
+{%-liquid
+  echo combileAllObjects | replace: '},]', '}]'
+-%}

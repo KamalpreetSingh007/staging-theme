@@ -1,0 +1,96 @@
+{%-liquid
+	assign ss						=		section.settings
+
+	assign cssFiles			=		'search__1.css' | asset_url
+
+	assign globalJs			=		'global.js' | asset_url
+
+	comment
+		assign packeryFile  =   'https://unpkg.com/packery@2/dist/packery.pkgd.js'
+	endcomment
+
+	assign jsFiles			=		'search__1.js' | asset_url
+
+	echo '<link rel="stylesheet" href="' | append: cssFiles | append: '">'
+
+	capture queryParam
+
+		render '__getParam' with { paramStart: 'q=' }
+
+	endcapture
+
+	capture currencySymbol
+
+		render '__getCurrencyDetail' with { getTypeIs: 'currencySymbol' }
+
+	endcapture
+
+-%}
+
+<div class="page-width">
+  <div class="text-center">
+    <h1 class="boost-pfs-search-result-header h2">{{ 'general.search.title' | t }}</h1>
+    <div class="grid">
+      <div class="grid__item medium-up--two-fifths medium-up--push-three-tenths gridItem">
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+          <div class="input-group">
+            <input type="search"
+              class="input-group__field search__input"
+              name="q"
+              value="{{ search.terms | escape }}"
+              placeholder="{{ 'general.search.placeholder' | t }}"
+              aria-label="{{ 'general.search.placeholder' | t }}"
+              autofocus>
+            <input type="search" id="SearchInput">
+            <span class="input-group__btn searchBtnWrapper">
+              <button class="btn search__submit" type="submit">{{ 'general.search.submit' | t }}</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% capture cardBlock %}
+	<div class="card__ skeleton">
+		<a href="#" class="card__link">
+			<div class="card__imgWrap" loading="show">
+				<img src="{{ 'space.gif' | asset_img_url: '450x450' }}" class="card__img" loading="lazy">
+			</div>
+			<div class="card__content">
+				<div class="card__vendor" loading="show">&nbsp;</div>
+				<h3 class="card__title" loading="show">&nbsp;</h3>
+				<div class="card__exhibition" loading="show">&nbsp;</div>
+				<div class="card__price" loading="show">
+					<span price>&nbsp;</span>
+					<span taxes>&nbsp;</span>
+				</div>
+				<div class="card__startFrom" loading="show">
+					Prints available<br>
+					starting at: &nbsp;
+				</div>
+			</div>
+		</a>
+	</div>
+{% endcapture %}
+
+<div class="searchProductsView" page="" is-available-next-page="{{ isAvailableNextPage }}" currency-symbol="{{ currencySymbol }}" status="" uri="/search/suggest.json?q={{ queryParam | url_decode }}&resources[type]=product,collection,page,article&resources[limit]=50">
+  <div class="fullWidth gridView">
+    <div class="c1" col="1">{{ cardBlock }}</div>
+    <div class="c2" col="2">{{ cardBlock }}</div>
+    <div class="c3" col="3">{{ cardBlock }}</div>
+    <div class="c4" col="4">{{ cardBlock }}</div>
+  </div>
+</div>
+<div class="loadMoreElement"></div>
+
+{%-liquid
+	section 'signUpFeature'
+
+	render '__scrollTop'
+-%}
+
+<script src="{{ globalJs }}"></script>
+
+<script src="{{ jsFiles }}"></script>

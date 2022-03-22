@@ -1,0 +1,40 @@
+{%-liquid
+  assign cssFile        =   'location.scss.css' | asset_url
+  assign globalJs       =   'global.js' | asset_url
+  assign jsFile         =   'location.js' | asset_url
+
+  echo '<link rel="stylesheet" href="' | append: cssFile | append: '">'
+
+  echo '<div class="locationPage">'
+
+    capture param__locationName
+      capture getLocationName
+        render '__getParam' with { paramStart: 'city=' }
+      endcapture
+      echo getLocationName | downcase
+    endcapture
+
+    echo '<div class="page-width">'
+      echo '<h1 class="locationTitle">'
+        echo 'Exhibiting '
+        echo param__locationName | camelcase
+        echo ' Artists'
+      echo '</h1>'
+    echo '</div>'
+
+    section 'locationManager'
+
+    section 'location_sec'
+
+  echo '</div>'
+
+  echo '<script src="' | append: jsFile | append: '"></script>'
+
+-%}
+
+<script>
+  const getCurrentCity__                                  =   getParam ( 'city' );
+  console.log ( 'getCurrentCity__', getCurrentCity__ );
+  const locationPageTitleIs                               =   document.querySelectorAll( `h1.locationTitle` )[0].innerText;
+  document.querySelectorAll( `head title` )[0].innerText  =   `${ locationPageTitleIs } - LoCA.art`;
+</script>

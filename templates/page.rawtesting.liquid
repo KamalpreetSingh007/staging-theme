@@ -1,0 +1,64 @@
+{%-liquid
+  layout none
+
+  assign product    =   all_products['she-was-no-quiet-girl']
+
+  echo 'Product is:' | append: product.title | append: '<br>'
+
+  if product.metafields.artwork.artspace_exhibition != blank
+
+    assign artspaceExhibition             =   product.metafields.artwork.artspace_exhibition
+
+    assign getCitiesName                  =   ''
+
+    assign moreThan1CIty                  =   false
+
+    assign todayDate                      =   "now" | date: "%Y/%m/%d" | append: ' 00:00:00'
+
+    assign todayTimestamp                 =   todayDate | date: "%s" | times: 1
+
+    if artspaceExhibition contains '&'
+
+      assign makeArtSpaceArr              =   artspaceExhibition | split: '&'
+
+      assign moreThan1CIty                =   true
+
+      for item in makeArtSpaceArr
+
+        assign item_sDate                 =   item | split: '[Start-date](' | last | split: '[End-date](' | first | remove: ')' | strip
+
+        assign pureStartDate              =   item_sDate | split: '/' | reverse | join: '/' | append: ' 00:00:00'
+        assign startTimeStamp             =   pureStartDate | date: "%s" | times: 1
+
+        assign item_eDate                 =   item | split: '[End-date](' | last | split: ')' | first | strip
+
+        assign pureEndDate                =   item_eDate | split: '/' | reverse | join: '/' | append: ' 00:00:00'
+
+        assign endTimeStamp               =   pureEndDate | date: "%s" | times: 1
+
+        if endTimeStamp >= todayTimestamp and startTimeStamp <= todayTimestamp
+
+          assign getReversed              =   item_sDate | split: '/' | reverse | join: '/' | append: ' 00:00:00'
+
+          assign testingTimeStamp         =   getReversed | date: "%s" | times: 1
+
+          echo 'Iteration No is: ' | append: forloop.index | append: '<br>'
+
+          echo testingTimeStamp | append: '<br>'
+
+          echo startTimeStamp | append: '<br>'
+
+          assign ArtSpaceCity__           =   item | split: '[ArtSpaceCity](' | last | split: '[Start-date](' | first | remove: ')' | strip
+
+          echo ArtSpaceCity__
+
+          break
+
+        endif
+
+      endfor
+
+    endif
+
+  endif
+-%}

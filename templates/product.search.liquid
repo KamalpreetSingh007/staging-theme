@@ -1,0 +1,19 @@
+{%-liquid
+  layout none
+
+  assign soldOut          =   'products.product.sold_out' | t
+  assign unavailable      =   'general.temporarily_unavailable' | t
+
+  capture dontUse
+    form 'localization'
+      assign currencyIs   =   form.current_currency.iso_code
+    endform
+  endcapture
+
+  capture isDemo
+    render '__getParam' with { paramStart: 'demo=' }
+  endcapture
+
+  render '__productJson' with { product: product, soldOut: soldOut, unavailable: unavailable, dontUse: dontUse, currencyIs: currencyIs, isDemo: isDemo }
+-%}
+

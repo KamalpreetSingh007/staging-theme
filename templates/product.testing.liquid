@@ -1,0 +1,314 @@
+{%-liquid
+  layout none
+
+  assign agOriginal                 =   product.metafields.artwork.ag_original
+  assign agLocaPrints               =   product.metafields.artwork.ag_loca_prints | downcase
+
+  assign v_                         =   product.selected_variant
+  assign currentVariantIs           =   v_.id
+
+  if currentVariantIs == blank
+    assign v_                       =   product.selected_or_first_available_variant
+    assign currentVariantIs         =   v_.id
+  endif
+
+  assign currentVariantImgSrc       =   v_.image.src
+  assign totalVariants              =   product.variants.size
+
+  if totalVariants == 1
+
+    capture original_or_print
+
+      if agOriginal == '1' and agLocaPrints == 'yes'
+
+        echo 'original'
+
+      elsif agOriginal == '0' and agLocaPrints == 'yes'
+
+        echo 'print'
+
+      elsif agOriginal == '1' and agLocaPrints == 'no'
+
+        echo 'original'
+
+      elsif agOriginal == '1' and agLocaPrints == blank
+
+        echo 'original'
+
+      elsif agOriginal == '0' and agLocaPrints == blank
+
+        echo '???--'
+
+      elsif agOriginal == blank and agLocaPrints == 'yes'
+
+        echo 'print'
+
+      elsif agOriginal == blank and agLocaPrints == 'no'
+
+        echo '???---'
+
+      endif
+
+    endcapture
+
+    if v_.title contains ' / '
+      assign V_Title    =   v_.title | split: ' / ' | first
+      assign V_Size     =   v_.title | split: ' / ' | last
+    else
+      assign V_Title    =   v_.title
+    endif
+
+    echo 'current or selected variant title: ' | append: V_Title | append: '<br>'
+    echo 'current or selected variant size: ' | append: V_Size | append: '<br>'
+
+    echo 'Variant ID: ' | append: currentVariantIs | append: '<br>'
+    echo 'Total Variants: ' | append: totalVariants | append: '<br>'
+
+    echo 'agOriginal: ' | append: agOriginal | append: '<br>'
+    echo 'agLocaPrints: ' | append: agLocaPrints | append: '<br>'
+    echo 'currentVariantImgSrc: ' | append: currentVariantImgSrc | append: '<br>'
+
+    echo 'original_or_print: <b>' | append: original_or_print | append: '</b><br>'
+
+  elsif totalVariants > 1
+
+  endif
+
+
+    if totalVariants > 0
+      for v in product.variants
+        echo 'Varianti id: ' | append: v.id | append: '<br>'
+        echo 'Varianti Title: ' | append: v.title | append: '<br>'
+      endfor
+    endif
+
+  capture originalLocation
+    render '__originalLocation' with { locationType: 'currencyCode', locationNameIs: product.metafields.artwork.ag_location }
+  endcapture
+
+  capture locationCompleteName
+    render '__originalLocation' with { locationType: 'countryName', locationNameIs: product.metafields.artwork.ag_location }
+  endcapture
+
+  echo 'originalLocation: ' | append: originalLocation | append: '<br>'
+  echo 'locationCompleteName: ' | append: locationCompleteName | append: '<br>'
+
+
+
+
+  echo '<br><br><br><hr><br>'
+
+  if currentVariantIs == blank
+    assign currentVariantIs         =   product.selected_or_first_available_variant.id
+    assign currentVariantImgSrc     =   product.selected_or_first_available_variant.image.src
+  else
+    assign currentVariantImgSrc     =   product.selected_variant.image.src
+  endif
+
+  if currentVariantImgSrc != blank
+    assign currentVariantImgSrc   =   currentVariantImgSrc | split: '.'
+    assign currentVariantImgSrc   =   currentVariantImgSrc[0] | json
+  endif
+
+  if currentVariantImgSrc == blank
+    assign currentVariantImgSrc   =   '""'
+  endif
+
+  assign showPrintSizeDropdown      =   false
+  assign printSize                  =   0
+  assign afterCheckingQty_printSize =   0
+
+  assign originalVariants_Count     =   0
+  assign printVariants_Count        =   0
+
+  assign firstOriginalVariant       =   ''
+  assign firstPrintVariant          =   ''
+
+
+  capture is_original_or_print
+    for variant in product.variants
+      assign lowerCaseTitle   =   variant.title | downcase
+      if variant.id   ==   currentVariantIs
+        if lowerCaseTitle contains 'print'
+          echo 'print'
+        else
+          comment
+          echo 'original'
+          endcomment
+
+          if product.metafields.artwork.ag_original == '0' and product.metafields.artwork.ag_loca_prints == 'Yes'
+            echo 'print'
+          else
+            echo 'original'
+          endif
+
+        endif
+
+        assign currentVariant           =   variant.title | split: ' / '
+        assign currentVariantTileOnly   =   currentVariant[0]
+        assign currentVariantSizeOnly   =   currentVariant[1]
+      endif
+
+      if lowerCaseTitle contains 'print'
+        assign printVariants_Count        =   printVariants_Count | plus: 1
+
+        if firstPrintVariant == blank
+          assign firstPrintVariant        =   variant.id
+        endif
+
+      else
+
+        if product.metafields.artwork.ag_original == '0' and product.metafields.artwork.ag_loca_prints == 'Yes'
+
+          assign printVariants_Count        =   printVariants_Count | plus: 1
+
+          if firstPrintVariant == blank
+            assign firstPrintVariant        =   variant.id
+          endif
+
+        else
+
+          assign originalVariants_Count     =   originalVariants_Count | plus: 1
+
+          if firstOriginalVariant == blank
+            assign firstOriginalVariant     =   variant.id
+          endif
+
+        endif
+
+      endif
+    endfor
+  endcapture
+
+  capture printSizeDropdown
+    for variant in product.variants
+      assign lowerCaseTitle   =   variant.title | downcase
+      if variant.available
+        if lowerCaseTitle contains 'print'
+          assign afterCheckingQty_printSize    =   afterCheckingQty_printSize | plus: 1
+        endif
+      endif
+    endfor
+  endcapture
+
+  capture printSizeDropdown
+    for variant in product.variants
+      assign lowerCaseTitle   =   variant.title | downcase
+      if lowerCaseTitle contains 'print'
+        assign printSize    =   printSize | plus: 1
+      endif
+    endfor
+  endcapture
+
+  assign locaPrints           = product.metafields.artwork.ag_loca_prints | downcase
+  assign agOriginal           = product.metafields.artwork.ag_original
+  assign variantSizeWithQty   = 0
+
+  if agOriginal == '1' and locaPrints == 'yes'
+
+    if afterCheckingQty_printSize != 0
+      assign isOriginal   =   'show'
+      assign isPrint      =   'show'
+      assign dropDownSize =   printSize
+    else
+      assign isOriginal   =   'hide'
+      assign isPrint      =   'hide'
+      assign dropDownSize =   printSize
+    endif
+
+  elsif locaPrints == 'yes' and agOriginal == '0'
+
+    assign isOriginal  =   'hide'
+    assign isPrint     =   'show'
+    assign dropDownSize =   printSize
+
+  elsif agOriginal == '1' and locaPrints == 'no'
+
+    assign isOriginal  =   'hide'
+    assign isPrint     =   'hide'
+    assign dropDownSize =   printSize
+
+  endif
+
+  if isPrint == 'show' and printSize > 1
+    assign showPrintSizeDropdown  =   true
+  endif
+
+-%}
+
+{% capture shippingObject %}
+  {% render '__productDetail' with { productType: original_or_print, agOriginal: agOriginal, locaPrints: locaPrints, V_Title: V_Title, V_Size: V_Size } %}
+{% endcapture %}
+
+{{ shippingObject }}
+
+{%-liquid
+  capture formStatus
+    render '__variantPriceAndFormStatus' with { product: product, type: 'formStatus' }
+  endcapture
+
+  capture variantPrice
+    render '__variantPriceAndFormStatus' with { product: product, type: 'vPrice' }
+  endcapture
+
+  capture getVariantsForPrint
+    if original_or_print == 'original'
+      render '__variantPriceAndFormStatus' with { product: product, type: 'variantList' }
+    else
+      echo ''
+    endif
+  endcapture
+
+  capture dontUse
+    form 'localization'
+      assign currencyIs   =   form.current_currency.iso_code
+    endform
+  endcapture
+
+  assign shippingObject = shippingObject | json
+
+  if currencyIs == 'AUD' or currencyIs == 'NZD'
+    assign variantPrice   =   variantPrice | split: '.' | first
+  endif
+
+  if is_original_or_print == 'print' and getVariantsForPrint == '' and product.metafields.artwork.ag_loca_prints == 'Yes'
+    assign variantPrice   =   'Not for sale'
+  endif
+
+  capture result
+    echo '{'
+      echo '"id"                      :   "'  | append: product.id     | append: '",'
+      echo '"title"                   :   "'  | append: product.title  | append: '",'
+      echo '"variant_id"              :   "'  | append: product.selected_or_first_available_variant.id  | append: '",'
+      echo '"variant_price"           :   "'  | append: variantPrice | append: '",'
+      echo '"isFrame"                 :   "'  | append: product.metafields.artwork.ag_framed | append: '",'
+
+      echo '"shippingObject"          :   '   | append: shippingObject | append: ','
+
+      echo '"selectedVariantImg"      :   '   | append: currentVariantImgSrc | append: ','
+
+      echo '"is_original_or_print"    :   "'  | append: is_original_or_print | append: '",'
+
+      echo '"original_ItemsCount"     :   "'  | append: originalVariants_Count | append: '",'
+      echo '"print_ItemsCount"        :   "'  | append: printVariants_Count | append: '",'
+
+      echo '"firstOriginalVariant"    :   "'  | append: firstOriginalVariant | append: '",'
+      echo '"firstPrintVariant"       :   "'  | append: firstPrintVariant | append: '",'
+
+      echo '"selectedCurrency"        :   "'  | append: currencyIs | append: '",'
+
+      echo '"formStatus"              :   "'  | append: formStatus | append: '",'
+
+      echo '"originalLocation"        :   "'  | append: originalLocation | append: '",'
+
+      echo '"locationName"            :   "'  | append: locationCompleteName | append: '",'
+
+      echo '"variants"                :   ['  | append: getVariantsForPrint | append: ']'
+
+    echo '}'
+  endcapture
+
+  echo result
+
+
+-%}

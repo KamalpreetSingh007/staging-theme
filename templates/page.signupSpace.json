@@ -1,0 +1,105 @@
+{
+  "sections": {
+    "1642847500e5dc7490": {
+      "type": "annoucementBarShowHide",
+      "settings": {
+        "showHideAnnoucementBar": true
+      }
+    },
+    "head": {
+      "type": "spaces__head",
+      "settings": {
+        "showHideSelectMenu": true,
+        "title": "LoCA Community",
+        "detail": "Thank you for your interest in supporting local artists by hosting a LoCA show! With the Host plan, you’ll have access to:"
+      }
+    },
+    "list": {
+      "type": "spaces__list",
+      "blocks": {
+        "7dabfaaf-5963-4281-a093-71e1785fc6d9": {
+          "type": "list",
+          "settings": {
+            "showHideItem": true,
+            "title": "New art every 3 months.",
+            "detail": "LoCA will recommend 3 early emerging artists in your community that we believe will be a good fit with your business. The final selection will be made by you. Each show lasts approximately 3 months."
+          }
+        },
+        "184bb878-276a-4e73-a2c4-4ee6e8ad335e": {
+          "type": "list",
+          "settings": {
+            "showHideItem": true,
+            "title": "Basic installation services.",
+            "detail": "LoCA will connect you with the selected artist to confirm all remaining show details. The artist will handle artwork installation and take down."
+          }
+        },
+        "f9b0cb6f-f9b1-4a2a-a304-5fcfca614527": {
+          "type": "list",
+          "settings": {
+            "showHideItem": true,
+            "title": "E-commerce tools.",
+            "detail": "Our QR code enabled art labels enable customers to purchase instantly. We handle all contactless payments and processing. The artist will handle shipping of any sold artwork after the show ends."
+          }
+        },
+        "562db8fd-cd90-41ba-8203-e82f539c4728": {
+          "type": "list",
+          "settings": {
+            "showHideItem": true,
+            "title": "Marketing support.",
+            "detail": "We will create in-show marketing, as well as promote through our social channels."
+          }
+        },
+        "2979deb8-fd93-406a-b5bc-a35c21a73112": {
+          "type": "list",
+          "settings": {
+            "showHideItem": true,
+            "title": "Opportunity to generate revenue.",
+            "detail": "As a show host, you’ll have the opportunity to earn a 10% commission on any art sold in your space. Or you can choose to donate that commission back to the artist."
+          }
+        }
+      },
+      "block_order": [
+        "7dabfaaf-5963-4281-a093-71e1785fc6d9",
+        "184bb878-276a-4e73-a2c4-4ee6e8ad335e",
+        "f9b0cb6f-f9b1-4a2a-a304-5fcfca614527",
+        "562db8fd-cd90-41ba-8203-e82f539c4728",
+        "2979deb8-fd93-406a-b5bc-a35c21a73112"
+      ],
+      "settings": {
+        "showHideSelectMenu": true,
+        "titleColor": "#000",
+        "detailColor": "#000",
+        "borderColor": "#000"
+      }
+    },
+    "plans": {
+      "type": "spaces__plans",
+      "settings": {
+        "showHideSelectMenu": true,
+        "title": "This plan costs $9\/month with a minimum commitment of 3 months.",
+        "detail": "Once you sign up, you'll be automatically billed monthly, but you can cancel up to [x] days before your next billing date.",
+        "detail_2nd": "Once you sign up, you'll be automatically billed monthly, but you can cancel up to [x] days before your next billing date.",
+        "getStartedContent": "Ready to get started?",
+        "btnLink": "",
+        "btnLabel": "Sign Up Now",
+        "sectionFooterContent": "<p>Have more questions? Reach out to us at help@loca.art.<\/p>",
+        "svgColor": "#FFC3BF"
+      }
+    },
+    "legal": {
+      "type": "spaces__legal",
+      "settings": {
+        "showHideSelectMenu": true,
+        "title": "Legal Copy",
+        "detail": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, atque."
+      }
+    }
+  },
+  "order": [
+    "1642847500e5dc7490",
+    "head",
+    "list",
+    "plans",
+    "legal"
+  ]
+}

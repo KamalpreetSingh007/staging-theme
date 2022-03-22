@@ -1,0 +1,23 @@
+{% layout none %}
+
+{{ collection.title }}<br>
+{{ collection.url }}<br>
+{{ collection.image | img_url: 'medium' }}<br>
+
+{{ collection.current_vendor }}<br>
+
+{% for product in collection.products %}
+  {% if forloop.first %}
+    {% for collection in product.collections %}
+      {% if forloop.first %}
+        {{ collection.image | img_url: 'medium' }}<br>
+      {% endif %}
+      <div style="border: 1px solid red;">
+        {{ collection.title }}<br>
+      </div>
+    {% endfor %}
+  {% endif %}
+  {{product.title}} <br>
+  {{product.vendor}}
+{% endfor %}
+

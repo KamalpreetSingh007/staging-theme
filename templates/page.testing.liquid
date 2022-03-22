@@ -1,0 +1,30 @@
+{%-liquid
+  assign cssFile        =   'pageTemplate.css' | asset_url
+
+  capture paramIs
+    render '__getParam' with { paramStart: 'second=' }
+  endcapture
+
+  echo paramIs
+
+  section 'annoucementBarShowHide'
+-%}
+
+<link rel="stylesheet" href="{{ cssFile }}">
+
+<div class="pageTemplate">
+  <div class="page-width">
+    <h1>{{ page.title }}</h1>
+  </div>
+
+  <div class="page-width">
+    {% section 'templateLinks' %}
+  </div>
+
+  <div class="_pageContent_">
+    {%-liquid
+      echo page.content
+    -%}
+  </div>
+
+</div>

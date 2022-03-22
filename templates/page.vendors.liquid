@@ -1,0 +1,91 @@
+{%- comment -%}
+{%-liquid
+  assign counter      =   0
+
+  for vendor in shop.vendors
+
+    assign counter    =   counter | plus: 1
+
+  endfor
+
+  assign counter_divided_by_3   =   counter | divided_by: 3 | floor
+
+-%}
+
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item medium-up--five-sixths medium-up--push-one-twelfth">
+      <div class="section-header text-center">
+        <h1>{{ page.title }}</h1>
+      </div>
+
+      <div class="rte">
+        {{ page.content }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ul class="vendor-list block-grid three-up mobile one-up">
+  {%liquid
+    for product_vendor in shop.vendors
+      assign its_a_match    =   false
+
+      capture my_collection_handle
+        echo product_vendor | handleize | strip | escape
+      endcapture
+
+      assign my_collection_handle_stripped    =   my_collection_handle | strip | escape
+
+      for collection in collections
+        if my_collection_handle_stripped == collection.handle
+          assign its_a_match    =   true
+        endif
+      endfor
+
+      if its_a_match
+
+        assign vendorHandleIs__   =   product_vendor | handleize
+
+        echo '<li class="vendor-list-item"><a href="/collections/' | append: vendorHandleIs__ | append: '">' | append: product_vendor | append: '</a></li>'
+
+      else
+
+        assign vendorHandle     =   product_vendor | handle
+
+        echo '<li class="vendor-list-item">' | append: product_vendor | link_to_vendor | append: '</li>'
+
+      endif
+
+    endfor
+  %}
+</ul>
+{%- endcomment -%}
+<div class="loadFirstCollection"></div>
+{%- comment -%}
+<script src="{{ 'jquery.min.js' | asset_url }}"></script>
+{%- endcomment -%}
+<script>
+  $(() => {
+    firstFunction();
+  });
+
+  function firstFunction() {
+    const getCollections    =   getParam( 'v' );
+
+    if ( getCollections != null ) {
+
+      $.get( `/collections/vendors?q=${ getCollections }&view=abc`, function ( data ) {
+        $( `.loadFirstCollection` ).html( data );
+      });
+    }
+  }
+
+  function getParam( paramIs ) {
+    const url     =   location.href;
+    const objURL  =   new URL(url);
+    const c       =   objURL.searchParams.get(paramIs);
+    return c;
+  }
+</script>

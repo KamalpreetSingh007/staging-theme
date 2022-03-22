@@ -1,0 +1,11 @@
+{%-liquid
+  assign sassFile     =     'artistPage.css' | asset_url
+  assign jsFile       =     'artistPage.js' | asset_url
+
+  echo '<link rel="stylesheet" href="' | append: sassFile | append: '">'
+
+  section 'artistpage_header'
+  section 'artistpage_collections'
+
+  echo '<script src="' | append: jsFile | append: '"></script>'
+-%}

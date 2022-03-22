@@ -1,0 +1,51 @@
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+  {% section 'collection-template' %}
+{% endcomment %}
+<script>
+  // var lang__  =   {
+  //   'soldOut' : "{{ 'products.product.sold_out' | t }}"
+  // }
+</script>
+
+{%-liquid
+  assign cssFile          =   'collection.css' | asset_url
+  assign jquery           =   'jquery.min.js' | asset_url
+  assign globalJs         =   'global.js' | asset_url
+  assign elementVisible   =   'jquery.visible.min.js' | asset_url
+  assign packeryFile      =   'https://unpkg.com/packery@2/dist/packery.pkgd.js'
+  assign jsFile           =   'collection.js' | asset_url
+
+  echo '<link rel="stylesheet" href="' | append: cssFile | append: '">'
+
+  section 'collection-header'
+
+  section 'collection-template_new'
+
+  section 'collectionManager'
+
+  comment
+    section 'product-recommendations'
+  endcomment
+
+  section 'signUpFeature'
+
+  render '__scrollTop'
+
+  comment
+    render 'signUpFeature'
+  endcomment
+
+  comment
+    echo '<script src="' | append: jquery | append: '"></script>'
+  endcomment
+
+  echo '<script src="' | append: globalJs | append: '"></script>'
+
+  comment
+    echo '<script src="' | append: packeryFile | append: '"></script>'
+  endcomment
+  echo '<script src="' | append: elementVisible | append: '"></script>'
+  echo '<script src="' | append: jsFile | append: '"></script>'
+-%}
+

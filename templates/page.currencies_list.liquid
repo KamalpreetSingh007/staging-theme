@@ -1,0 +1,14 @@
+{%-liquid
+  layout none
+
+  echo '{'
+    echo '"currencies" : ['
+      for c_ in localization.available_countries
+        echo c_.currency.iso_code | json
+        unless forloop.last
+          echo ','
+        endunless
+      endfor
+    echo ']'
+  echo '}'
+-%}

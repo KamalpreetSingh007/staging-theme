@@ -1,0 +1,27 @@
+{%-liquid
+  assign cssFile    =   'ourStory.css' | asset_url
+  assign jsFile     =   'ourStory.js' | asset_url
+
+  echo '<link rel="stylesheet" href="' | append: cssFile | append: '">'
+
+  section 'annoucementBarShowHide'
+
+  echo '<div class="ourStory">'
+
+    echo '<div class="page-width">'
+      echo '<div class="mainTitle">'
+        echo '<h1>' | append: page.title | append: '</h1>'
+      echo '</div>'
+    echo '</div>'
+
+    echo '<div class="page-width">'
+      section 'templateLinks'
+    echo '</div>'
+
+    section 'ourStory_sec'
+
+  echo '</div>'
+
+  echo '<script src="' | append: jsFile | append: '"></script>'
+
+-%}

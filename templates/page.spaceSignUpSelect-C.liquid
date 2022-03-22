@@ -1,0 +1,25 @@
+{%-liquid
+
+  assign scssFile               =   'spaceSignUp.css' | asset_url
+  assign jsFile                 =   'spaceSignUp.js' | asset_url
+
+  echo '<link rel="stylesheet" href="' | append: scssFile | append: '">'
+
+  echo '<div class="spaceSignUp">'
+
+    section 'annoucementBarShowHide'
+
+    section 'spaces__head_select-C'
+
+    section 'spaces__list_select-C'
+
+    section 'spaces__plans_select-C'
+
+    section 'spaces__legal'
+
+  echo '</div>'
+
+  echo '<script src="' | append: jsFile | append: '"></script>'
+
+-%}
+
