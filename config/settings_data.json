@@ -1,0 +1,2896 @@
+{
+  "current": {
+    "shape_color": "#faf5ff",
+    "color_text": "#000000",
+    "color_body_text": "#000000",
+    "color_sale_text": "#ea0606",
+    "color_button": "#000000",
+    "color_button_text": "#ffffff",
+    "color_small_button_text_border": "#000000",
+    "color_text_field_text": "#000000",
+    "color_text_field_border": "#cccccc",
+    "color_text_field": "#ffffff",
+    "color_image_overlay_text": "#ffffff",
+    "color_image_overlay": "#685858",
+    "image_overlay_opacity": 40,
+    "color_borders": "#ebebeb",
+    "color_body_bg": "#ffffff",
+    "type_header_font": "helvetica_n7",
+    "type_header_base_size": 25,
+    "type_base_font": "helvetica_n4",
+    "type_base_size": 15,
+    "predictive_search_enabled": true,
+    "predictive_search_show_vendor": true,
+    "predictive_search_show_price": false,
+    "share_facebook": false,
+    "share_twitter": false,
+    "share_pinterest": false,
+    "social_twitter_link": "https:\/\/twitter.com\/shopify",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "favicon": "shopify:\/\/shop_images\/flavicon.png",
+    "enable_ajax": true,
+    "exhibitionFormat": "Currently exhibited in {cityName}. Arrange for an early pick up from the venue or ship now – details provided at checkout.",
+    "pt_show_refine": false,
+    "pt_show_collection_group": false,
+    "pt_show_clear": false,
+    "pt_show_view_all": false,
+    "pt_show_collection_count": false,
+    "pt_show_show_single_group": false,
+    "pt_scroll_filter_group": false,
+    "pt_show_inactive_filters": false,
+    "pt_force_dropdown": false,
+    "pt_hide_headers": false,
+    "pt_float_filters": "true",
+    "pt_refine_text": "Refine",
+    "pt_clear_text": "clear",
+    "pt_view_all_text": "view all",
+    "pt_tags_text": "Tags",
+    "pt_sort_by_text": "Sort By",
+    "pt_collection_text": "Collection",
+    "pt_search_placeholder_text": "search...",
+    "pt_mobile_text": "Filter",
+    "pt_show_tags_group": false,
+    "pt_show_tags_grouped": false,
+    "pt_show_sort_by_group": false,
+    "pt_sort_position": "bottom",
+    "pt_sort_by_dropdown": false,
+    "pt_show_sort_by_checkboxes": false,
+    "pt_sort_manual_text": "Featured",
+    "pt_sort_price_asc_text": "Price: Low to High",
+    "pt_sort_price_desc_text": "Price: High to Low",
+    "pt_sort_title_asc_text": "A-Z",
+    "pt_sort_title_desc_text": "Z-A",
+    "pt_sort_created_asc_text": "Newest Last",
+    "pt_sort_created_desc_text": "Newest",
+    "pt_sort_best_selling_text": "Best Selling",
+    "color_pt_header_text": "#222",
+    "color_pt_header_border": "#ddd",
+    "color_pt_header_top_border": "rgba(0,0,0,0)",
+    "pt_header_size": 18,
+    "pt_header_font_override": false,
+    "pt_header_font": "work_sans_n6",
+    "pt_header_weight": "600",
+    "color_pt_links": "#222",
+    "color_pt_links_selected": "#333",
+    "color_pt_links_hover": "#444",
+    "color_pt_counts_color": "#888",
+    "pt_links_size": 14,
+    "pt_links_font_override": false,
+    "pt_links_font": "work_sans_n6",
+    "pt_links_weight": "300",
+    "pt_show_checkboxes": true,
+    "pt_checkbox_style": "0",
+    "pt_checkbox_swatch_style": "3",
+    "pt_checkbox_primary_color": "#888",
+    "pt_checkbox_secondary_color": "#444",
+    "pt_checkbox_size": 15,
+    "pt_checkbox_size_swatch": 25,
+    "pt_checkbox_checkbox_align": "middle",
+    "pt_color_swatch_type": "swatch",
+    "color_pt_clear_bg": "#eee",
+    "color_pt_clear_text": "#222",
+    "color_pt_clear_bg_hover": "#ddd",
+    "color_pt_clear_text_hover": "#222",
+    "color_pt_bg": "rgba(0,0,0,0)",
+    "color_pt_bg_border": "rgba(0,0,0,0)",
+    "pt_bg_padding": 0,
+    "pt_bg_radius": 3,
+    "pt_mobile_enable": true,
+    "pt_accordion_enable": true,
+    "pt_accordion_mode": "all",
+    "pt_mobile_color": "#222",
+    "pt_mobile_max_width": "767px",
+    "pt_mobile_vertical": 7,
+    "pt_mobile_text_vertical": 14,
+    "pt_mobile_font_override": false,
+    "pt_mobile_font": "work_sans_n6",
+    "pt_mobile_size": "",
+    "pt_mobile_hide_selected": false,
+    "color_pt_small_box_bg": "#ffffff",
+    "color_pt_small_box_bg_hover": "#00a5fd",
+    "color_pt_small_box_text_hover": "#ffffff",
+    "pt_small_box_radius": 3,
+    "pt_small_box_border": true,
+    "pt_small_box_shadow": true,
+    "pt_view_more_enable": false,
+    "pt_view_more_count": 15,
+    "pt_view_more_text": "View More...",
+    "pt_apply_button_enable": false,
+    "pt_apply_button_text": "Apply",
+    "pt_apply_button_color": "#0084ff",
+    "pt_apply_button_hover_color": "#0670cf",
+    "pt_apply_button_disabled_color": "#cccccc",
+    "pt_sticky_enable": true,
+    "pt_sticky_mode": "basic",
+    "pt_sticky_selector": ".filter-menu",
+    "pt_sticky_offset": "25px",
+    "pt_sticky_min_width": "767px",
+    "pt_ajax_enable": false,
+    "pt_ajax_selector": "#main",
+    "pt_ajax_script": ";",
+    "pt_show_only_on_collections": false,
+    "pt_clear_to_current_collection": false,
+    "pt_desktop_always_show_selected": true,
+    "pt_filter_padding": 6,
+    "pt_temporary_disable": false,
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/Desktop_Logo.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "align_logo": "left",
+          "logo": "shopify:\/\/shop_images\/Desktop_Logo.png",
+          "logo_max_width": 165,
+          "main_linklist": "new-desktop-main-menu",
+          "chargeBeeHeaderLink": "",
+          "message": true,
+          "home_page_only": false,
+          "message_text": "Free Shipping on All Orders",
+          "message_link": "",
+          "color_bg": "#f7ecfa",
+          "color_text": "#000000"
+        }
+      },
+      "feature-row": {
+        "type": "feature-row",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Blob_10.png",
+          "layout": "right",
+          "title": "Feature original art in your space",
+          "text": "<ul>\n<li>Access talented artists that fit your style and mission<\/li> \n<li>Generate revenue for your business<\/li>\n<li>Help build a better creative economy by supporting artists in your community<\/li>\n<\/ul>",
+          "button_label": "Businesses – Learn More",
+          "button_link": "shopify:\/\/pages\/spaces-signup"
+        }
+      },
+      "feature-columns": {
+        "type": "feature-columns",
+        "disabled": true,
+        "blocks": {
+          "feature-columns-0": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "title": "Create your online profile in minutes",
+              "text": "",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "feature-columns-1": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "title": "Make an Offer and  Commissions",
+              "text": "",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "feature-columns-2": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "title": "Art Advisory",
+              "text": "",
+              "button_label": "",
+              "button_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "feature-columns-0",
+          "feature-columns-1",
+          "feature-columns-2"
+        ],
+        "settings": {
+          "title": "Share your art with a global audience in new ways",
+          "align_text": "center"
+        }
+      },
+      "collection": {
+        "type": "collection",
+        "disabled": true,
+        "settings": {
+          "title": "Latest art added to LoCA",
+          "collection": "all",
+          "grid": 4,
+          "rows": 2,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "hero-2": {
+        "type": "hero",
+        "disabled": true,
+        "settings": {
+          "alignment": "center",
+          "hero_layout": "full_width",
+          "hero_size": "medium",
+          "text_size": "large",
+          "title": "Image with text overlay",
+          "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "quotes": {
+        "type": "quotes",
+        "disabled": true,
+        "blocks": {
+          "quotes-0": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+              "author": "Author's name"
+            }
+          },
+          "quotes-1": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+              "author": "Author's name"
+            }
+          },
+          "quotes-2": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+              "author": "Author's name"
+            }
+          }
+        },
+        "block_order": [
+          "quotes-0",
+          "quotes-1",
+          "quotes-2"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "image-bar": {
+        "type": "image-bar",
+        "disabled": true,
+        "blocks": {
+          "image-bar-0": {
+            "type": "image",
+            "settings": {
+              "alignment": "center",
+              "link": "",
+              "cta_label": ""
+            }
+          },
+          "image-bar-1": {
+            "type": "image",
+            "settings": {
+              "alignment": "center",
+              "link": "",
+              "cta_label": ""
+            }
+          },
+          "image-bar-2": {
+            "type": "image",
+            "settings": {
+              "alignment": "center",
+              "link": "",
+              "cta_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "image-bar-0",
+          "image-bar-1",
+          "image-bar-2"
+        ],
+        "settings": {
+          "section_height": "medium"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "55f2defd-566b-4106-92d7-d97f5095bb52": {
+            "type": "text",
+            "settings": {
+              "title": "Have a question?",
+              "text": "<p><a href=\"\/pages\/contact-us\" title=\"Contact us\">help@loca.art<\/a><\/p>",
+              "socialTitle": "Follow us!",
+              "instagramLink": "https:\/\/www.instagram.com\/loca.art\/",
+              "instagramSvg": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M11.9956 3.80145C14.6643 3.80145 14.9798 3.81021 16.0359 3.85843C17.0088 3.90226 17.539 4.06443 17.894 4.20469C18.3585 4.3844 18.6915 4.60355 19.0421 4.9542C19.3926 5.30484 19.6074 5.63796 19.7914 6.10256C19.9273 6.45321 20.0894 6.98356 20.1376 7.96099C20.1858 9.01731 20.1946 9.3329 20.1946 12.0022C20.1946 14.6715 20.1858 14.9871 20.1376 16.0434C20.0938 17.0164 19.9316 17.5468 19.7914 17.9018C19.6117 18.3664 19.3926 18.6995 19.0421 19.0502C18.6915 19.4008 18.3585 19.6156 17.894 19.7997C17.5434 19.9356 17.0131 20.0977 16.0359 20.146C14.9798 20.1942 14.6643 20.2029 11.9956 20.2029C9.32691 20.2029 9.01139 20.1942 7.9553 20.146C6.98247 20.1021 6.45224 19.94 6.09728 19.7997C5.63278 19.62 5.29974 19.4008 4.94917 19.0502C4.5986 18.6995 4.38387 18.3664 4.19982 17.9018C4.06398 17.5512 3.90184 17.0208 3.85364 16.0434C3.80543 14.9871 3.79667 14.6715 3.79667 12.0022C3.79667 9.3329 3.80543 9.01731 3.85364 7.96099C3.89746 6.98795 4.0596 6.45759 4.19982 6.10256C4.37949 5.63796 4.5986 5.30484 4.94917 4.9542C5.29974 4.60355 5.63278 4.38878 6.09728 4.20469C6.44785 4.06881 6.97809 3.90664 7.9553 3.85843C9.01139 3.81021 9.32691 3.80145 11.9956 3.80145ZM11.9956 2C9.2787 2 8.94128 2.01315 7.87204 2.06136C6.80719 2.10958 6.07975 2.28052 5.44435 2.52597C4.78703 2.78019 4.2305 3.12207 3.67397 3.67872C3.12182 4.23537 2.78002 4.79202 2.52585 5.44949C2.28046 6.08503 2.10955 6.81262 2.06135 7.87771C2.01315 8.9428 2 9.28468 2 11.9978C2 14.7153 2.01315 15.0528 2.06135 16.1223C2.10955 17.1874 2.28046 17.915 2.52585 18.5505C2.78002 19.208 3.12182 19.7646 3.67835 20.3213C4.23488 20.8779 4.79141 21.2198 5.44873 21.474C6.08414 21.7195 6.81157 21.8904 7.87642 21.9386C8.94128 21.9869 9.28309 22 12 22C14.7169 22 15.0543 21.9869 16.1236 21.9386C17.1884 21.8904 17.9159 21.7195 18.5513 21.474C19.2086 21.2198 19.7651 20.8779 20.3216 20.3213C20.8782 19.7646 21.22 19.208 21.4741 18.5505C21.7195 17.915 21.8904 17.1874 21.9387 16.1223C21.9869 15.0572 22 14.7153 22 11.9978C22 9.2803 21.9869 8.9428 21.9387 7.87333C21.8904 6.80824 21.7195 6.08065 21.4741 5.4451C21.22 4.78764 20.8782 4.23099 20.3216 3.67434C19.7651 3.11769 19.2086 2.77581 18.5513 2.52159C17.9159 2.27613 17.1884 2.10519 16.1236 2.05698C15.0543 2.01315 14.7125 2 11.9956 2Z\" fill=\"black\"><\/path><path d=\"M11.9957 7C9.2355 7 7 9.23645 7 11.9979C7 14.7593 9.23976 17 12 17C14.7602 17 17 14.7636 17 11.9979C16.9957 9.23645 14.756 7 11.9957 7ZM11.9957 15.2458C10.2039 15.2458 8.75341 13.7947 8.75341 12.0021C8.75341 10.2096 10.2039 8.75843 11.9957 8.75843C13.7875 8.75843 15.2381 10.2096 15.2381 12.0021C15.2423 13.7904 13.7875 15.2458 11.9957 15.2458Z\" fill=\"black\"><\/path><path d=\"M18 6C18 6.55109 17.5511 7 17 7C16.4489 7 16 6.55109 16 6C16 5.44891 16.4489 5 17 5C17.5511 5 18 5.44526 18 6Z\" fill=\"black\"><\/path><\/svg>"
+            }
+          },
+          "b671d973-0456-422c-a790-86ea5e1999cb": {
+            "type": "link_list",
+            "settings": {
+              "title": "Information",
+              "menu": "footer",
+              "chargeBeeFooterLink": ""
+            }
+          },
+          "45ebed85-90f4-404c-be65-f47c2048ceff": {
+            "type": "link_list",
+            "settings": {
+              "title": "For Artists",
+              "menu": "for-artists",
+              "chargeBeeFooterLink": ""
+            }
+          },
+          "7c911c5b-5867-426d-93d6-52dd69e2ef34": {
+            "type": "link_list",
+            "settings": {
+              "title": "For Spaces",
+              "menu": "for-spaces",
+              "chargeBeeFooterLink": "<a href=\"javascript:void(0)\" data-cb-type=\"portal\">Manage account<\/a>"
+            }
+          },
+          "137267cc-22af-4151-b48b-93f97cae8f99": {
+            "type": "link_list",
+            "settings": {
+              "title": "For Buyers",
+              "menu": "for-buyers-menu",
+              "chargeBeeFooterLink": ""
+            }
+          }
+        },
+        "block_order": [
+          "55f2defd-566b-4106-92d7-d97f5095bb52",
+          "b671d973-0456-422c-a790-86ea5e1999cb",
+          "45ebed85-90f4-404c-be65-f47c2048ceff",
+          "7c911c5b-5867-426d-93d6-52dd69e2ef34",
+          "137267cc-22af-4151-b48b-93f97cae8f99"
+        ],
+        "settings": {
+          "show_payment_icons": false,
+          "color_footer_bg": "#f6f6f6",
+          "color_footer_text": "#333232",
+          "show_locale_selector": true,
+          "show_currency_selector": true
+        }
+      },
+      "password-header": {
+        "type": "password-header",
+        "settings": {
+          "logo": "",
+          "logo_max_width": 100,
+          "header": "Coming Soon"
+        }
+      },
+      "password-content": {
+        "type": "password-content",
+        "settings": {
+          "newsletter_enable": true,
+          "newsletter_form_heading": "LoCA is getting ready to launch. Be the first to know",
+          "newsletter_form_subheading": "",
+          "newsletter_placeholder": "Email address",
+          "newsletter_button_text": "Notify me"
+        }
+      },
+      "password-footer": {
+        "type": "password-footer",
+        "settings": {
+          "show_share_buttons": false,
+          "social_message": "Spread the word"
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "show_quantity_selector": false,
+          "show_variant_labels": true,
+          "show_vendor": true,
+          "enable_payment_button": true,
+          "show_share_buttons": false,
+          "media_size": "large",
+          "enable_image_zoom": true,
+          "enable_video_looping": false
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "heading": "You may also like",
+          "show_vendor": true
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "layout": "grid",
+          "grid": 2,
+          "rows": 6,
+          "show_collection_image": true,
+          "show_vendor": true,
+          "sort_enable": false,
+          "tags_enable": false
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical",
+          "grid": 3
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "layout": "list",
+          "blog_show_author": true,
+          "blog_show_date": true
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "cart_ajax_enable": true,
+          "cart_notes_enable": false
+        }
+      },
+      "filter-menu-settings": {
+        "type": "filter-menu-settings",
+        "blocks": {
+          "1602713497732": {
+            "type": "image-icon",
+            "settings": {
+              "collection": "aris-vrakas",
+              "image": "shopify:\/\/shop_images\/a-woman-in-an-art-gallery-ponders-a-degas-painting.jpg",
+              "height": "30px",
+              "width": "30px"
+            }
+          }
+        },
+        "block_order": [
+          "1602713497732"
+        ],
+        "settings": {
+        }
+      },
+      "1607408035f30c7d68": {
+        "type": "feature-row",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Blob_3.png",
+          "layout": "left",
+          "title": "Show and sell your art locally",
+          "text": "<p>We do the work to find the best space for your art.<\/p>\n<ul>\n<li>You'll get more visibility for your work<\/li>\n<li>Our e-commerce tools and QR code labels simplify purchasing for buyers<\/li>\n<li>Artists receive 70% of every original artwork sold through LoCA<\/li> \n<li>LoCA safely and securely processes all payments<\/li>\n\n<\/ul>",
+          "button_label": "Artists – Learn More",
+          "button_link": "shopify:\/\/pages\/artist-info"
+        }
+      },
+      "artist1": {
+        "type": "artist1",
+        "settings": {
+          "title": "Easy and No Upfront Fees",
+          "code": "<ul>\n <li>It’s free to create an account<\/li>\n <li>Artists receive 70% of every original artwork sold through LoCA<\/li>\n <li>Secure online payments <\/li>\n<li>Non-exclusive policy<\/li>\n\n<\/ul>",
+          "label": "Sign Up Now",
+          "link": ""
+        }
+      },
+      "columns-link": {
+        "type": "columns-link",
+        "blocks": {
+          "f5c8ed4e-e31f-4eaf-abf8-832418c0f3bf": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "title": "",
+              "text": "<p>①<\/p><p>Sign-up<\/p>"
+            }
+          },
+          "e2ccef6d-8e36-4e24-8f45-4fc14fd843bc": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "title": "",
+              "text": "<p>②<\/p><p>Upload your work<\/p>"
+            }
+          },
+          "2258be0b-bc3a-4e42-9849-2d80186289d4": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "title": "",
+              "text": "<p>③<\/p><p>Exhibit in LoCA <\/p><p>art spaces<\/p>"
+            }
+          },
+          "3c16c89f-3297-4aa3-bb62-57d7872aba97": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "title": "",
+              "text": "<p>④<\/p><p>Sell your work, locally and globally<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "f5c8ed4e-e31f-4eaf-abf8-832418c0f3bf",
+          "e2ccef6d-8e36-4e24-8f45-4fc14fd843bc",
+          "2258be0b-bc3a-4e42-9849-2d80186289d4",
+          "3c16c89f-3297-4aa3-bb62-57d7872aba97"
+        ],
+        "settings": {
+          "title": "Simple steps to get started",
+          "align_text": "center",
+          "button_label": "Sign Up Now",
+          "button_link": "https:\/\/www.artgalleria.com\/portal\/1b7a04f"
+        }
+      },
+      "artist2": {
+        "type": "artist2",
+        "settings": {
+          "title": "Our Print Program",
+          "title1": "Promotion of Your Work",
+          "code": "<ul class=\"checkNot\">\n<li>Your art will be included in our online gallery and on your unique Artist Page where buyers can learn more about you and browse your collection.<\/li>\n<li>We feature select artists on our homepage, in our regular newsletters and e-mails, and through our social media.<\/li>\n<li>You can also point interested buyers to your LoCA page to facilitate online sales and use your QR codes to sell your art for any upcoming exhibitions.<\/li>\n<\/ul>",
+          "code1": "<ul>\n<li>We can create exceptional fine-art prints from originals (including photography) and ship on demand to buyers globally.<\/li>\n<li>Our specialists make it easy, advising on images, file resolution and pricing.\n<\/li>\n<\/ul>"
+        }
+      },
+      "feature-row1": {
+        "type": "feature-row1",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Blob_2.png",
+          "layout": "left",
+          "title": "Show and sell your art locally",
+          "text": "<ul>\n\n<li>We match you with the right space in your community and feature your work in our online gallery.<\/li>\n\n<li>Our tools make it easier for buyers to purchase your art. All it takes is a simple scan of a QR code.\n<\/li>\n\n<\/ul>",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "feature-row2": {
+        "type": "feature-row2",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Blob_3.png",
+          "layout": "left",
+          "title": "Our Exhibition Spaces",
+          "text": "<ul>\n<li>Our shows take place in inviting, informal spaces that serve as cultural hubs in your community, like coffee shops, salons and hotels. <\/li>\n<li>Artists oversee installation and shipping.<\/li>\n<li>LoCA handles all payments and processing. <\/li>\n<\/ul>",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "feature-row3": {
+        "type": "feature-row3",
+        "settings": {
+          "layout": "right",
+          "title": "Curation and Digital Promotion",
+          "text": "<ul>\n\n<li>Opportunity for your work to be featured in collections on our homepage and newsletters\/emails<\/li>\n\n<li>Opportunity for your work to be featured in social media (instagram, facebook) <\/li>\n\n<\/ul>",
+          "button_label": ""
+        }
+      },
+      "faq-section": {
+        "type": "faq-section",
+        "blocks": {
+          "014ec4c4-570e-477e-b56c-300f4f0b16b7": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>How does the installation process work?<\/p>",
+              "answer": "<p>FPO copy for when the link is clicked on and this copy opens up below...............<\/p>"
+            }
+          },
+          "b6e76374-8512-40df-a640-aee6c746bd71": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>How does shipping work?<\/p>",
+              "answer": "<p>FPO copy for when the link is clicked on and this copy opens up below...............<\/p><p><br\/><\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "014ec4c4-570e-477e-b56c-300f4f0b16b7",
+          "b6e76374-8512-40df-a640-aee6c746bd71"
+        ],
+        "settings": {
+          "section_title": "FAQs"
+        }
+      },
+      "rich-text-link": {
+        "type": "rich-text-link",
+        "settings": {
+          "full_width": true,
+          "section_title": "Our mission is to help make art accessible. Join us!",
+          "button_label": "For Spaces",
+          "button_link": "shopify:\/\/collections\/all"
+        }
+      },
+      "1608613118f40ab345": {
+        "type": "feature-row",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Vector_a2fc944a-08d2-4e1c-bf7e-2781c69053e4.png",
+          "layout": "left",
+          "title": "Find art you love",
+          "text": "<ul>\n<li>Discover new art, whether you’re a collector or first time buyer<\/li>\n<li>Support artists, locally and globally<\/li>\n<li>Experience art in your own community<\/li>\n<\/ul>",
+          "button_label": "Browse Featured Artists",
+          "button_link": "shopify:\/\/pages\/artists"
+        }
+      },
+      "16086140473c75f86f": {
+        "type": "homepage-search",
+        "disabled": true,
+        "settings": {
+          "section_title": "Ready to Explore?"
+        }
+      },
+      "16086342293d28e29f": {
+        "type": "featured-slider",
+        "settings": {
+          "title": "Featured Artist: Vian Nguyen",
+          "collection": "vian-nguyen"
+        }
+      },
+      "16086342407491c5a9": {
+        "type": "featured-slider",
+        "settings": {
+          "title": "Featured Artist: Katie Dean",
+          "collection": "katie-dean"
+        }
+      },
+      "1608634259eaa80030": {
+        "type": "featured-slider",
+        "settings": {
+          "title": "Featured Exhibition: Abigail Yentis at Plant Hub, London",
+          "collection": "abigail-yentis"
+        }
+      },
+      "1609162439f05e22b2": {
+        "type": "rich-text",
+        "settings": {
+          "full_width": false,
+          "section_title": "",
+          "text": "<p>We connect artists, spaces and buyers – locally, and globally.<\/p>",
+          "text_size": "large"
+        }
+      },
+      "Artist3": {
+        "type": "Artist3",
+        "settings": {
+          "title": "Our Print Program",
+          "code": "<ul>\n<li> LoCA can create exceptional Gilcée prints of your work and ship on demand to collectors anywhere in the world.\n<\/li>\n<\/ul>",
+          "label": ""
+        }
+      },
+      "feature-row4": {
+        "type": "feature-row4",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Blob_4.png",
+          "layout": "left",
+          "title": "Business and the arts supporting each other.",
+          "text": "Art connects us all. Improve access to art in your community and create interest for your customers by featuring art from local artists.",
+          "button_label": "Sign Up Now",
+          "button_link": "shopify:\/\/pages\/space-sign-up-form"
+        }
+      },
+      "columns-link2": {
+        "type": "columns-link2",
+        "settings": {
+          "title": "Why host a LoCA show?",
+          "align_text": "left",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "artist4": {
+        "type": "artist4",
+        "settings": {
+          "title": "The art is compelling.",
+          "code": "<p>We represent a wide variety of talented artists – making it possible to host one, or a series, of rotating shows. Our curation team will recommend art that best fits your needs and space, but the final decision will be made by you.<\/p>",
+          "label": "Browse Featured Artists",
+          "link": "shopify:\/\/pages\/artists"
+        }
+      },
+      "artist6": {
+        "type": "artist6",
+        "settings": {
+          "title": "It’s easy.",
+          "title1": "A show can generate revenue.",
+          "code": "<p>We’ll promote the show through our site, our social media channels, and through our network of artists and collectors – attracting new customers to your business. You can also generate revenue through a commission on any art sold in your space.\n<\/p>",
+          "code1": "<p>Our e-commerce tools enable buyers to learn more about the artist or purchase instantly. We handle installation, all contactless payments and processing, and shipping of any sold artwork. You and your team can focus on running your business.\n<\/p>"
+        }
+      },
+      "artist5": {
+        "type": "artist5",
+        "settings": {
+          "title": "Contact us to get started.",
+          "code": "",
+          "label": "Sign Up Now",
+          "link": "shopify:\/\/pages\/space-sign-up-form"
+        }
+      },
+      "faq-section1": {
+        "type": "faq-section1",
+        "blocks": {
+          "8dccc8e4-00e1-4bfc-ae2a-8bd763b34c03": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>Can any space host a LoCA show?<\/p>",
+              "answer": "<p>We believe art is best appreciated when it’s seen in person, but that doesn’t mean it needs to be viewed in a formal museum or gallery setting. Our shows take place in a wide variety of spaces - from elegant, modern hotels to vintage-inspired coffee shops. We look for inviting spaces that serve as cultural hubs within your community. <\/p><p>When in doubt,<a href=\"\/pages\/space-sign-up-form\" title=\"Exhibition Space Sign-Up Form\"> reach out<\/a>! We’re happy to advise on whether your space is a good fit for a LoCA show.<\/p>"
+            }
+          },
+          "735c2145-9fad-4cbf-bbed-288bb9951fe9": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>Do I get to choose the art that’s shown?<\/p>",
+              "answer": "<p>Absolutely. Collections from our member artists are on our site for you to browse if you want to. We also have a team of curators that can provide a range of artists and artwork that fit your space and aesthetic. Either way, the final decision of who shows in your space will always be up to you.<\/p>"
+            }
+          },
+          "ccb5a656-7a3e-43e2-95a1-0b002f2d6c92": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>How long does each show last?<\/p>",
+              "answer": "<p>Our average show length is a month, but a show can run from anywhere between 30 and 90 days. We can work with you and the artist to determine the appropriate length.<\/p>"
+            }
+          },
+          "b1b7b6b4-4643-4445-a0da-0d9075f248ee": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>Does that art featured always need to be up for sale?<\/p>",
+              "answer": "<p>Yes. We built LoCA to help drive the discovery and sales of local artists. Featuring pieces that are for sale provides the artist the best opportunity to generate revenue from their show.<\/p>"
+            }
+          },
+          "5594ff28-6a8a-4ce4-a0eb-4901734430d2": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>How does the installation process work?<\/p>",
+              "answer": "<p>Once you have approved a show, we’ll connect you with the artist to confirm installation dates. On the day of installation, they will bring their art, the QR code enabled LoCA labels and tools to install with your guidance where needed. When the show is over, the artist will take down all art and ship any sold work directly to the buyer.<\/p>"
+            }
+          },
+          "10e4d4a8-6e36-4db9-a80f-aa558ea2f4fb": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>How does shipping work?<\/p>",
+              "answer": "<p>The buyer pays for shipping when they purchase. If a piece is purchased during your show, the artist will ship the artwork directly to the buyer after the show ends. <\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "8dccc8e4-00e1-4bfc-ae2a-8bd763b34c03",
+          "735c2145-9fad-4cbf-bbed-288bb9951fe9",
+          "ccb5a656-7a3e-43e2-95a1-0b002f2d6c92",
+          "b1b7b6b4-4643-4445-a0da-0d9075f248ee",
+          "5594ff28-6a8a-4ce4-a0eb-4901734430d2",
+          "10e4d4a8-6e36-4db9-a80f-aa558ea2f4fb"
+        ],
+        "settings": {
+          "section_title": "Common Questions"
+        }
+      },
+      "faq-section2": {
+        "type": "faq-section2",
+        "blocks": {
+          "45b7404f-4e83-4587-8064-4dcc5e12a108": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>How do you match me with an art space?<\/p>",
+              "answer": "<p>Our curation team will identify spaces that best showcase your work. Once we’ve secured the right match, we’ll put you in contact with the space directly to confirm the details.<\/p>"
+            }
+          },
+          "78b65bc0-335b-410d-9054-2b8327bb8ce6": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>What can I sell?<\/p>",
+              "answer": "<p>LoCA welcomes all artists across a variety of mediums, including: painting, photography, mixed media and sculpture. How much of your collection and which pieces to show is all up to you. We operate on a non-exclusive basis.<\/p><p><\/p>"
+            }
+          },
+          "40e826e8-d57e-42de-94b7-ea5a1ced9397": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>How does the installation process work? <\/p>",
+              "answer": "<p>Once we’ve secured a show for you, we will connect you with your lead contact at the space. You confirm details (show dates, art placement, number of pieces to show) with the space directly and handle installation. You can download the QR code enabled labels from our site to print at home. When the show ends, you will take down all art and ship any sold pieces to the respective buyer. If you sell prints through us, we will handle printing and shipping as soon as an order is placed.<\/p>"
+            }
+          },
+          "a5776edb-769e-4893-8f5b-60517741697b": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>How does shipping work?<\/p>",
+              "answer": "<p>The buyer pays for shipping when they purchase. If your piece is bought through our online gallery, we will notify you so you can immediately ship to the buyer. If your work is currently in a show, you will ship after the show ends. We recommend you purchase insurance through the shipping agent. If you sell prints through us, we will handle printing and shipping as soon as an order is placed.<\/p><p><\/p>"
+            }
+          },
+          "1eb6faf5-b8e3-4d9a-8a47-44edeb318fbc": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>How do I get paid?<\/p>",
+              "answer": "<p>When your first show is confirmed, we’ll verify your account details, including your desired payment platform. LoCA will then issue a direct payment to you upon confirmation that the piece has been shipped to the buyer.<\/p>"
+            }
+          },
+          "598442cf-5f06-4b34-8ce9-d530487b9306": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>How does LoCA’s commission work?<\/p>",
+              "answer": "<p>Artists receive 70% commissions on all original artwork and limited edition prints sold through LoCA, compared to 50% for most commercial galleries. Artists receive 65% of the profit from the sales of open edition prints. The profit is calculated by subtracting the cost of printing and shipping of the prints from the sale price.<\/p>"
+            }
+          },
+          "28e6d9b0-e3fc-4862-aeb9-94b6fc9536ef": {
+            "type": "text_block",
+            "settings": {
+              "question": "<p>How is LoCA different from other online art sellers?<\/p>",
+              "answer": "<p>Our goal is to support local artists by improving discovery of their work. We also believe that art is best appreciated when it’s seen in-person, which is why we focus on making it easier for artists to find spaces in their community to show and sell their work. <\/p><p><\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "45b7404f-4e83-4587-8064-4dcc5e12a108",
+          "78b65bc0-335b-410d-9054-2b8327bb8ce6",
+          "40e826e8-d57e-42de-94b7-ea5a1ced9397",
+          "a5776edb-769e-4893-8f5b-60517741697b",
+          "1eb6faf5-b8e3-4d9a-8a47-44edeb318fbc",
+          "598442cf-5f06-4b34-8ce9-d530487b9306",
+          "28e6d9b0-e3fc-4862-aeb9-94b6fc9536ef"
+        ],
+        "settings": {
+          "section_title": "Common Questions"
+        }
+      },
+      "product-template_new": {
+        "type": "product-template_new",
+        "settings": {
+          "show_quantity_selector": false,
+          "show_variant_labels": true,
+          "show_vendor": false,
+          "enable_payment_button": true,
+          "show_share_buttons": true,
+          "media_size": "medium",
+          "enable_image_zoom": true,
+          "enable_video_looping": false,
+          "return_and_shipping": "<p>Free Shipping on All Orders <br\/><\/p><p>Artwork ships within 14 days of purchase or upon conclusion of the show.<br\/><\/p><p>We'll confirm shipping and delivery via e-mail.<br\/><\/p><p>You have 14 days to request a return, and 14 days therefter to return the artwork. For more details, please review our <br\/>full <a href=\"\/pages\/return-policy\" target=\"_blank\" title=\"\/pages\/return-policy\">Return Policy<\/a>.<\/p>",
+          "showArtworkDescription": true,
+          "showArtistBio": true,
+          "showReturnAndShipping": true,
+          "showKeywords": false,
+          "sizeToDisplay_inches": true,
+          "sizeToDisplay_mm": false,
+          "sizeToDisplay_cm": true,
+          "sizeToDisplay_meters": false,
+          "newSizesMethod": true,
+          "fbFollowBtn": false
+        }
+      },
+      "artistpage_header": {
+        "type": "artistpage_header",
+        "settings": {
+        }
+      },
+      "artistpage_collections": {
+        "type": "artistpage_collections",
+        "blocks": {
+          "c1472bee-1a18-4a28-bb1b-73dca840e5f4": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "the-gift-of-art-colour"
+            }
+          },
+          "87e258fc-bbd4-4e8c-844f-3d21b530a3f1": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "the-gift-of-art-uk"
+            }
+          },
+          "55c2d660-1129-44f3-a6f1-944e5defb5c2": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "the-gift-of-art-under-200"
+            }
+          },
+          "06cdd6a9-73c2-4ac3-a0ca-52b5f277ed3b": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "the-gift-of-art-color"
+            }
+          },
+          "0d8aa8e1-b9d4-47a8-bc6d-abf11c363151": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "the-gift-of-art-smaller-works"
+            }
+          },
+          "76f6b201-3e23-485c-85d3-5538f1e05e88": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "the-gift-of-art-under-250"
+            }
+          },
+          "ae4efbf1-2144-4676-ade3-51c609f5c1b7": {
+            "type": "collection",
+            "settings": {
+              "collection": "shades-of-bright"
+            }
+          },
+          "24a96943-647c-4127-82d2-b04e5e240afb": {
+            "type": "collection",
+            "settings": {
+              "collection": "caught-in-a-moment"
+            }
+          },
+          "b60d5e7c-f4e6-4604-bde7-c343b298989a": {
+            "type": "collection",
+            "settings": {
+              "collection": "still-life"
+            }
+          },
+          "d5231b33-7003-4953-b3e6-fc3b7d276206": {
+            "type": "collection",
+            "settings": {
+              "collection": "fantasy"
+            }
+          },
+          "7238eff8-ba27-4837-9709-7f4641571dff": {
+            "type": "collection",
+            "settings": {
+              "collection": "life-in-motion"
+            }
+          },
+          "eded1e60-dedf-4dcb-a69e-f295c266ebf7": {
+            "type": "collection",
+            "settings": {
+              "collection": "texture"
+            }
+          },
+          "40a41741-b246-4041-8405-973d5cf00d08": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "the-gift-of-art-pacific-northwest"
+            }
+          },
+          "6cb0e748-f2dd-477d-93cc-08a929b8b55c": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "the-language-of-light"
+            }
+          },
+          "179844c2-6ff1-43dd-963a-19a2392302f8": {
+            "type": "collection",
+            "settings": {
+              "collection": "black-white"
+            }
+          },
+          "9d3f97ae-fe70-48dd-aea6-f0632d8dcc21": {
+            "type": "collection",
+            "settings": {
+              "collection": "landscapes"
+            }
+          },
+          "e945c11c-9f51-4a2a-9d33-fa32eb1c6376": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "the-new-form"
+            }
+          },
+          "61809bd3-fe8c-437d-b423-f747d09950ff": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "meditative-moments"
+            }
+          },
+          "7231b99e-360c-4363-98f7-9475cf6349c0": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "the-new-form-figures"
+            }
+          },
+          "39c636a4-af08-46e3-9b70-90cf51bf3862": {
+            "type": "collection",
+            "settings": {
+              "collection": "new-artwork"
+            }
+          },
+          "c01bc396-da94-456d-9b4c-b080489a0d79": {
+            "type": "collection",
+            "settings": {
+              "collection": "fiona-k-lau"
+            }
+          },
+          "8d836303-a411-4f72-ab3f-5ef3e38261e9": {
+            "type": "collection",
+            "settings": {
+              "collection": "yasmin-noorbakhsh"
+            }
+          },
+          "4677c049-66cb-4677-874e-5d6e73b362a7": {
+            "type": "collection",
+            "settings": {
+              "collection": "eliaichi-kimaro-1"
+            }
+          },
+          "913040a0-4253-4773-a5f1-0159eedf41e4": {
+            "type": "collection",
+            "settings": {
+              "collection": "haley-dow"
+            }
+          },
+          "b18dc5f6-8dec-413e-b4cd-e03b79afc55c": {
+            "type": "collection",
+            "settings": {
+              "collection": "allison-rohland"
+            }
+          },
+          "49742ae6-768b-471f-987a-42bbd6988a6e": {
+            "type": "collection",
+            "settings": {
+              "collection": "danielle-peacock"
+            }
+          },
+          "d107307e-f5bc-488f-829c-8740877c59b6": {
+            "type": "collection",
+            "settings": {
+              "collection": "john-tzu-hung-huang"
+            }
+          },
+          "8b6599c1-eace-46ea-88f0-0aa19f127e90": {
+            "type": "collection",
+            "settings": {
+              "collection": "esther-loopstra"
+            }
+          },
+          "abb0cdcb-e6d2-49d0-9e52-c78874b18b57": {
+            "type": "collection",
+            "settings": {
+              "collection": "david-futcher-1"
+            }
+          },
+          "f1e1014c-befa-48fe-96b3-6119eaba0720": {
+            "type": "collection",
+            "settings": {
+              "collection": "claire-gillie-thompson"
+            }
+          },
+          "5b30f55d-69fe-4b08-99b9-8fc492a41cef": {
+            "type": "collection",
+            "settings": {
+              "collection": "daniel-chesney"
+            }
+          },
+          "1d6103c5-fdb6-4d09-aa9a-6a18780cf3ee": {
+            "type": "collection",
+            "settings": {
+              "collection": "nick-riesland"
+            }
+          },
+          "d54865e7-71a5-4bb5-8eff-09931fe13863": {
+            "type": "collection",
+            "settings": {
+              "collection": "carol-rashawnna-williams"
+            }
+          },
+          "d874f180-41e5-49fb-ba31-b1a5da792dfa": {
+            "type": "collection",
+            "settings": {
+              "collection": "carol-ross"
+            }
+          },
+          "a2cb817e-69e2-4c94-87f2-3d31649d465d": {
+            "type": "collection",
+            "settings": {
+              "collection": "damon-brown"
+            }
+          },
+          "11742f37-a2dc-4cb3-a47b-a4166200a617": {
+            "type": "collection",
+            "settings": {
+              "collection": "joellen-wang"
+            }
+          },
+          "dec093a5-303b-44d4-8d56-11643447fbd3": {
+            "type": "collection",
+            "settings": {
+              "collection": "patricia-halsell"
+            }
+          },
+          "fea04a18-b87b-45bb-8e24-dd2dd736effc": {
+            "type": "collection",
+            "settings": {
+              "collection": "david-haughton-1"
+            }
+          },
+          "397a042e-55dd-4424-99f1-784705923dcb": {
+            "type": "collection",
+            "settings": {
+              "collection": "sarah-restall"
+            }
+          },
+          "5cf81c68-4532-44c0-b36e-23dc33fc973f": {
+            "type": "collection",
+            "settings": {
+              "collection": "aaron-brady-1"
+            }
+          },
+          "ceac6733-2a01-4e8e-93ee-407ff80effb2": {
+            "type": "collection",
+            "settings": {
+              "collection": "duplici-alveari"
+            }
+          },
+          "ffc812a5-4889-4f7b-a725-1187b09606b5": {
+            "type": "collection",
+            "settings": {
+              "collection": "lana-blinderman"
+            }
+          },
+          "ac58f0e9-ebb2-47a9-9105-f4fa2fe1ffef": {
+            "type": "collection",
+            "settings": {
+              "collection": "ieva-ansaberga-1"
+            }
+          },
+          "d3b6a91d-0829-4898-b50b-f85858d8ca70": {
+            "type": "collection",
+            "settings": {
+              "collection": "christopher-gasper"
+            }
+          },
+          "1b791152-066a-4e2e-9c22-30bad4d8c84d": {
+            "type": "collection",
+            "settings": {
+              "collection": "veronica-merlo"
+            }
+          },
+          "6669e241-7459-4d6c-9174-3e8e8bfe8f0e": {
+            "type": "collection",
+            "settings": {
+              "collection": "ian-darling"
+            }
+          },
+          "1f36d5a2-8844-4542-9a04-150cf6c09cad": {
+            "type": "collection",
+            "settings": {
+              "collection": "michelle-friars"
+            }
+          },
+          "470104e8-6251-4e73-be14-c5821c274a77": {
+            "type": "collection",
+            "settings": {
+              "collection": "zoee-xiao"
+            }
+          },
+          "977c02e2-2ceb-41f9-8231-b4add5f42e44": {
+            "type": "collection",
+            "settings": {
+              "collection": "aris-vrakas"
+            }
+          },
+          "a1dad58d-4326-4fe8-962c-ffd09449aa5c": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "amneris-delloca"
+            }
+          },
+          "57a0d80b-570d-4a38-af2b-1e612d71dbd9": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "rachie-campbell"
+            }
+          },
+          "13e5e50d-f6ea-4ad4-bf69-79f13507c1dc": {
+            "type": "collection",
+            "settings": {
+              "collection": "ross-collado"
+            }
+          },
+          "046d1bc3-6159-4748-a3c8-1fd015286934": {
+            "type": "collection",
+            "settings": {
+              "collection": "jill-hall-1"
+            }
+          },
+          "65ad7f11-fc32-4db3-89d5-4570183af946": {
+            "type": "collection",
+            "settings": {
+              "collection": "rodney-h-king"
+            }
+          },
+          "23323fa4-f5af-4053-aae6-b225f3a713cf": {
+            "type": "collection",
+            "settings": {
+              "collection": "paulina-archambault"
+            }
+          },
+          "e272906f-269b-4c26-8d5a-36eb4fce87ba": {
+            "type": "collection",
+            "settings": {
+              "collection": "makiko-harris"
+            }
+          },
+          "4f3d56ba-6c07-4ac1-a517-5a3dac9d0b93": {
+            "type": "collection",
+            "settings": {
+              "collection": "marcela-diaz-baeza"
+            }
+          },
+          "6bc98863-e289-443f-b132-8bc490145ded": {
+            "type": "collection",
+            "settings": {
+              "collection": "neil-huntingford"
+            }
+          },
+          "f3b8a3f0-4603-4227-bdec-edc294337024": {
+            "type": "collection",
+            "settings": {
+              "collection": "matt-leaman"
+            }
+          },
+          "87222738-e27a-4bc0-90d6-f27435ab546d": {
+            "type": "collection",
+            "settings": {
+              "collection": "john-macnab"
+            }
+          },
+          "915ba4cd-c010-48f8-836f-7e49ce72a3c9": {
+            "type": "collection",
+            "settings": {
+              "collection": "jonarra-swanson"
+            }
+          },
+          "2466eec3-6fee-4eaf-a9f9-dcdea17907e6": {
+            "type": "collection",
+            "settings": {
+              "collection": "bo-cosfranz"
+            }
+          },
+          "01d65db1-479e-4e68-9fb0-2cd0e5acfb53": {
+            "type": "collection",
+            "settings": {
+              "collection": "sarah-aileen"
+            }
+          },
+          "067b685b-56b3-4c27-b375-1a2585354ab4": {
+            "type": "collection",
+            "settings": {
+              "collection": "kurt-erickson"
+            }
+          },
+          "e72cd6b8-c594-4fc0-9c78-38a95ba4a3f2": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "amaranta-sandys"
+            }
+          },
+          "c746b2fb-5c24-497f-b39d-1c97a375020f": {
+            "type": "collection",
+            "settings": {
+              "collection": "colette-smith"
+            }
+          },
+          "e47402f6-542e-4057-8c83-cd8c94543c2d": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "guido-iafigliola"
+            }
+          },
+          "f8f9e853-7799-4f8c-8af2-b21481ee9acc": {
+            "type": "collection",
+            "settings": {
+              "collection": "abigail-yentis"
+            }
+          },
+          "8b459be2-dcfa-4fa4-a1ef-c901e408bd0c": {
+            "type": "collection",
+            "settings": {
+              "collection": "flora-ramirez-bustamante"
+            }
+          },
+          "191a20ab-88cf-4e61-a2fa-a75257c6f364": {
+            "type": "collection",
+            "settings": {
+              "collection": "ruth-fox"
+            }
+          },
+          "dfb66291-ad6e-411c-89cb-43cb3a9be922": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "bill-jarcho"
+            }
+          },
+          "e1ac9f53-484e-4658-a157-d4f4606ad2f3": {
+            "type": "collection",
+            "settings": {
+              "collection": "vian-nguyen"
+            }
+          },
+          "c8d1cd2f-1b70-4b28-aef8-94c443f3d857": {
+            "type": "collection",
+            "settings": {
+              "collection": ""
+            }
+          }
+        },
+        "block_order": [
+          "c1472bee-1a18-4a28-bb1b-73dca840e5f4",
+          "87e258fc-bbd4-4e8c-844f-3d21b530a3f1",
+          "55c2d660-1129-44f3-a6f1-944e5defb5c2",
+          "06cdd6a9-73c2-4ac3-a0ca-52b5f277ed3b",
+          "0d8aa8e1-b9d4-47a8-bc6d-abf11c363151",
+          "76f6b201-3e23-485c-85d3-5538f1e05e88",
+          "ae4efbf1-2144-4676-ade3-51c609f5c1b7",
+          "24a96943-647c-4127-82d2-b04e5e240afb",
+          "b60d5e7c-f4e6-4604-bde7-c343b298989a",
+          "d5231b33-7003-4953-b3e6-fc3b7d276206",
+          "7238eff8-ba27-4837-9709-7f4641571dff",
+          "eded1e60-dedf-4dcb-a69e-f295c266ebf7",
+          "40a41741-b246-4041-8405-973d5cf00d08",
+          "6cb0e748-f2dd-477d-93cc-08a929b8b55c",
+          "179844c2-6ff1-43dd-963a-19a2392302f8",
+          "9d3f97ae-fe70-48dd-aea6-f0632d8dcc21",
+          "e945c11c-9f51-4a2a-9d33-fa32eb1c6376",
+          "61809bd3-fe8c-437d-b423-f747d09950ff",
+          "7231b99e-360c-4363-98f7-9475cf6349c0",
+          "39c636a4-af08-46e3-9b70-90cf51bf3862",
+          "c01bc396-da94-456d-9b4c-b080489a0d79",
+          "8d836303-a411-4f72-ab3f-5ef3e38261e9",
+          "4677c049-66cb-4677-874e-5d6e73b362a7",
+          "913040a0-4253-4773-a5f1-0159eedf41e4",
+          "b18dc5f6-8dec-413e-b4cd-e03b79afc55c",
+          "49742ae6-768b-471f-987a-42bbd6988a6e",
+          "d107307e-f5bc-488f-829c-8740877c59b6",
+          "8b6599c1-eace-46ea-88f0-0aa19f127e90",
+          "abb0cdcb-e6d2-49d0-9e52-c78874b18b57",
+          "f1e1014c-befa-48fe-96b3-6119eaba0720",
+          "5b30f55d-69fe-4b08-99b9-8fc492a41cef",
+          "1d6103c5-fdb6-4d09-aa9a-6a18780cf3ee",
+          "d54865e7-71a5-4bb5-8eff-09931fe13863",
+          "d874f180-41e5-49fb-ba31-b1a5da792dfa",
+          "a2cb817e-69e2-4c94-87f2-3d31649d465d",
+          "11742f37-a2dc-4cb3-a47b-a4166200a617",
+          "dec093a5-303b-44d4-8d56-11643447fbd3",
+          "fea04a18-b87b-45bb-8e24-dd2dd736effc",
+          "397a042e-55dd-4424-99f1-784705923dcb",
+          "5cf81c68-4532-44c0-b36e-23dc33fc973f",
+          "ceac6733-2a01-4e8e-93ee-407ff80effb2",
+          "ffc812a5-4889-4f7b-a725-1187b09606b5",
+          "ac58f0e9-ebb2-47a9-9105-f4fa2fe1ffef",
+          "d3b6a91d-0829-4898-b50b-f85858d8ca70",
+          "1b791152-066a-4e2e-9c22-30bad4d8c84d",
+          "6669e241-7459-4d6c-9174-3e8e8bfe8f0e",
+          "1f36d5a2-8844-4542-9a04-150cf6c09cad",
+          "470104e8-6251-4e73-be14-c5821c274a77",
+          "977c02e2-2ceb-41f9-8231-b4add5f42e44",
+          "a1dad58d-4326-4fe8-962c-ffd09449aa5c",
+          "57a0d80b-570d-4a38-af2b-1e612d71dbd9",
+          "13e5e50d-f6ea-4ad4-bf69-79f13507c1dc",
+          "046d1bc3-6159-4748-a3c8-1fd015286934",
+          "65ad7f11-fc32-4db3-89d5-4570183af946",
+          "23323fa4-f5af-4053-aae6-b225f3a713cf",
+          "e272906f-269b-4c26-8d5a-36eb4fce87ba",
+          "4f3d56ba-6c07-4ac1-a517-5a3dac9d0b93",
+          "6bc98863-e289-443f-b132-8bc490145ded",
+          "f3b8a3f0-4603-4227-bdec-edc294337024",
+          "87222738-e27a-4bc0-90d6-f27435ab546d",
+          "915ba4cd-c010-48f8-836f-7e49ce72a3c9",
+          "2466eec3-6fee-4eaf-a9f9-dcdea17907e6",
+          "01d65db1-479e-4e68-9fb0-2cd0e5acfb53",
+          "067b685b-56b3-4c27-b375-1a2585354ab4",
+          "e72cd6b8-c594-4fc0-9c78-38a95ba4a3f2",
+          "c746b2fb-5c24-497f-b39d-1c97a375020f",
+          "e47402f6-542e-4057-8c83-cd8c94543c2d",
+          "f8f9e853-7799-4f8c-8af2-b21481ee9acc",
+          "8b459be2-dcfa-4fa4-a1ef-c901e408bd0c",
+          "191a20ab-88cf-4e61-a2fa-a75257c6f364",
+          "dfb66291-ad6e-411c-89cb-43cb3a9be922",
+          "e1ac9f53-484e-4658-a157-d4f4606ad2f3",
+          "c8d1cd2f-1b70-4b28-aef8-94c443f3d857"
+        ],
+        "settings": {
+          "section_title": "Talk about your brand"
+        }
+      },
+      "collection-template_new": {
+        "type": "collection-template_new",
+        "settings": {
+          "qrCode": true,
+          "layoutIs": "fullWidth"
+        }
+      },
+      "templateLinks": {
+        "type": "templateLinks",
+        "blocks": {
+          "a5b43be3-0412-48b6-ab53-1fa4622d94ca": {
+            "type": "link",
+            "settings": {
+              "link": "shopify:\/\/pages\/our-story",
+              "title": "Our Story"
+            }
+          },
+          "e05b8e98-e0bc-4332-8b61-9ad5ab86657a": {
+            "type": "link",
+            "settings": {
+              "link": "shopify:\/\/pages\/contact-us",
+              "title": "Contact Us"
+            }
+          },
+          "768c8280-b559-42a7-9e19-e545c1957d73": {
+            "type": "link",
+            "settings": {
+              "link": "shopify:\/\/pages\/artist-shipping-instructions",
+              "title": "Artists Shipping instructions"
+            }
+          },
+          "4fe2e338-d801-4354-b3af-1c7c829f267a": {
+            "type": "link",
+            "settings": {
+              "link": "shopify:\/\/pages\/art-packaging-guidelines",
+              "title": "Packing guidelines"
+            }
+          },
+          "9562f944-eb7b-43d4-a70a-3971fa47e382": {
+            "type": "link",
+            "settings": {
+              "link": "shopify:\/\/pages\/return-policy",
+              "title": "Return policy"
+            }
+          },
+          "cc67ba3f-d937-4c04-90f3-f1d62c33772e": {
+            "type": "link",
+            "settings": {
+              "link": "shopify:\/\/pages\/artist-contract-loca",
+              "title": "Artist Contract"
+            }
+          },
+          "879b1171-f793-4b14-bbd3-8c67e0bb67ee": {
+            "type": "link",
+            "settings": {
+              "link": "shopify:\/\/pages\/privacy-policy",
+              "title": "Privacy policy"
+            }
+          }
+        },
+        "block_order": [
+          "a5b43be3-0412-48b6-ab53-1fa4622d94ca",
+          "e05b8e98-e0bc-4332-8b61-9ad5ab86657a",
+          "768c8280-b559-42a7-9e19-e545c1957d73",
+          "4fe2e338-d801-4354-b3af-1c7c829f267a",
+          "9562f944-eb7b-43d4-a70a-3971fa47e382",
+          "cc67ba3f-d937-4c04-90f3-f1d62c33772e",
+          "879b1171-f793-4b14-bbd3-8c67e0bb67ee"
+        ],
+        "settings": {
+        }
+      },
+      "ourStory_sec": {
+        "type": "ourStory_sec",
+        "blocks": {
+          "e60e67b9-e8b4-4cfd-b9cb-5cf4285863d3": {
+            "type": "banner",
+            "settings": {
+              "banner": "shopify:\/\/shop_images\/01_2.png"
+            }
+          },
+          "dcb35bf8-32de-41bc-9ea7-f06df8d7cdd5": {
+            "type": "block",
+            "settings": {
+              "title": "Our Mission",
+              "description": "<p>We support visual artists by improving discovery and sales of their art in both their local and global communities.<\/p>",
+              "image": "shopify:\/\/shop_images\/b01.jpg",
+              "imgCaption": "Christopher Gasper",
+              "artistLink": "shopify:\/\/collections\/christopher-gasper",
+              "btn_label_1": "",
+              "link1": "",
+              "btn_label_2": "",
+              "link2": ""
+            }
+          },
+          "78aa49ef-a6d8-40e5-bff8-7c5ca5a40df2": {
+            "type": "block",
+            "settings": {
+              "title": "Our Vision",
+              "description": "<p>We believe art connects us all. Art has the power to shape our beliefs, our values, our ideas, our language, our traditions. In short, art helps define who we are. We also believe art is meant to be seen and shared. By expanding the ways in which we access and engage with art, we help build an economy where artists, small business and the general public mutually support one another.<\/p>",
+              "image": "shopify:\/\/shop_images\/b02.jpg",
+              "imgCaption": "Nick Riesland",
+              "artistLink": "shopify:\/\/collections\/nick-riesland",
+              "btn_label_1": "",
+              "link1": "",
+              "btn_label_2": "",
+              "link2": ""
+            }
+          },
+          "d132c2a4-e438-4263-8657-28feb936067e": {
+            "type": "block",
+            "settings": {
+              "title": "Our Work",
+              "description": "<p>We bring art into spaces where people can engage with the works of art and the businesses that house them. We’d love to partner with you if you share our vision.<\/p>",
+              "image": "shopify:\/\/shop_images\/b03.jpg",
+              "imgCaption": "David Haughton",
+              "artistLink": "shopify:\/\/collections\/david-haughton-1",
+              "btn_label_1": "I’m An Artist",
+              "link1": "shopify:\/\/pages\/artist-info",
+              "btn_label_2": "I’m A Business Owner",
+              "link2": "shopify:\/\/pages\/spaces-signup-2"
+            }
+          },
+          "3cfb097c-c00d-4ff2-85e0-b87f247be7b5": {
+            "type": "Values",
+            "settings": {
+              "title": "Essential",
+              "description": "<p>We believe art has the power to serve communities by shaping a culture of understanding, equity and belonging.<\/p>",
+              "image": "shopify:\/\/shop_images\/Img.png"
+            }
+          },
+          "5220830a-f71e-4fe2-aeed-4570c2fd7df3": {
+            "type": "Values",
+            "settings": {
+              "title": "Inclusive",
+              "description": "<p>We support and elevate arts that give voice, agency and power to those too often ignored, especially black, brown and native communities, women, LGBTQIA+, the young and the old.<\/p>",
+              "image": "shopify:\/\/shop_images\/Img-1.png"
+            }
+          },
+          "8a687dd8-77aa-40b7-ad2d-b7a545fcb07f": {
+            "type": "Values",
+            "settings": {
+              "title": "Collaborative",
+              "description": "<p>We build networks, partnerships, and bridges between artists, small businesses, and audiences. We support the work of others already active in advancing the arts within their communities.<\/p>",
+              "image": "shopify:\/\/shop_images\/Img-2.png"
+            }
+          },
+          "1a35a73f-0136-4a3e-b076-bf02669a8005": {
+            "type": "Values",
+            "settings": {
+              "title": "Nurturing",
+              "description": "<p>We foster a diverse, cross-pollinating, and respectful culture within our team, our partnerships and our communities.<\/p>",
+              "image": "shopify:\/\/shop_images\/Img-3.png"
+            }
+          },
+          "c30c0208-86c5-48dc-81c2-552d36cd654c": {
+            "type": "Founder",
+            "settings": {
+              "title": "Carlos Tarrats",
+              "designation": "Design Director",
+              "description": "<p>Carlos has led the development of design experiences – ones that are both beautiful and purposeful – at industry-leading brands, such as Amazon, American Apparel and ELOQUII, and now, at LoCA. He is also a photographer who has exhibited his work in the Los Angeles area. His most recent series is observational, exploring the passage of time. He is particularly interested in capturing the elements of light, beauty and hope, often found in moments of unease.<\/p>",
+              "image": "shopify:\/\/shop_images\/Mask_Group-6.png",
+              "link": "#__carlos"
+            }
+          },
+          "ca80e7e8-dab1-40f2-995e-30ef4ec4ad34": {
+            "type": "Founder",
+            "settings": {
+              "title": "Kristin Kaiser",
+              "designation": "Marketing and Customer Experience Director",
+              "description": "<p>Kristin is an avid world traveler and experienced marketing strategist who has held various brand strategy, marketing and consumer insight roles at Amazon Fashion and Gap Inc. She joined LoCA because she is passionate about both supporting and collecting art, with a personal goal of filling her San Francisco flat with works from emerging artists from both near and far. She previously served six years on the Board of Directors for Root Division, an art nonprofit in San Francisco. <\/p>",
+              "image": "shopify:\/\/shop_images\/Mask_Group-5.png",
+              "link": "#__kristin"
+            }
+          },
+          "bce64721-2255-4039-aaf6-288cd89d5875": {
+            "type": "Founder",
+            "settings": {
+              "title": "Jasmin Bode",
+              "designation": "Chief Art Curator",
+              "description": "<p>Jasmin has over 10 years of experience in curating art for a wide variety of audiences – galleries, restaurants, public spaces, and private collectors. She believes that art is an essential voice in connecting community within its societal context, forever inspired by the power of art to elicit a visceral, emotional response. Her passion for community building led her to LoCA, where she can further connect art, people and spaces. She also currently serves on the Advisory Council for Root Division, an arts nonprofit based in San Francisco.<\/p>",
+              "image": "shopify:\/\/shop_images\/jasmine_2.png",
+              "link": "#__jasmin"
+            }
+          },
+          "773f0415-98af-44d1-86e4-45b1846959f3": {
+            "type": "Founder",
+            "settings": {
+              "title": "Carly Milne",
+              "designation": "Business Development Director",
+              "description": "<p><br\/>Carly has over 12 years of experience in e-commerce, including merchandising, product management and retail business development at Shopbop and Amazon. Her most cherished piece in her art collection is a sketch of her beloved dog, Taco, created by a friend and local artist in Seattle. Passionate about bringing more beauty to the world, Carly joined LoCA to build strong and long-lasting partnerships between local businesses and artists.<\/p>",
+              "image": "shopify:\/\/shop_images\/carly.png",
+              "link": ""
+            }
+          },
+          "62a1ae9e-80fb-428a-a971-5325086536fe": {
+            "type": "Founder",
+            "settings": {
+              "title": "Ben Hunter",
+              "designation": "Community Engagement Director",
+              "description": "<p>Ben is an award-winning musician, educator, community leader and social entrepreneur based in Seattle, whose work explores the intersections of music & art, community, policy, and culture. He founded Community Arts Create, co-founded <a href=\"https:\/\/hillmancitycollaboratory.org\/\" target=\"_blank\">the Hillman City Collaboratory<\/a>, a social incubator, and the <a href=\"https:\/\/www.seattletimes.com\/seattle-news\/antidote-to-displacement-black-and-tan-hall-creates-new-economic-model-for-changing-neighborhood\/\" target=\"_blank\">Black and Tan<\/a> Hall, a community-owned hub that received $1.2 million Equitable Development funding from the City of Seattle. Ben joined LoCA to create a new business model in support of a rapidly growing creative economy and industry.<\/p>",
+              "image": "shopify:\/\/shop_images\/Mask_Group-1.png",
+              "link": "#__ben"
+            }
+          },
+          "7a25ca1f-fba1-46bc-bc06-11586413680e": {
+            "type": "Founder",
+            "settings": {
+              "title": "Sam Bennett",
+              "designation": "Advisor",
+              "description": "<p>Sam has over 15 years of experience in running art events, B2B growth, and sales, currently serving as the Director of International Editions at Phaidon. He has spent the majority of his career supporting emerging artists and authors, representing Illustrated Art Publishers and some of the world’s leading authors at events and fairs across Europe and Asia. He founded the London Illustration Fair in 2013, which has since grown to become one of the leading print fairs in Europe. Sam joined LoCA to ensure the arts are accessible to everyone, everywhere we go in our daily lives.<\/p>",
+              "image": "shopify:\/\/shop_images\/Mask_Group-4.png",
+              "link": "#__sam"
+            }
+          },
+          "779c601c-345f-4f11-9ac1-9b3fa6ea4655": {
+            "type": "Founder",
+            "settings": {
+              "title": "Aaron Brady",
+              "designation": "CMO and Co-founder",
+              "description": "<p>Aaron was previously with Amazon where he held marketing leadership roles in the Amazon Fashion and Prime brands. As an abstract painter, whose own work explores the depiction of objects in states of change, he has also been deeply involved with local arts nonprofits for the past 15 years, including Root Division in San Francisco and Gallery 110 in Seattle. He co-founded LoCA to help provide new opportunities for emerging artists to connect with their communities.<\/p>",
+              "image": "shopify:\/\/shop_images\/Mask_Group-7.png",
+              "link": "#__aaron"
+            }
+          },
+          "86381e93-8d73-4ce8-b98a-be67172579b6": {
+            "type": "Founder",
+            "settings": {
+              "title": "Aris Vrakas",
+              "designation": "CEO and Founder",
+              "description": "<p>Aris spent the majority of his career leading product and tech teams, most recently at Amazon. For over 15 years, he has been making art and working with emerging artists. He finds the greatest gratification in the act of creation, especially when that creation is aimed at benefiting society as a whole. And thus, LoCA was born – using technology to improve the discovery and sale of art in local and global communities.<\/p>",
+              "image": "shopify:\/\/shop_images\/Mask_Group-8.png",
+              "link": "#__aris"
+            }
+          }
+        },
+        "block_order": [
+          "e60e67b9-e8b4-4cfd-b9cb-5cf4285863d3",
+          "dcb35bf8-32de-41bc-9ea7-f06df8d7cdd5",
+          "78aa49ef-a6d8-40e5-bff8-7c5ca5a40df2",
+          "d132c2a4-e438-4263-8657-28feb936067e",
+          "3cfb097c-c00d-4ff2-85e0-b87f247be7b5",
+          "5220830a-f71e-4fe2-aeed-4570c2fd7df3",
+          "8a687dd8-77aa-40b7-ad2d-b7a545fcb07f",
+          "1a35a73f-0136-4a3e-b076-bf02669a8005",
+          "c30c0208-86c5-48dc-81c2-552d36cd654c",
+          "ca80e7e8-dab1-40f2-995e-30ef4ec4ad34",
+          "bce64721-2255-4039-aaf6-288cd89d5875",
+          "773f0415-98af-44d1-86e4-45b1846959f3",
+          "62a1ae9e-80fb-428a-a971-5325086536fe",
+          "7a25ca1f-fba1-46bc-bc06-11586413680e",
+          "779c601c-345f-4f11-9ac1-9b3fa6ea4655",
+          "86381e93-8d73-4ce8-b98a-be67172579b6"
+        ],
+        "settings": {
+          "ourValues": "Our Values",
+          "ourFounders": "Our team",
+          "joinUs": "Join Us!",
+          "label_1": "I'm An Artist",
+          "link_1": "shopify:\/\/pages\/artist-info",
+          "label_2": "I'm A Business Owner",
+          "link_2": "shopify:\/\/pages\/spaces-signup-2",
+          "foundNewDesign": true
+        }
+      },
+      "signUpFeature": {
+        "type": "signUpFeature",
+        "blocks": {
+          "5594f4d9-7d3e-4768-92ee-fcda470e8641": {
+            "type": "PDP_Page",
+            "settings": {
+              "description": "Show and sell your art with LoCA",
+              "linkLabel": "Learn more",
+              "btnLink": "\/pages\/artist-info"
+            }
+          },
+          "a73853bb-7b7a-41a3-939a-7293b53a6694": {
+            "type": "Collection_Page",
+            "settings": {
+              "description": "Show and sell your art with LoCA",
+              "linkLabel": "Learn More",
+              "btnLink": "\/pages\/artist-info"
+            }
+          },
+          "f000ebd0-e040-4716-9a5f-68e62eb7993c": {
+            "type": "search_Page",
+            "settings": {
+              "linkLabel": "Want More? View Our Collections",
+              "btnLink": "\/pages\/artists",
+              "showMessage": false,
+              "messageContent": "There are no more search results"
+            }
+          }
+        },
+        "block_order": [
+          "5594f4d9-7d3e-4768-92ee-fcda470e8641",
+          "a73853bb-7b7a-41a3-939a-7293b53a6694",
+          "f000ebd0-e040-4716-9a5f-68e62eb7993c"
+        ],
+        "settings": {
+        }
+      },
+      "collection-header": {
+        "type": "collection-header",
+        "settings": {
+        }
+      },
+      "locationManager": {
+        "type": "locationManager",
+        "blocks": {
+          "a9b5f456-4439-4b9c-ac2f-b991e3479066": {
+            "type": "country",
+            "settings": {
+              "title": "United Kingdom",
+              "currency": "GBP"
+            }
+          },
+          "301eb7a2-9e73-4c81-929a-92baed654336": {
+            "type": "country",
+            "settings": {
+              "title": "UK",
+              "currency": "GBP"
+            }
+          },
+          "ad671eb9-9f3a-45dd-8f27-7115fa3efa48": {
+            "type": "country",
+            "settings": {
+              "title": "USA",
+              "currency": "USD"
+            }
+          },
+          "f5d30451-4ebd-4ca3-9826-38633ef6a328": {
+            "type": "country",
+            "settings": {
+              "title": "United States",
+              "currency": "USD"
+            }
+          },
+          "68e75b47-7442-46a0-a713-121288118efc": {
+            "type": "country",
+            "settings": {
+              "title": "United States of America",
+              "currency": "USD"
+            }
+          },
+          "54eb9000-2572-4821-a629-661b218934b7": {
+            "type": "city",
+            "settings": {
+              "title": "California",
+              "country": "USA",
+              "currency": "USD"
+            }
+          },
+          "f9782b8b-5db1-423b-8e1a-4d2f0a49ed42": {
+            "type": "city",
+            "settings": {
+              "title": "Edinburgh",
+              "country": "United Kingdom",
+              "currency": "GBP"
+            }
+          },
+          "76a0cbeb-b03c-421b-9851-48ef3d94508a": {
+            "type": "city",
+            "settings": {
+              "title": "London",
+              "country": "United Kingdom",
+              "currency": "GBP"
+            }
+          },
+          "4e3a60c0-7222-4915-8a26-5550992a060d": {
+            "type": "city",
+            "settings": {
+              "title": "Greater London",
+              "country": "United Kingdom",
+              "currency": "GBP"
+            }
+          },
+          "79b9af63-f29b-4ecb-9a4c-75833bd0bf8f": {
+            "type": "city",
+            "settings": {
+              "title": "Margate",
+              "country": "United Kingdom",
+              "currency": "GBP"
+            }
+          },
+          "24103f38-4e52-4cff-a0e8-b81bed2446e4": {
+            "type": "city",
+            "settings": {
+              "title": "NajamCity",
+              "country": "NajamCountry",
+              "currency": "GBP"
+            }
+          }
+        },
+        "block_order": [
+          "a9b5f456-4439-4b9c-ac2f-b991e3479066",
+          "301eb7a2-9e73-4c81-929a-92baed654336",
+          "ad671eb9-9f3a-45dd-8f27-7115fa3efa48",
+          "f5d30451-4ebd-4ca3-9826-38633ef6a328",
+          "68e75b47-7442-46a0-a713-121288118efc",
+          "54eb9000-2572-4821-a629-661b218934b7",
+          "f9782b8b-5db1-423b-8e1a-4d2f0a49ed42",
+          "76a0cbeb-b03c-421b-9851-48ef3d94508a",
+          "4e3a60c0-7222-4915-8a26-5550992a060d",
+          "79b9af63-f29b-4ecb-9a4c-75833bd0bf8f",
+          "24103f38-4e52-4cff-a0e8-b81bed2446e4"
+        ],
+        "settings": {
+        }
+      },
+      "collectionManager": {
+        "type": "collectionManager",
+        "settings": {
+        }
+      },
+      "location_sec": {
+        "type": "location_sec",
+        "blocks": {
+          "4fc30d69-10a9-46ed-b3cf-88a2a61eb252": {
+            "type": "location",
+            "settings": {
+              "showHideLocation": true,
+              "title": "London",
+              "country": "United Kingdom"
+            }
+          },
+          "55589198-a7fe-4efa-8087-916a53e2e4bc": {
+            "type": "location",
+            "settings": {
+              "showHideLocation": true,
+              "title": "Seattle",
+              "country": "USA"
+            }
+          },
+          "4c7b77af-a239-45a2-a880-5d80cb44c5e5": {
+            "type": "location",
+            "settings": {
+              "showHideLocation": true,
+              "title": "Edinburgh",
+              "country": "United Kingdom"
+            }
+          },
+          "dbdef3d6-66b9-46d3-9a18-3d3aa044656d": {
+            "type": "location",
+            "settings": {
+              "showHideLocation": false,
+              "title": "Margate",
+              "country": "United Kingdom"
+            }
+          },
+          "965aaad8-b9df-48e8-a99f-ba0263f9ec6c": {
+            "type": "location",
+            "settings": {
+              "showHideLocation": false,
+              "title": "Lahore",
+              "country": "United Kingdom"
+            }
+          },
+          "dc3551c2-d411-49d8-8a0c-e255a4cb00b6": {
+            "type": "location",
+            "settings": {
+              "showHideLocation": false,
+              "title": "Faisalabad",
+              "country": "United Kingdom"
+            }
+          }
+        },
+        "block_order": [
+          "4fc30d69-10a9-46ed-b3cf-88a2a61eb252",
+          "55589198-a7fe-4efa-8087-916a53e2e4bc",
+          "4c7b77af-a239-45a2-a880-5d80cb44c5e5",
+          "dbdef3d6-66b9-46d3-9a18-3d3aa044656d",
+          "965aaad8-b9df-48e8-a99f-ba0263f9ec6c",
+          "dc3551c2-d411-49d8-8a0c-e255a4cb00b6"
+        ],
+        "settings": {
+          "showHideSelectMenu": true,
+          "showHideAlphabetically": false,
+          "metaTitle": "",
+          "metaDescription": ""
+        }
+      },
+      "spaces__head": {
+        "type": "spaces__head",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "LoCA Community",
+          "detail": "Thank you for your interest in supporting local artists by hosting a LoCA show! With the Community plan, you’ll have access to:"
+        }
+      },
+      "spaces__list": {
+        "type": "spaces__list",
+        "blocks": {
+          "568b9f11-e5e0-4e1a-85f0-502b5e1d3902": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "New art every 3 months.",
+              "detail": "LoCA will recommend 3 early emerging artists in your community that we believe will be a good fit with your business. The final selection will be made by you. Each show lasts approximately 3 months."
+            }
+          },
+          "ea74f6ff-d0ff-4545-b708-715504a36557": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Basic installation services.",
+              "detail": "LoCA will connect you with the selected artist to confirm all remaining show details. The artist will handle artwork installation and take down."
+            }
+          },
+          "a852f8bb-1801-4955-a02f-9b8a4dbaa75f": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "E-commerce tools.",
+              "detail": "Our QR code enabled art labels enable customers to purchase instantly. We handle all contactless payments and processing. The artist will handle shipping of any sold artwork after the show ends."
+            }
+          },
+          "e1dd25b3-81e9-47c4-b7d1-c477f91d52c4": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Marketing support.",
+              "detail": "We will create in-show marketing, as well as promote through our social channels."
+            }
+          },
+          "fadfcb4c-a3e9-4e05-856e-e979e4172dae": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Opportunity to generate revenue.",
+              "detail": "As a show host, you’ll have the opportunity to earn a 10% commission on any art sold in your space. Or you can choose to donate that commission back to the artist."
+            }
+          }
+        },
+        "block_order": [
+          "568b9f11-e5e0-4e1a-85f0-502b5e1d3902",
+          "ea74f6ff-d0ff-4545-b708-715504a36557",
+          "a852f8bb-1801-4955-a02f-9b8a4dbaa75f",
+          "e1dd25b3-81e9-47c4-b7d1-c477f91d52c4",
+          "fadfcb4c-a3e9-4e05-856e-e979e4172dae"
+        ],
+        "settings": {
+          "showHideSelectMenu": true,
+          "titleColor": "#000000",
+          "detailColor": "#000000",
+          "borderColor": "#000000"
+        }
+      },
+      "spaces__plans": {
+        "type": "spaces__plans",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "$9\/month with a 3-month commitment.",
+          "detail": "Billed monthly.",
+          "detail_2nd": "",
+          "getStartedContent": "Ready to get started?",
+          "btnLink": "",
+          "btnLabel": "Sign up for $9.99\/month",
+          "chargebeeBtn": true,
+          "chargebeeBtnContent": "<a href=\"javascript:void(0)\" data-cb-type=\"checkout\" data-cb-item-0=\"LoCA-Community-USD-Monthly\" data-cb-item-0-quantity=\"1\" class=\"spaceSignUp__plans__wrap__linkWrap__link\"> Sign Up Now<\/a>",
+          "sectionFooterContent": "<p>Have more questions? Reach out to us at <a href=\"mailto:spacesinfo@loca.art\">spacesinfo@loca.art<\/a>.<\/p>",
+          "svgColor": "#ffc3bf"
+        }
+      },
+      "spaces__legal": {
+        "type": "spaces__legal",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "Terms of service",
+          "detail": "LoCA is a subscription service and it is billed monthly. We will automatically charge your payment method each month until you cancel or pause your subscription. \n\nEach show lasts for 3 months or approximately 90 days unless a different duration is agreed. Subscription cancellations will be effective from the last day of the current show in your art space. If your business has a subscription for multiple venues and you decide to change your subscription for multiple venues at once, someone from our team will work with you to ensure a smooth transition. \n\nLoCA requires 30 days cancellation notice to end or pause your subscription before the end of the current show, or the beginning of the next show. LoCA plans shows at least 30 days ahead, so the early notice is meant to prevent artists taking expense to prepare shows for your venue, that are then cancelled.\n\nBy hosting a LoCA show you agree to our Privacy Policy as well as our Art Space Agreement. We will ask you to read and accept the agreement  during the sign up process. You can also request it here: help@loca.art."
+        }
+      },
+      "spaces__head_select": {
+        "type": "spaces__head_select",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "LoCA Select",
+          "detail": "We do the work to find the perfect fit for your business. With the Select plan, you’ll have access to:"
+        }
+      },
+      "spaces__list_select": {
+        "type": "spaces__list_select",
+        "blocks": {
+          "c4c7d6fd-b7f0-4e44-83ee-4f98ddea968f": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "A wide range of artists.",
+              "detail": "You will be able to select from a wide range of early emerging, emerging, or established artists in your community. The total artwork value in each show can be as high as $5,000."
+            }
+          },
+          "6877a38a-4c1f-4cea-8793-c873f18af6fa": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Art consultation services.",
+              "detail": "A LoCA Art Curator will work with you to find the perfect match for your business, aligned with your mission and aesthetic."
+            }
+          },
+          "711acc41-f154-4913-9eaa-25b6ed0ac29b": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Show installation services.",
+              "detail": "LoCA oversees all installation, including the necessary hardware to best fit your space."
+            }
+          },
+          "e8c81162-6066-46ef-a821-dda09628233e": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "E-commerce tools.",
+              "detail": "Our QR code enabled art labels enable customers to purchase instantly. We handle all contactless payments and processing. The artist will handle shipping of any sold artwork after the show ends."
+            }
+          },
+          "883d4c82-d011-4e9c-9ca0-94b4e5ebddd0": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Comprehensive marketing support.",
+              "detail": "LoCA will provide in-show marketing and promote through our social channels. We will also coordinate events related to your show, including partnerships with local art walks, art talks, and opening events."
+            }
+          },
+          "accbbbe7-f41d-4398-8b9f-dda096b3bbb4": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "The opportunity to generate revenue.",
+              "detail": "As a show host, you’ll have the opportunity to earn a 10% commission on any art sold in your space. Or you can choose to donate that commission back to the artist."
+            }
+          }
+        },
+        "block_order": [
+          "c4c7d6fd-b7f0-4e44-83ee-4f98ddea968f",
+          "6877a38a-4c1f-4cea-8793-c873f18af6fa",
+          "711acc41-f154-4913-9eaa-25b6ed0ac29b",
+          "e8c81162-6066-46ef-a821-dda09628233e",
+          "883d4c82-d011-4e9c-9ca0-94b4e5ebddd0",
+          "accbbbe7-f41d-4398-8b9f-dda096b3bbb4"
+        ],
+        "settings": {
+          "showHideSelectMenu": true,
+          "titleColor": "#000000",
+          "detailColor": "#000000",
+          "borderColor": "#000000"
+        }
+      },
+      "spaces__plans_select": {
+        "type": "spaces__plans_select",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "First show free, then $99\/month with a 3-month commitment.",
+          "detail": "50% of the monthly fee goes directly to the artist. We’re so sure that you’ll love what LoCA can do, we’re offering your <b><i> first 3-month show for free<\/i><\/b>. If you decide it’s not for you, just cancel by the end of the second month. This ensures we can adjust our schedule to best support our affiliated artists.",
+          "detail_2nd": "You’ll enter your payment information upon sign up, but you won’t be charged until the start of your second show. Then, you’ll be billed monthly.",
+          "getStartedContent": "Ready to get started?",
+          "btnLink": "#",
+          "btnLabel": "First show free",
+          "chargebeeBtn": true,
+          "chargebeeBtnContent": "<a href=\"javascript:void(0)\" data-cb-type=\"checkout\" data-cb-item-0=\"LoCA-Host-USD-Monthly\" data-cb-item-0-quantity=\"1\" class=\"spaceSignUp__plans__wrap__linkWrap__link\">Sign Up Now<\/a>",
+          "sectionFooterContent": "<p>Have more questions? Reach out to us at <a href=\"mailto:spacesinfo@loca.art\" target=\"_blank\" title=\"mailto:spacesinfo@loca.art\">spacesinfo@loca.art<\/a>.<\/p>",
+          "svgColor": "#ffc3bf"
+        }
+      },
+      "spaces__legal_select": {
+        "type": "spaces__legal_select",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "Terms of Service",
+          "detail": "LoCA Select is a subscription service and it is billed monthly. We will automatically charge your payment method each month until you cancel or pause your subscription.  \n\nEach show lasts for 3 months or approximately 90 days unless a different duration is agreed. Subscription cancellations will be effective from the last day of the current show in your art space. If your business has a subscription for multiple venues and you decide to change your subscription for multiple venues at once, someone from our team will work with you to ensure a smooth transition. \n\nLoCA requires 30 days cancellation notice to end or pause your subscription before the end of the current show, or the beginning of the next show. LoCA plans shows at least 30 days ahead, so the early notice is meant to prevent artists taking expense to prepare shows for your venue, that are then cancelled.\n\nBy hosting a LoCA show you agree to our Privacy Policy as well as our Art Space Agreement. We will ask you to read and accept the agreement  during the sign up process. You can also request it here: help@loca.art"
+        }
+      },
+      "spaces__head_custom": {
+        "type": "spaces__head_custom",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "LoCA Custom",
+          "detail": "We create bespoke solutions for businesses looking to present a more elevated art gallery feel. With the Custom plan, you’ll have access to:"
+        }
+      },
+      "spaces__list_custom": {
+        "type": "spaces__list_custom",
+        "blocks": {
+          "192822c7-0d32-46e8-a70c-ba29e2eaf749": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "A wide variety of art.",
+              "detail": "You will be able to select from our full artist network and choose art with a total value up to $20,000 per show. Custom outreach to artists outside our existing network is also included."
+            }
+          },
+          "da513199-1d29-4d88-a5be-2f1beb331231": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Art consultation services.",
+              "detail": "A LoCA Art Curator will work with you to find the perfect match for your business, aligned with your mission, taste and aesthetic."
+            }
+          },
+          "791ae1d5-ba44-4f1c-b776-533c56616b8f": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Professional installation.",
+              "detail": "We will design a custom installation plan, including all necessary lighting and custom hardware to ensure an elevated presentation."
+            }
+          },
+          "e48a422c-c182-42d9-987a-5d4f3c769401": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Elevated e-commerce tools.",
+              "detail": "We handle all contactless payments and processing as well as shipping of any sold artwork after the show ends. We will also create custom art labels designed to fit your space and develop a more interactive user experience."
+            }
+          },
+          "526fc788-9d63-4baa-9993-5ce8dec4c51b": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Paid marketing support.",
+              "detail": "LoCA will provide in-show marketing, promotion through our social channels, and event support including partnerships with local art walks, art talks, and opening events. We will also support your show with paid advertising to drive additional interest and traffic."
+            }
+          }
+        },
+        "block_order": [
+          "192822c7-0d32-46e8-a70c-ba29e2eaf749",
+          "da513199-1d29-4d88-a5be-2f1beb331231",
+          "791ae1d5-ba44-4f1c-b776-533c56616b8f",
+          "e48a422c-c182-42d9-987a-5d4f3c769401",
+          "526fc788-9d63-4baa-9993-5ce8dec4c51b"
+        ],
+        "settings": {
+          "showHideSelectMenu": true,
+          "titleColor": "#000000",
+          "detailColor": "#000000",
+          "borderColor": "#000000"
+        }
+      },
+      "spaces__plans_custom": {
+        "type": "spaces__plans_custom",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "$399\/month with a 3-month commitment.",
+          "detail": "50% of this monthly service fee goes directly to the artist, in addition to the up to 70% commission they receive on any original artwork sold.",
+          "detail_2nd": "Once you sign up, you’ll be automatically billed monthly, but you can cancel up to 30 days before your next billing date.",
+          "getStartedContent": "Ready to get started?",
+          "btnLink": "#",
+          "btnLabel": "Sign up for $399\/month",
+          "chargebeeBtn": true,
+          "chargebeeBtnContent": "<a href=\"javascript:void(0)\" data-cb-type=\"checkout\" data-cb-item-0=\"LoCA-Custom-USD-Monthly\" data-cb-item-0-quantity=\"1\" class=\"spaceSignUp__plans__wrap__linkWrap__link\">Sign Up Now<\/a>",
+          "sectionFooterContent": "<p>Have more questions? Reach out to us at <a href=\"mailto:custom@loca.art\" title=\"mailto:custom@loca.art\">custom@loca.art<\/a><\/p>",
+          "svgColor": "#ffc3bf"
+        }
+      },
+      "spaces__legal_custom": {
+        "type": "spaces__legal_custom",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "Terms of Service",
+          "detail": "LoCA Community is a subscription service and it is billed monthly. We will automatically charge your payment method each month until you cancel or pause your subscription.  \n\nEach show lasts for 3 months or approximately 90 days unless a different duration is agreed. Subscription cancellations will be effective from the last day of the current show in your art space. If your business has a subscription for multiple venues and you decide to change your subscription for multiple venues at once, someone from our team will work with you to ensure a smooth transition. \n\nLoCA requires 30 days cancellation notice to end or pause your subscription before the end of the current show, or the beginning of the next show. LoCA plans shows at least 30 days ahead, so the early notice is meant to prevent artists taking expense to prepare shows for your venue, that are then cancelled.\n\nBy hosting a LoCA show you agree to our Privacy Policy as well as our Art Space Agreement. We will ask you to read and accept the agreement  during the sign up process. You can also request it here: help@loca.art"
+        }
+      },
+      "annoucementBarShowHide": {
+        "type": "annoucementBarShowHide",
+        "settings": {
+          "showHideAnnoucementBar": true
+        }
+      },
+      "spaces__head_community": {
+        "type": "spaces__head_community",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "LoCA Community",
+          "detail": "Thank you for your interest in supporting local artists by hosting a LoCA show! With the Community plan, you’ll have access to:"
+        }
+      },
+      "spaces__list_community": {
+        "type": "spaces__list_community",
+        "blocks": {
+          "f350f1c5-6ac9-42c9-add5-1dd79eff3bec": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "New art every 3 months.",
+              "detail": "LoCA will recommend 3 early emerging artists in your community that we believe will be a good fit with your business. The final selection will be made by you. Each show lasts approximately 3 months."
+            }
+          },
+          "1f04f746-070d-4cc6-a1e5-491e1ee54951": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Basic installation services.",
+              "detail": "LoCA will connect you with the selected artist to confirm all remaining show details. The artist will handle artwork installation and take down."
+            }
+          },
+          "8d4471c7-ddc8-43c9-b2c9-bf439989277c": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "E-commerce tools.",
+              "detail": "Our QR code enabled art labels enable customers to purchase instantly. We handle all contactless payments and processing. The artist will handle shipping of any sold artwork after the show ends."
+            }
+          },
+          "88ae11fc-6eac-44ca-b886-fac256abf0dd": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Marketing support.",
+              "detail": "We will create in-show marketing, as well as promote through our social channels."
+            }
+          },
+          "3c63d879-1704-413f-808a-1c84f4e9da28": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Opportunity to generate revenue.",
+              "detail": "As a show host, you’ll have the opportunity to earn a 10% commission on any art sold in your space. Or you can choose to donate that commission back to the artist."
+            }
+          }
+        },
+        "block_order": [
+          "f350f1c5-6ac9-42c9-add5-1dd79eff3bec",
+          "1f04f746-070d-4cc6-a1e5-491e1ee54951",
+          "8d4471c7-ddc8-43c9-b2c9-bf439989277c",
+          "88ae11fc-6eac-44ca-b886-fac256abf0dd",
+          "3c63d879-1704-413f-808a-1c84f4e9da28"
+        ],
+        "settings": {
+          "showHideSelectMenu": true,
+          "titleColor": "#000000",
+          "detailColor": "#000000",
+          "borderColor": "#000000"
+        }
+      },
+      "spaces__plans_community": {
+        "type": "spaces__plans_community",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "$29\/month with a 3-month commitment.",
+          "detail": "Billed monthly.",
+          "detail_2nd": "",
+          "getStartedContent": "Ready to get started?",
+          "btnLink": "https:\/\/buy.stripe.com\/bIY15ydXxaWT9Hi6os",
+          "btnLabel": "Sign up for $29\/month",
+          "chargebeeBtn": true,
+          "chargebeeBtnContent": "<a href=\"javascript:void(0)\" data-cb-type=\"checkout\" data-cb-item-0=\"LoCA-Community-F-USD-Monthly\" data-cb-item-0-quantity=\"1\" class=\"spaceSignUp__plans__wrap__linkWrap__link\">Sign Up Now<\/a>",
+          "sectionFooterContent": "<p>Have more questions? Reach out to us at <a href=\"mailto:spacesinfo@loca.art\" target=\"_blank\" title=\"mailto:spacesinfo@loca.art\">spacesinfo@loca.art<\/a>.<\/p>",
+          "svgColor": "#ffc3bf"
+        }
+      },
+      "spaces__legal_community": {
+        "type": "spaces__legal_community",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "Terms of Service",
+          "detail": "LoCA Community is a subscription service and it is billed monthly. We will automatically charge your payment method each month until you cancel or pause your subscription.  \n\nEach show lasts for 3 months or approximately 90 days unless a different duration is agreed. Subscription cancellations will be effective from the last day of the current show in your art space. If your business has a subscription for multiple venues and you decide to change your subscription for multiple venues at once, someone from our team will work with you to ensure a smooth transition. \n\nLoCA requires 30 days cancellation notice to end or pause your subscription before the end of the current show, or the beginning of the next show. LoCA plans shows at least 30 days ahead, so the early notice is meant to prevent artists taking expense to prepare shows for your venue, that are then cancelled.\n\nBy hosting a LoCA show you agree to our Privacy Policy as well as our Art Space Agreement. We will ask you to read and accept the agreement  during the sign up process. You can also request it here: help@loca.art"
+        }
+      },
+      "spaces__head_select-B": {
+        "type": "spaces__head_select-B",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "LoCA Select",
+          "detail": "We do the work to find the perfect fit for your business. With the Select plan, you’ll have access to:"
+        }
+      },
+      "spaces__list_select-B": {
+        "type": "spaces__list_select-B",
+        "blocks": {
+          "ccf784ce-1beb-4658-ac97-c85469f6e31e": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "A wide range of artists.",
+              "detail": "You will be able to select from a wide range of early emerging, emerging, or established artists in your community. The total artwork value in each show can be as high as $5,000."
+            }
+          },
+          "3c29a297-93fb-4a42-bbc2-71bccfdad738": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Art consultation services.",
+              "detail": "A LoCA Art Curator will work with you to find the perfect match for your business, aligned with your mission and aesthetic."
+            }
+          },
+          "c20745fd-6c13-4428-a65a-a4662ce81151": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Show installation services.",
+              "detail": "LoCA oversees all installation, including the necessary hardware to best fit your space."
+            }
+          },
+          "9c2f5b0c-b939-480f-b71f-2fa386a92507": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "E-commerce tools.",
+              "detail": "Our QR code enabled art labels enable customers to purchase instantly. We handle all contactless payments and processing. The artist will handle shipping of any sold artwork after the show ends."
+            }
+          },
+          "f5b5bc3b-60df-467e-ac48-8203819f8c3e": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Comprehensive marketing support.",
+              "detail": "LoCA will provide in-show marketing and promote through our social channels. We will also coordinate events related to your show, including partnerships with local art walks, art talks, and opening events."
+            }
+          },
+          "61fd923b-3879-4dc9-a614-f4e7efeb72cc": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "The opportunity to generate revenue.",
+              "detail": "As a show host, you’ll have the opportunity to earn a 10% commission on any art sold in your space. Or you can choose to donate that commission back to the artist."
+            }
+          }
+        },
+        "block_order": [
+          "ccf784ce-1beb-4658-ac97-c85469f6e31e",
+          "3c29a297-93fb-4a42-bbc2-71bccfdad738",
+          "c20745fd-6c13-4428-a65a-a4662ce81151",
+          "9c2f5b0c-b939-480f-b71f-2fa386a92507",
+          "f5b5bc3b-60df-467e-ac48-8203819f8c3e",
+          "61fd923b-3879-4dc9-a614-f4e7efeb72cc"
+        ],
+        "settings": {
+          "showHideSelectMenu": true,
+          "titleColor": "#000000",
+          "detailColor": "#000000",
+          "borderColor": "#000000"
+        }
+      },
+      "spaces__plans_select-B": {
+        "type": "spaces__plans_select-B",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "$99\/month with a 3-month commitment.",
+          "detail": "Billed monthly. 50% of the fee goes directly to the artist.",
+          "detail_2nd": "",
+          "getStartedContent": "Ready to get started?",
+          "btnLink": "",
+          "btnLabel": "First show free",
+          "chargebeeBtn": true,
+          "chargebeeBtnContent": "<a href=\"javascript:void(0)\" data-cb-type=\"checkout\" data-cb-item-0=\"LoCA-Select-No-FT\" data-cb-item-0-quantity=\"1\" class=\"spaceSignUp__plans__wrap__linkWrap__link\">Sign Up Now<\/a>",
+          "sectionFooterContent": "<p>Have more questions? Reach out to us at <a href=\"mailto:spacesinfo@loca.art\" target=\"_blank\" title=\"mailto:spacesinfo@loca.art\">spacesinfo@loca.art<\/a>.<\/p>",
+          "svgColor": "#ffc3bf"
+        }
+      },
+      "spaces__legal_select-B": {
+        "type": "spaces__legal_select-B",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "Terms of Service",
+          "detail": "LoCA Select is a subscription service and it is billed monthly. We will automatically charge your payment method each month until you cancel or pause your subscription.  \n\nEach show lasts for 3 months or approximately 90 days unless a different duration is agreed. Subscription cancellations will be effective from the last day of the current show in your art space. If your business has a subscription for multiple venues and you decide to change your subscription for multiple venues at once, someone from our team will work with you to ensure a smooth transition. \n\nLoCA requires 30 days cancellation notice to end or pause your subscription before the end of the current show, or the beginning of the next show. LoCA plans shows at least 30 days ahead, so the early notice is meant to prevent artists taking expense to prepare shows for your venue, that are then cancelled.\n\nBy hosting a LoCA show you agree to our Privacy Policy as well as our Art Space Agreement. We will ask you to read and accept the agreement  during the sign up process. You can also request it here: help@loca.art"
+        }
+      },
+      "spaces__head_select-C": {
+        "type": "spaces__head_select-C",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "LoCA Select",
+          "detail": "We do the work to find the perfect fit for your business. With the Select plan, you’ll have access to:"
+        }
+      },
+      "spaces__list_select-C": {
+        "type": "spaces__list_select-C",
+        "blocks": {
+          "52084187-434e-48d2-af66-64c01733f0f8": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "A wide range of artists.",
+              "detail": "You will be able to select from a wide range of early emerging, emerging, or established artists in your community. The total artwork value in each show can be as high as $5,000."
+            }
+          },
+          "82bca1f1-a6f7-46d3-afd3-d8e420c71819": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Art consultation services.",
+              "detail": "A LoCA Art Curator will work with you to find the perfect match for your business, aligned with your mission and aesthetic."
+            }
+          },
+          "d6e82004-5e0d-47bf-98bd-f246b56e04a4": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Show installation services.",
+              "detail": "LoCA oversees all installation, including the necessary hardware to best fit your space."
+            }
+          },
+          "7c8d6e6d-4153-40e2-92ec-6dda6bde8bc3": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "E-commerce tools.",
+              "detail": "Our QR code enabled art labels enable customers to purchase instantly. We handle all contactless payments and processing. The artist will handle shipping of any sold artwork after the show ends."
+            }
+          },
+          "e39535ab-d8d7-4172-961b-eb570d1bb4cd": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "Comprehensive marketing support.",
+              "detail": "LoCA will provide in-show marketing and promote through our social channels. We will also coordinate events related to your show, including partnerships with local art walks, art talks, and opening events."
+            }
+          },
+          "57c0e35a-2c75-4e3c-8620-81630964a607": {
+            "type": "list",
+            "settings": {
+              "showHideItem": true,
+              "title": "The opportunity to generate revenue.",
+              "detail": "As a show host, you’ll have the opportunity to earn a 10% commission on any art sold in your space. Or you can choose to donate that commission back to the artist."
+            }
+          }
+        },
+        "block_order": [
+          "52084187-434e-48d2-af66-64c01733f0f8",
+          "82bca1f1-a6f7-46d3-afd3-d8e420c71819",
+          "d6e82004-5e0d-47bf-98bd-f246b56e04a4",
+          "7c8d6e6d-4153-40e2-92ec-6dda6bde8bc3",
+          "e39535ab-d8d7-4172-961b-eb570d1bb4cd",
+          "57c0e35a-2c75-4e3c-8620-81630964a607"
+        ],
+        "settings": {
+          "showHideSelectMenu": true,
+          "titleColor": "#000000",
+          "detailColor": "#000000",
+          "borderColor": "#000000"
+        }
+      },
+      "spaces__plans_select-C": {
+        "type": "spaces__plans_select-C",
+        "settings": {
+          "showHideSelectMenu": true,
+          "title": "First show free, then $49\/month with a 3-month commitment.",
+          "detail": "We’re so sure that you’ll love what LoCA can do, we’re offering your first 3-month show for free. If you decide it’s not for you, just cancel by the end of the second month. This ensures we can adjust our schedule to best support our affiliated artists.",
+          "detail_2nd": "You’ll enter your payment information upon sign up, but you won’t be charged until the start of your second show. Then, you’ll be billed monthly.",
+          "getStartedContent": "Ready to get started?",
+          "btnLink": "",
+          "btnLabel": "First show free",
+          "chargebeeBtn": true,
+          "chargebeeBtnContent": "<a href=\"javascript:void(0)\" data-cb-type=\"checkout\" data-cb-item-0=\"Select-no-artist-revshare-USD-Monthly\" data-cb-item-0-quantity=\"1\" class=\"spaceSignUp__plans__wrap__linkWrap__link\">Sign Up Now<\/a>",
+          "sectionFooterContent": "<p>Have more questions? Reach out to us at <a href=\"mailto:spacesinfo@loca.art\" target=\"_blank\" title=\"mailto:spacesinfo@loca.art\">spacesinfo@loca.art<\/a>.<\/p>",
+          "svgColor": "#ffc3bf"
+        }
+      }
+    },
+    "content_for_index": [
+      "1609162439f05e22b2",
+      "1607408035f30c7d68",
+      "feature-row",
+      "1608613118f40ab345",
+      "16086140473c75f86f",
+      "feature-columns",
+      "collection",
+      "hero-2",
+      "quotes",
+      "image-bar",
+      "16086342293d28e29f",
+      "16086342407491c5a9",
+      "1608634259eaa80030"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+          }
+        },
+        "hero-1": {
+          "type": "hero",
+          "settings": {
+            "hero_size": "large",
+            "text_size": "large"
+          }
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {
+          }
+        },
+        "feature-columns": {
+          "type": "feature-columns",
+          "blocks": {
+            "feature-columns-0": {
+              "type": "text_block",
+              "settings": {
+              }
+            },
+            "feature-columns-1": {
+              "type": "text_block",
+              "settings": {
+              }
+            },
+            "feature-columns-2": {
+              "type": "text_block",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "feature-columns-0",
+            "feature-columns-1",
+            "feature-columns-2"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "collection": {
+          "type": "collection",
+          "settings": {
+            "grid": 4
+          }
+        },
+        "hero-2": {
+          "type": "hero",
+          "settings": {
+            "text_size": "large"
+          }
+        },
+        "quotes": {
+          "type": "quotes",
+          "blocks": {
+            "quotes-0": {
+              "type": "quote",
+              "settings": {
+              }
+            },
+            "quotes-1": {
+              "type": "quote",
+              "settings": {
+              }
+            },
+            "quotes-2": {
+              "type": "quote",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "quotes-0",
+            "quotes-1",
+            "quotes-2"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "image-bar": {
+          "type": "image-bar",
+          "blocks": {
+            "image-bar-0": {
+              "type": "image",
+              "settings": {
+              }
+            },
+            "image-bar-1": {
+              "type": "image",
+              "settings": {
+              }
+            },
+            "image-bar-2": {
+              "type": "image",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "image-bar-0",
+            "image-bar-1",
+            "image-bar-2"
+          ],
+          "settings": {
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "link_list",
+              "settings": {
+              }
+            },
+            "footer-1": {
+              "type": "newsletter",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "footer-0",
+            "footer-1"
+          ],
+          "settings": {
+            "show_payment_icons": true
+          }
+        }
+      },
+      "content_for_index": [
+        "hero-1",
+        "feature-row",
+        "feature-columns",
+        "collection",
+        "hero-2",
+        "quotes",
+        "image-bar"
+      ]
+    },
+    "Light": {
+      "color_text": "#162950",
+      "color_body_text": "#6d6d6d",
+      "color_sale_text": "#DA2F0C",
+      "color_borders": "#e4e4e4",
+      "color_button": "#DA2F0C",
+      "color_button_text": "#ffffff",
+      "color_small_button_text_border": "#162950",
+      "color_text_field": "#ffffff",
+      "color_text_field_text": "#162950",
+      "color_text_field_border": "#909090",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#3d3d3d",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#f8f8f8",
+      "type_header_font": "muli_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "muli_n4",
+      "type_base_size": 18,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#e8f3f6",
+      "checkout_heading_font": "Roboto",
+      "checkout_body_font": "Source Sans Pro",
+      "checkout_accent_color": "#1990c6",
+      "checkout_button_color": "#23314e",
+      "checkout_error_color": "#ff6d6d",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "align_logo": "left",
+            "logo": "",
+            "logo_max_width": 135,
+            "main_linklist": "main-menu",
+            "message": true,
+            "color_bg": "#162950",
+            "color_text": "#ffffff"
+          }
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "alignment": "center",
+            "hero_size": "x-large",
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center center"
+              }
+            },
+            "1492095993817": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "1492095993817"
+          ],
+          "settings": {
+            "slideshow_height": "medium",
+            "text_size": "medium",
+            "autorotate": false,
+            "autorotate_speed": 5
+          }
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "grid": 3,
+            "rows": 1,
+            "show_vendor": true,
+            "show_view_all": true
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "show_quantity_selector": false,
+            "show_variant_labels": true,
+            "show_vendor": false,
+            "show_share_buttons": true,
+            "media_size": "medium",
+            "enable_image_zoom": true,
+            "enable_video_looping": false
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "layout": "grid",
+            "grid": 2,
+            "rows": 2,
+            "show_collection_image": true,
+            "show_vendor": false,
+            "sort_enable": true,
+            "tags_enable": true
+          }
+        },
+        "1492033809691": {
+          "type": "map",
+          "settings": {
+          }
+        },
+        "1492033877875": {
+          "type": "quotes",
+          "blocks": {
+            "1492033877875-0": {
+              "type": "quote",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "1492033877875-0"
+          ],
+          "settings": {
+          }
+        },
+        "1492033924902": {
+          "type": "custom-content",
+          "blocks": {
+            "1492033924902-0": {
+              "type": "text",
+              "settings": {
+                "width": "100%",
+                "alignment": "center",
+                "align_text": "center"
+              }
+            }
+          },
+          "block_order": [
+            "1492033924902-0"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "1492096252560": {
+          "type": "collection-list",
+          "blocks": {
+            "1492096252560-0": {
+              "type": "featured_collection",
+              "settings": {
+              }
+            },
+            "1492096252560-1": {
+              "type": "featured_collection",
+              "settings": {
+              }
+            },
+            "1492096252560-2": {
+              "type": "featured_collection",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "1492096252560-0",
+            "1492096252560-1",
+            "1492096252560-2"
+          ],
+          "settings": {
+            "grid": 3
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "layout": "grid",
+            "blog_show_author": true,
+            "blog_show_date": false
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "blog_show_author": true,
+            "blog_show_date": true,
+            "show_share_buttons": true
+          }
+        },
+        "cart-template": {
+          "type": "cart-template",
+          "settings": {
+            "cart_notes_enable": false
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "link_list": {
+              "type": "link_list",
+              "settings": {
+              }
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+              }
+            },
+            "newsletter": {
+              "type": "newsletter",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "link_list",
+            "text",
+            "newsletter"
+          ],
+          "settings": {
+            "color_footer_bg": "#f8f8f8",
+            "color_footer_text": "#6d6d6d"
+          }
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "slideshow",
+        "1492033924902",
+        "1492096252560",
+        "1492033877875",
+        "1492033809691"
+      ]
+    }
+  }
+}
