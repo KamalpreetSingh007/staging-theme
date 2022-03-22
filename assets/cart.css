@@ -1,0 +1,26 @@
+.cart__row--heading th {
+  font-weight: bold;
+}
+
+.cart-subtotal {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .cart__meta {
+    width: 75%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart__price {
+    width: 25%;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid__item {
+    padding-right: 0;
+  }
+}
+/*# sourceMappingURL=cart.css.map */

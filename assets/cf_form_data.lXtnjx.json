@@ -1,0 +1,472 @@
+{
+  "form": {
+    "id": "lXtnjx",
+    "name": "Spaces Registration",
+    "handle": "spaces-registration",
+    "theme_id": "117504409768",
+    "settings": {
+      "locales": {
+        "back": "Back",
+        "next": "Next",
+        "cancel": "Cancel",
+        "edit_link": "Edit account",
+        "fix_errors": "Please fix errors before continuing",
+        "is_invalid": "{{label}} is invalid",
+        "email_taken": "Email has already been taken",
+        "phone_taken": "Phone number has already been taken",
+        "server_error": "Could not save form, please try again later",
+        "step_counter": "Step {{current}} of {{total}}",
+        "verify_email": "Check your email for a verification link to activate your account.",
+        "not_available": "An error occurred while saving your account, please try again in a few minutes.",
+        "create_account": "Sign Up Now",
+        "update_account": "Submit",
+        "recaptcha_error": "Challenge verification failed, please try again",
+        "creating_account": "Saving...",
+        "updating_account": "Saving...",
+        "invalid_email_domain": "Email contains an invalid domain name"
+      },
+      "readGuestData": true,
+      "enableRecaptcha": false,
+      "whitelistedTags": "",
+      "recaptchaSiteKey": "",
+      "markRequiredFields": true,
+      "displayCancelButton": false,
+      "redirectAfterSubmit": false,
+      "goBackAfterSubmission": false,
+      "accountApprovalRequired": false,
+      "cancelButtonRedirectUrl": "\/account\/login",
+      "emailVerificationRequired": false,
+      "postSubmissionRedirectUrl": "\/account",
+      "showSuccessStepAfterSubmit": true,
+      "goBackAfterCancelButtonClick": false
+    },
+    "install_locations": [
+      "page_template"
+    ],
+    "created_at": "2021-01-05T20:32:42Z",
+    "updated_at": "2021-01-06T11:01:23Z",
+    "revision_ids": [
+      "evT94dp",
+      "DRT1yY",
+      "MDTg9R",
+      "RxTpwq",
+      "B5TmVm",
+      "wDT4rl",
+      "6XTEo6",
+      "xMTN2y",
+      "9pTl44",
+      "1wTnXM",
+      "VNTV1e",
+      "OzTv6R",
+      "akTbBV",
+      "qYTNLA",
+      "ErT7o2",
+      "xMTzA9",
+      "evTdz8",
+      "znTAY9",
+      "7kTNym",
+      "Z6TYGw",
+      "K0TB2m",
+      "GYTn9y",
+      "vbT23D",
+      "evTd3D"
+    ]
+  },
+  "revision": {
+    "id": "evT94dp",
+    "created_at": "2021-10-23T13:05:17Z",
+    "updated_at": "2021-10-23T13:05:17Z",
+    "embed_version": "4.7.1",
+    "published_at": null,
+    "fields": [
+      {
+        "id": 117743,
+        "dataColumn": null,
+        "parentId": null,
+        "position": 0,
+        "type": "heading",
+        "stepId": 198131,
+        "default": "",
+        "label": "Account request sent heading",
+        "placeholder": null,
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12,
+          "alignment": "center"
+        },
+        "settings": {
+          "size": 1,
+          "content": "Success!",
+          "hideLabel": true,
+          "fontWeight": "bold"
+        },
+        "validations": [
+
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 259952,
+        "dataColumn": null,
+        "parentId": null,
+        "position": 1,
+        "type": "paragraph",
+        "stepId": 198131,
+        "default": "",
+        "label": "Reviewing submission explanation",
+        "placeholder": null,
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+          "content": "<p style=\"text-align: left;\">Thank you for supporting local artists. We have received your request.&nbsp;A LoCA art &amp; space manager will reach out to you within two working days to learn more about your space and match you with local artists.<\/p>",
+          "fontSize": 14,
+          "hideLabel": true
+        },
+        "validations": [
+
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 831952,
+        "dataColumn": null,
+        "parentId": null,
+        "position": 2,
+        "type": "image",
+        "stepId": 198131,
+        "default": "",
+        "label": "New image field",
+        "placeholder": null,
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12,
+          "alignment": "center"
+        },
+        "settings": {
+          "src": "https:\/\/he-customr.s3.us-west-2.amazonaws.com\/uploads\/art-spot-gallery.myshopify.com\/96631c5a76880ecbdeedbbcf5b3b939b\/Vector_a362c37d-dffc-4c8f-8e83-311037063610_1296x.png.webp",
+          "url": "",
+          "hideLabel": true,
+          "openInNewTab": true
+        },
+        "validations": [
+
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 926313,
+        "dataColumn": null,
+        "parentId": null,
+        "position": 0,
+        "type": "paragraph",
+        "stepId": 895141,
+        "default": "",
+        "label": "New paragraph field",
+        "placeholder": null,
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+          "content": "<p style=\"text-align: left;\"><strong>Support your local artists by featuring original art in your space.<\/strong><\/p>\n<p style=\"text-align: left;\">LoCA's mission is to create more opportunities for artists to show and sell their work. To fulfill this promise, we connect local artists with inviting spaces in their area &ndash; spaces just like yours.<\/p>",
+          "fontSize": 14,
+          "hideLabel": true
+        },
+        "validations": [
+
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 205280,
+        "dataColumn": {
+          "key": "first_name",
+          "label": "First name",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 1,
+        "type": "text",
+        "stepId": 895141,
+        "default": "",
+        "label": "First name",
+        "placeholder": null,
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 6
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "metadata": {
+              "hiddenInApp": true
+            },
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "Must not be blank"
+          }
+        ],
+        "sensitive": null,
+        "preset": "first_name",
+        "autotag": null
+      },
+      {
+        "id": 195757,
+        "dataColumn": {
+          "key": "last_name",
+          "label": "Last name",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 2,
+        "type": "text",
+        "stepId": 895141,
+        "default": "",
+        "label": "Last name",
+        "placeholder": "",
+        "description": null,
+        "enum": null,
+        "appearance": {
+          "width": 6
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "metadata": {
+              "hiddenInApp": true
+            },
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "Must not be blank"
+          }
+        ],
+        "sensitive": null,
+        "preset": "last_name",
+        "autotag": null
+      },
+      {
+        "id": 340844,
+        "dataColumn": {
+          "key": "email",
+          "label": "Email address",
+          "dataType": "email"
+        },
+        "parentId": null,
+        "position": 3,
+        "type": "email",
+        "stepId": 895141,
+        "default": "",
+        "label": "Email address",
+        "placeholder": "",
+        "description": "We will not use it for marketing unless you opt-in later.",
+        "enum": null,
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "operator": "is_valid_email",
+            "comparand": null,
+            "errorMessage": "Please provide a valid email address"
+          },
+          {
+            "metadata": {
+              "hiddenInApp": true
+            },
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "Must not be blank"
+          }
+        ],
+        "sensitive": null,
+        "preset": "email_address",
+        "autotag": null
+      },
+      {
+        "id": 144500,
+        "dataColumn": {
+          "key": "phone",
+          "label": "Phone number",
+          "dataType": "phone"
+        },
+        "parentId": null,
+        "position": 4,
+        "type": "phone",
+        "stepId": 895141,
+        "default": "",
+        "label": "Phone number (optional)",
+        "placeholder": "Enter your mobile number",
+        "description": "Use a number we can directly message you with (SMS or Whatsapp) to get you started",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+          "defaultCountryCode": "GB"
+        },
+        "validations": [
+
+        ],
+        "sensitive": null,
+        "preset": "phone_number",
+        "autotag": null
+      },
+      {
+        "id": 532722,
+        "dataColumn": {
+          "key": "default_address.company",
+          "label": "Company",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 5,
+        "type": "text",
+        "stepId": 895141,
+        "default": "",
+        "label": "Art Space name",
+        "placeholder": "",
+        "description": "For example Uptown café",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 6
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "metadata": {
+              "hiddenInApp": true
+            },
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "Must not be blank"
+          }
+        ],
+        "sensitive": null,
+        "preset": "company",
+        "autotag": null
+      },
+      {
+        "id": 202837,
+        "dataColumn": {
+          "key": "default_address.city",
+          "label": "City",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 6,
+        "type": "text",
+        "stepId": 895141,
+        "default": "",
+        "label": "Space City",
+        "placeholder": null,
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 6
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "metadata": {
+              "hiddenInApp": true
+            },
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "Must not be blank"
+          }
+        ],
+        "sensitive": null,
+        "preset": "city",
+        "autotag": null
+      },
+      {
+        "id": 163500,
+        "dataColumn": null,
+        "parentId": null,
+        "position": 7,
+        "type": "link",
+        "stepId": 895141,
+        "default": "",
+        "label": "",
+        "placeholder": null,
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12,
+          "alignment": "left"
+        },
+        "settings": {
+          "url": "https:\/\/loca.art\/pages\/spaces-signup",
+          "content": "More information on hosting art exhibitions in your space",
+          "fontSize": 14,
+          "hideLabel": true,
+          "fontWeight": "normal",
+          "openInNewTab": true
+        },
+        "validations": [
+
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      }
+    ],
+    "steps": [
+      {
+        "id": 895141,
+        "title": "Step 1",
+        "description": ""
+      },
+      {
+        "id": 198131,
+        "title": "Submission success",
+        "metadata": {
+          "isSuccessStep": true
+        },
+        "description": ""
+      }
+    ],
+    "rules": [
+
+    ]
+  }
+}
