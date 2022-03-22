@@ -1,0 +1,153 @@
+{%-liquid
+  assign ss                     =   section.settings
+  assign sb                     =   section.blocks
+
+  assign cssFile                =   'spacesBanner.css' | asset_url
+
+  if ss.showHideSelectMenu
+
+    echo '<link rel="stylesheet" href="' | append: cssFile | append: '">'
+
+    echo '<section class="spacesBanner">'
+
+      echo '<div class="page-width">'
+
+        echo '<div class="spacesBanner__grid">'
+
+          echo '<div class="spacesBanner__itemImage">'
+
+            assign bannerImg    =   ss.banner | img_url: 'x800'
+
+            echo '<img src="' | append: bannerImg | append: '">'
+
+          echo '</div>'
+
+          echo '<div class="spacesBanner__itemContent">'
+
+            if ss.title != blank
+
+              echo '<h1 class="spacesBanner__title">'
+                echo ss.title
+              echo '</h1>'
+
+            endif
+
+            if ss.detail != blank
+
+              echo '<div class="spacesBanner__detail">'
+                echo ss.detail
+              echo '</div>'
+
+            endif
+
+            if ss.btnLabel != blank
+
+              assign btnLinkIs    =   ss.btnLink | default: '#'
+
+              echo '<a href="' | append: btnLinkIs | append: '" class="spacesBanner__link">'
+                echo ss.btnLabel
+              echo '</a>'
+
+            endif
+
+          echo '</div>'
+
+        echo '</div>'
+
+      echo '</div>'
+
+      style
+
+        assign bgColorIs          =   ss.bgColor | remove: '#'
+
+        assign bgSvg              =   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 1104'%3E%3Cpath fill='%23" | append: bgColorIs | append: "' d='M0,0v964c0,77.32,62.68,140,140,140h1300V0H0z'/%3E%3Cpath fill='%23FFFFFF' d='M708.044,743.097c-3.351-150.743-70.346-238.612-127.294-241.188C437.704,493.962,163.949,491.463,0,527.87 V696.66c73.732,29.586,164.865,54.675,232.366,69.886C392.041,808.977,710.724,863.691,708.044,743.097z'/%3E%3Cpath fill='%23FFFFFF' d='M1440,1085.862c-84.869-49.274-169.719-94.318-106.16-151.741c47.314-42.748,79.285-38.603,106.16-23.062 v-215.8c-144.26-31.607-357.135-57.348-404.261,17.292c-53.591,84.883-68.688,163.856-83.736,237.174 c-5.599,43.854-15.96,97.871-21.421,154.275H1440V1085.862z'/%3E%3C/svg%3E%0A"
+
+        echo '#shopify-section-header {background-color: ' | append: ss.bgColor | append: '}'
+
+        echo '.spacesBanner {'
+          echo 'background-image: url("' | append: bgSvg | append: '");'
+        echo '}'
+
+        echo '.spaceSignUp__list__grid__item--title{color: ' | append: ss.titleColor | append: ';}'
+        echo '.spaceSignUp__list__grid__item--detail{color: ' | append: ss.detailColor | append: ';}'
+        echo '.spaceSignUp__list__grid__item{border-top-color: ' | append: ss.borderColor | append: ';}'
+
+      endstyle
+
+    echo '</section>'
+
+  endif
+-%}
+
+
+{% schema %}
+{
+  "name"      :   "Spaces Banner",
+  "settings"  :   [
+    {
+      "type"      :   "checkbox",
+      "id"        :   "showHideSelectMenu",
+      "label"     :   "Show / Hide Select Menu",
+      "default"   :   true
+    },
+    {
+      "type"      :   "image_picker",
+      "id"        :   "banner",
+      "label"     :   "Upload Image"
+    },
+    {
+      "type"      :   "text",
+      "id"        :   "title",
+      "label"     :   "Title",
+      "default"   :   "Business and the arts supporting each other."
+    },
+    {
+      "type"      :   "textarea",
+      "id"        :   "detail",
+      "label"     :   "Detail",
+      "default"   :   "Art connects us all. Improve access to art in your community and create interest for your customers by featuring art from local artists."
+    },
+    {
+      "type"      :   "text",
+      "id"        :   "btnLabel",
+      "label"     :   "Button Label",
+      "default"   :   "Sign Up Now"
+    },
+    {
+      "type"      :   "url",
+      "id"        :   "btnLink",
+      "label"     :   "Button Link"
+    },
+    {
+      "type"      :   "color",
+      "id"        :   "titleColor",
+      "label"     :   "Title Text Color",
+      "default"   :   "#000"
+    },
+    {
+      "type"      :   "color",
+      "id"        :   "detailColor",
+      "label"     :   "Color for Detail Content",
+      "default"   :   "#000"
+    },
+    {
+      "type"      :   "color",
+      "id"        :   "borderColor",
+      "label"     :   "Color for Border",
+      "default"   :   "#000"
+    },
+    {
+      "type"      :   "color",
+      "id"        :   "bgColor",
+      "label"     :   "Background Color",
+      "default"   :   "#FFC3BF"
+    }
+  ],
+  "presets": [
+    {
+      "name"      :   "Spaces Banner",
+      "category"  :   "Spaces Pages"
+    }
+  ]
+}
+{% endschema %}

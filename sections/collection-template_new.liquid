@@ -1,0 +1,124 @@
+{%-liquid
+  assign ss   =   section.settings
+
+  assign c1   =   ''
+  assign c2   =   ''
+  assign c3   =   ''
+  assign c4   =   ''
+
+  paginate collection.products by 12
+
+    for product in collection.products
+
+      assign i      =   forloop.index
+
+      if i == 1 or i == 5 or i == 9
+
+        capture c1
+
+          echo c1
+
+          render '__collectionPage_product_card' with { product: product }
+
+        endcapture
+
+      elsif i == 2 or i == 6 or i == 10
+
+        capture c2
+
+          echo c2
+
+          render '__collectionPage_product_card' with { product: product }
+
+        endcapture
+
+      elsif i == 3 or i == 7 or i == 11
+
+        capture c3
+
+          echo c3
+
+          render '__collectionPage_product_card' with { product: product }
+
+        endcapture
+
+      elsif i == 4 or i == 8 or i == 12
+
+        capture c4
+
+          echo c4
+
+          render '__collectionPage_product_card' with { product: product }
+
+        endcapture
+
+      endif
+
+    endfor
+
+    capture isAvailableNextPage
+
+      assign isAvailable    =   paginate.next.is_link
+
+      if isAvailable == true
+
+        echo true
+
+      else
+
+        echo false
+
+      endif
+
+    endcapture
+
+  endpaginate
+
+  if ss.qrCode
+
+    render '__qrCode_form'
+
+  endif
+
+-%}
+
+<div class="collectionProductsView{{ qrClass }} noPrint" page="" is-available-next-page="{{ isAvailableNextPage }}" status="" uri="{{ collection.url | append: '?view=jsonData' }}">
+  <div class="{{ ss.layoutIs }} gridView">
+    <div class="c1">{% if qrClass == blank %}{{ c1 }}{% endif %}</div>
+    <div class="c2">{% if qrClass == blank %}{{ c2 }}{% endif %}</div>
+    <div class="c3">{% if qrClass == blank %}{{ c3 }}{% endif %}</div>
+    <div class="c4">{% if qrClass == blank %}{{ c4 }}{% endif %}</div>
+  </div>
+
+  <div class="loadMoreElement"></div>
+</div>
+
+{% schema %}
+  {
+    "name"      :   "Collection pages",
+    "settings"  :   [
+      {
+        "type"    :   "checkbox",
+        "id"      :   "qrCode",
+        "label"   :   "QR Code Enable / Disable",
+        "default" :   true
+      },
+      {
+        "type"    :   "select",
+        "id"      :   "layoutIs",
+        "label"   :   "Layout",
+        "default" :   "fullWidth",
+        "options" :   [
+          {
+            "value"   :   "fullWidth",
+            "label"   :   "Full Width"
+          },
+          {
+            "value"   :   "page-width",
+            "label"   :   "Compact View"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

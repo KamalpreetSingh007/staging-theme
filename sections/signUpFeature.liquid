@@ -1,0 +1,175 @@
+{%-liquid
+  assign ss = section.settings
+  assign sb = section.blocks
+-%}
+<style>
+  main .mobileSignUpFeature {
+    margin: 85px auto 85px;
+    max-width: 1200px;
+    padding: 0 16px;
+    text-align: center;
+    font-size: 34px;
+    line-height: 40px;
+    font-weight: 600;
+    letter-spacing: -1.25px;
+    -webkit-transition: 0.3s all ease-in-out;
+    transition: 0.3s all ease-in-out;
+  }
+
+  @media (max-width: 700px) {
+    main .mobileSignUpFeature {
+      font-size: 32px;
+      margin-top: 48px;
+    }
+  }
+
+  main .mobileSignUpFeature .btnWrapper {
+    margin-top: 24px;
+  }
+
+  main .mobileSignUpFeature .btnWrapper .blackIs {
+    padding: 24px 55px;
+  }
+
+  @media (max-width: 700px) {
+    main .mobileSignUpFeature .btnWrapper .blackIs {
+      padding: 20px 55px;
+    }
+  }
+</style>
+
+{% for block in sb %}
+  {% assign b = block.settings %}
+  {% case block.type %}
+    {% when 'PDP_Page' %}
+      {% if template == 'product' %}
+        <div class="mobileSignUpFeature">
+          <div loading="show">{{ b.description }}</div>
+          <div class="btnWrapper">
+            <a href="{{ b.btnLink }}" class="btn blackIs" loading="show">
+              {{ b.linkLabel }}
+            </a>
+          </div>
+        </div>
+      {% endif %}
+    {% when 'Collection_Page' %}
+      {% if template == 'collection' %}
+        <div class="mobileSignUpFeature">
+          <div loading="show">{{ b.description }}</div>
+          <div class="btnWrapper">
+            <a href="{{ b.btnLink }}" class="btn blackIs" loading="show">
+              {{ b.linkLabel }}
+            </a>
+          </div>
+        </div>
+      {% endif %}
+    {% when 'search_Page' %}
+      {% if template == 'search' %}
+        <div class="mobileSignUpFeature">
+          <div class="btnWrapper">
+            <a href="{{ b.btnLink }}" class="btn blackIs">
+              {{ b.linkLabel }}
+            </a>
+          </div>
+        </div>
+
+        {% if b.showMessage and b.messageContent != blank %}
+          <script>
+            var noMoreRecordFound   =   `{{ b.messageContent }}`;
+          </script>
+        {% endif %}
+      {% endif %}
+  {% endcase %}
+{% endfor %}
+
+
+{% schema %}
+{
+  "name"      :   "Signup Feature",
+  "max_blocks":   3,
+  "settings"  :   [
+    {
+      "type"    :   "header",
+      "content" :   "---"
+    }
+  ],
+  "blocks"    :   [
+    {
+      "type"    :   "PDP_Page",
+      "name"    :   "PDP_Page",
+      "settings"    :   [
+        {
+          "type"    :   "textarea",
+          "id"      :   "description",
+          "label"   :   "Detail",
+          "default" :   "Show and sell your art with LoCA."
+        },
+        {
+          "type"    :   "text",
+          "id"      :   "linkLabel",
+          "label"   :   "Link Text",
+          "default" :   "Sign Up Now"
+        },
+        {
+          "type"    :   "url",
+          "id"      :   "btnLink",
+          "label"   :   "Button Link"
+        }
+      ]
+    },
+    {
+      "type"    :   "Collection_Page",
+      "name"    :   "Collection_Page",
+      "settings"    :   [
+        {
+          "type"    :   "textarea",
+          "id"      :   "description",
+          "label"   :   "Detail",
+          "default" :   "Show and sell your art with LoCA."
+        },
+        {
+          "type"    :   "text",
+          "id"      :   "linkLabel",
+          "label"   :   "Link Text",
+          "default" :   "Sign Up Now"
+        },
+        {
+          "type"    :   "url",
+          "id"      :   "btnLink",
+          "label"   :   "Button Link"
+        }
+      ]
+    },
+    {
+      "type"    :   "search_Page",
+      "name"    :   "Search Page",
+      "limit"   :   1,
+      "settings"    :   [
+        {
+          "type"    :   "text",
+          "id"      :   "linkLabel",
+          "label"   :   "Link Text",
+          "default" :   "Sign Up Now"
+        },
+        {
+          "type"    :   "url",
+          "id"      :   "btnLink",
+          "label"   :   "Button Link"
+        },
+        {
+          "type"    :   "checkbox",
+          "id"      :   "showMessage",
+          "label"   :   "Show (No more records found)",
+          "default" :   true
+        },
+        {
+          "type"    :   "text",
+          "id"      :   "messageContent",
+          "label"   :   "Message text",
+          "default" :   "There are no more search results"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

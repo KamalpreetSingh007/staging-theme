@@ -1,0 +1,59 @@
+{%-liquid
+  assign ss                 =   section.settings
+  assign sb                 =   section.blocks
+
+  if ss.showHideSelectMenu
+
+    echo '<section class="spaceSignUp__legal">'
+
+      echo '<div class="page-width">'
+
+        if ss.title != blan
+
+          echo '<h4 class="spaceSignUp__legal__title">'
+            echo ss.title
+          echo '</h4>'
+
+        endif
+
+        if ss.detail != blank
+
+          echo '<div class="spaceSignUp__legal__detail">'
+            echo ss.detail | newline_to_br
+          echo '</div>'
+
+        endif
+
+      echo '</div>'
+
+    echo '</section>'
+
+  endif
+-%}
+
+
+{% schema %}
+{
+  "name"      :   "Spaces Legal",
+  "settings"  :   [
+    {
+      "type"      :   "checkbox",
+      "id"        :   "showHideSelectMenu",
+      "label"     :   "Show / Hide Select Menu",
+      "default"   :   true
+    },
+    {
+      "type"      :   "text",
+      "id"        :   "title",
+      "label"     :   "Title",
+      "default"   :   "Legal Copy"
+    },
+    {
+      "type"      :   "textarea",
+      "id"        :   "detail",
+      "label"     :   "Detail",
+      "default"   :   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, atque."
+    }
+  ]
+}
+{% endschema %}

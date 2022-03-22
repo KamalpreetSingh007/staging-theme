@@ -1,0 +1,60 @@
+{%-liquid
+  assign ss                 =   section.settings
+  assign sb                 =   section.blocks
+
+  if ss.showHideSelectMenu
+
+    echo '<section class="spaceSignUp__head">'
+
+      echo '<div class="page-width">'
+
+        if ss.title != blank
+
+          echo '<h1 class="spaceSignUp__head__title">'
+            echo ss.title
+          echo '</h1>'
+
+        endif
+
+        if ss.detail != blank
+
+          echo '<div class="spaceSignUp__head__detail">'
+            echo ss.detail | newline_to_br
+          echo '</div>'
+
+        endif
+
+      echo '</div>'
+
+    echo '</section>'
+
+  endif
+-%}
+
+
+{% schema %}
+{
+  "name"      :   "Spaces Head",
+  "settings"  :   [
+    {
+      "type"      :   "checkbox",
+      "id"        :   "showHideSelectMenu",
+      "label"     :   "Show / Hide Select Menu",
+      "default"   :   true
+    },
+    {
+      "type"      :   "text",
+      "id"        :   "title",
+      "label"     :   "Header Title",
+      "default"   :   "LoCA Community"
+    },
+    {
+      "type"      :   "textarea",
+      "id"        :   "detail",
+      "label"     :   "Under Title Detail",
+      "default"   :   "Thank you for your interest in supporting local artists by hosting a LoCA show! With the Host plan, you'll have access to:"
+    }
+  ]
+}
+{% endschema %}
+

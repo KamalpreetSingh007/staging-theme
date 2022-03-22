@@ -1,0 +1,99 @@
+{%-liquid
+  assign ss                   =   section.settings
+  assign sb                   =   section.blocks
+
+  capture countriesList
+
+    assign countriesArr       =   sb | where: 'type', 'country'
+
+    for block in countriesArr
+
+      assign b                =   block.settings
+
+      assign country_         =     b.title
+      assign currency_        =     b.currency
+
+      echo 'country__' | append: country_ | append: '^' | append: 'currency__' | append: currency_
+      unless forloop.last
+        echo '*^*'
+      endunless
+
+    endfor
+
+  endcapture
+
+  capture citiesList
+
+    assign citiesArr          =   sb | where: 'type', 'city'
+
+    for block in citiesArr
+
+      assign b                =   block.settings
+
+      assign city_            =     b.title
+      assign country_         =     b.country
+      assign currency_        =     b.currency
+
+      echo 'city__' | append: city_ | append: '^' | append: 'country__' | append: country_ | append: '^' | append: 'currency__' | append: currency_
+      unless forloop.last
+        echo '*^*'
+      endunless
+
+    endfor
+
+  endcapture
+
+  echo 'citiesList___' | append: citiesList | append: '#####countriesList___' | append: countriesList
+
+-%}
+
+{% schema %}
+{
+  "name"        :   "Locations Manager",
+  "blocks"      :   [
+    {
+      "type"      :   "country",
+      "name"      :   "Country",
+      "settings"  :   [
+        {
+          "type"        :   "text",
+          "id"          :   "title",
+          "label"       :   "Country Name",
+          "default"     :   "United Kingdom"
+        },
+        {
+          "type"        :   "text",
+          "id"          :   "currency",
+          "label"       :   "Currency Code",
+          "default"     :   "GBP"
+        }
+      ]
+    },
+    {
+      "type"      :     "city",
+      "name"      :     "City",
+      "settings"  :     [
+        {
+          "type"        :   "text",
+          "id"          :   "title",
+          "label"       :   "City Name",
+          "placeholder" :   "Enter City",
+          "default"     :   "London"
+        },
+        {
+          "type"        :   "text",
+          "id"          :   "country",
+          "label"       :   "Country Name",
+          "default"     :   "United Kingdom"
+        },
+        {
+          "type"        :   "text",
+          "id"          :   "currency",
+          "label"       :   "Currency Code",
+          "default"     :   "GBP"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

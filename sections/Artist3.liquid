@@ -1,0 +1,148 @@
+<div class="page-width">
+ 
+   <div class="custom-content">
+     <div class="custom__item custom__item--text small--one-whole medium-up--one-half">
+        {%if section.settings.title != blank %}
+        <h2 class="h3">{{section.settings.title}}</h2>
+       {%endif%}
+       {%if section.settings.link != blank %}
+ 		<a href="{{section.settings.link}}" class="btn" aria-label="{{section.settings.label}}" aria-describedby="a11y-external-message">{{section.settings.label}}</a>
+       {%endif%}
+     </div>
+      <div class="custom__item custom__item--text small--one-whole medium-up--one-half">
+        {% if section.settings.code != blank %}
+       		{{ section.settings.code }}
+        {%endif%}
+     </div>
+  </div>
+</div>
+  {% schema %}
+  {
+    "name": "Exhibit and Sell",
+    "settings": [
+		{
+      "type": "text",
+      "id": "title",
+      "label": {
+        "da": "Overskrift",
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "En-tête",
+        "hi": "शीर्षक",
+        "it": "Heading",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "da": "Tilpasset indhold",
+        "de": "Personalisierter Content",
+        "en": "Custom content",
+        "es": "Contenido personalizado",
+        "fi": "Mukautettu sisältö",
+        "fr": "Contenu personnalisé",
+        "hi": "कस्टम सामग्री",
+        "it": "Contenuto personalizzato",
+        "ja": "コンテンツをカスタムする",
+        "ko": "사용자 지정 콘텐츠",
+        "nb": "Tilpasset innhold",
+        "nl": "Aangepaste content",
+        "pt-BR": "Conteúdo personalizado",
+        "pt-PT": "Conteúdo personalizado",
+        "sv": "Anpassat innehåll",
+        "th": "เนื้อหาแบบกำหนดเอง",
+        "zh-CN": "自定义内容",
+        "zh-TW": "自訂內容"
+      }
+    },
+{
+          "type": "html",
+          "id": "code",
+          "label": {
+            "da": "HTML",
+            "de": "HTML",
+            "en": "HTML",
+            "es": "HTML",
+            "fi": "HTML",
+            "fr": "HTML",
+            "hi": "HTML",
+            "it": "HTML",
+            "ja": "HTML",
+            "ko": "HTML",
+            "nb": "HTML",
+            "nl": "HTML",
+            "pt-BR": "HTML",
+            "pt-PT": "HTML",
+            "sv": "HTML",
+            "th": "HTML",
+            "zh-CN": "HTML",
+            "zh-TW": "HTML"
+          }
+        },
+{
+      "type": "text",
+      "id": "label",
+      "label": {
+        "da": "Knaptekst",
+        "de": "Button-Etikett",
+        "en": "Button label",
+        "es": "Etiqueta de botón",
+        "fi": "Tekstipainike",
+        "fr": "Texte du bouton",
+        "hi": "बटन लेबल",
+        "it": "Etichetta pulsante",
+        "ja": "ボタンのラベル",
+        "ko": "버튼 레이블",
+        "nb": "Knappetikett",
+        "nl": "Knoplabel",
+        "pt-BR": "Etiqueta de botão",
+        "pt-PT": "Etiqueta do botão",
+        "sv": "Knappetikett",
+        "th": "ป้ายกำกับปุ่ม",
+        "zh-CN": "按钮标签",
+        "zh-TW": "按鈕標籤"
+      }
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": {
+        "da": "Knaplink",
+        "de": "Button-Link",
+        "en": "Button link",
+        "es": "Enlace de botón",
+        "fi": "Painikelinkki",
+        "fr": "Lien du bouton",
+        "hi": "बटन लिंक",
+        "it": "Link pulsante",
+        "ja": "ボタンのリンク",
+        "ko": "버튼 링크",
+        "nb": "Kobling for knapp",
+        "nl": "Knoplink",
+        "pt-BR": "Link de botão",
+        "pt-PT": "Ligação do botão",
+        "sv": "Knapplänk",
+        "th": "ลิงก์ปุ่ม",
+        "zh-CN": "按钮链接",
+        "zh-TW": "按鈕連結"
+      }
+    }
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

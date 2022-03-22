@@ -1,0 +1,191 @@
+{%-liquid
+  assign ss                                       =   section.settings
+  assign sb                                       =   section.blocks
+
+  for product in collection.products
+
+    if forloop.first
+
+      assign featuredImg                          =   product.featured_image | img_url: '1920x1920', crop: 'center', scale: 2
+      break
+
+    endif
+
+  endfor
+
+  if collection.metafields.collection.loca_artist_profileImage != blank
+
+    assign avatarImg                              =   collection.metafields.collection.loca_artist_profileImage | file_img_url: '200x200', crop: 'center', scale: 2
+    assign avatarImgMobile                        =   collection.metafields.collection.loca_artist_profileImage | file_img_url: '100x100', crop: 'center', scale: 2
+
+  endif
+
+  echo '<div class="newCollection">'
+
+    echo '<div class="collection-header">'
+
+      echo '<div class="desktopView">'
+
+        if featuredImg != blank
+
+          echo '<img src="' | append: featuredImg | append: '" alt="' | append: collection.title | append: '" class="collectionBanner">'
+
+        endif
+
+        echo '<div class="page-width p-relative">'
+
+          if avatarImg != blank and collection.metafields.collection.loca_artist_profileImage != blank
+
+            echo '<div class="avatar">'
+              echo '<img src="' | append: avatarImg | append: '" alt="" class="clip-svg_desktop">'
+
+              echo '<svg width="130px" height="147px" viewBox="0 0 100 112"><defs><clipPath id="avatarClipDesktop"><path fill="#231F20" stroke="#FFFFFF" stroke-width="3" d="M10.108,27.083C7.386,33.99,3.93,45.212,2.366,56.553 c-0.783,5.684-1.098,11.441-0.587,16.726c0.51,5.273,1.85,10.173,4.459,14.052c6.303,9.373,20.075,18.344,33.974,21.736 c13.907,3.394,28.641,1.313,35.975-12.461C90.033,70.598,96.113,36.836,98.132,24.15c1.064-6.69-0.299-12.533-5.499-16.602 c-5.049-3.949-13.443-5.994-25.84-5.994c-16.045,0-29.462,3.796-36.946,5.914c-0.34,0.096-0.667,0.189-0.982,0.278 c-3.787,1.066-7.454,2.733-10.705,5.775C14.918,16.554,12.184,20.866,10.108,27.083z"/></clipPath></defs></svg>'
+            echo '</div>'
+
+          endif
+
+          echo '<div class="collectionTitle">'
+            echo '<h1>'
+              echo collection.title
+            echo '</h1>'
+          echo '</div>'
+
+          assign agGenderPronoun                  =   collection.metafields.collection.ag_gender_pronoun.value
+
+          if agGenderPronoun == blank
+
+            assign agGenderPronoun                =   collection.metafields.collection.ag_gender_pronoun
+
+          endif
+
+          if agGenderPronoun != blank
+
+            echo '<div class="artistGender">'
+              echo agGenderPronoun | replace: '/', ' / '
+            echo '</div>'
+
+          endif
+
+          if collection.metafields.collection.ag_city != blank or collection.metafields.collection.ag_country_code
+
+            assign agCIty__                       =   collection.metafields.collection.ag_city
+
+            echo '<div class="artistLocation">'
+              if agCIty__ != blank
+
+                assign agCIty__DownCase           =   agCIty__ | downcase
+
+                echo '<a href="/pages/location?city=' | append: agCIty__DownCase | append: '">'
+
+                  echo agCIty__
+
+                echo '</a>'
+
+              endif
+
+              echo ', ' | append: collection.metafields.collection.ag_country_code
+            echo '</div>'
+
+          endif
+
+          assign agBiography                      =   collection.metafields.collection.ag_biography
+          assign agArtistStatement                =   collection.metafields.collection.ag_artist_statement
+
+          if agBiography != blank or agArtistStatement != blank
+
+            capture heigthAdjustment
+
+              if agBiography != blank and agArtistStatement == blank
+
+                if agBiography.size < 200
+
+                  echo 'h-80'
+
+                endif
+
+              elsif agBiography == blank and agArtistStatement != blank
+
+                if agArtistStatement.size < 200
+
+                  echo 'h-80'
+
+                endif
+
+              endif
+
+            endcapture
+
+            echo '<div class="bio_artistStatement ' | append: heigthAdjustment  | append: '" state="closed">'
+
+              if agBiography != blank
+
+                echo '<div class="bioBlock">'
+                  echo '<h4>Bio</h4>'
+                  echo '<p>'
+                    echo agBiography | newline_to_br
+                  echo '</p>'
+                echo '</div>'
+
+              endif
+
+              if agArtistStatement != blank
+
+                echo '<div class="statementBlock">'
+                  echo '<h4>Artist Statement</h4>'
+                  echo '<p>'
+                    echo agArtistStatement | newline_to_br
+                  echo '</p>'
+                echo '</div>'
+
+              endif
+
+            echo '</div>'
+
+            echo '<div class="statementsActionBtn">'
+              echo '<span class="btnAction">Read More</span>'
+            echo '</div>'
+
+          else
+
+            assign removeSpacesFromDescription    =   collection.description | strip | remove: '<br>' | remove: '<p></p>'
+
+            if removeSpacesFromDescription != blank
+
+              capture heigthAdjustment
+
+                if collection.description.size < 200
+
+                  echo 'h-80'
+
+                endif
+
+              endcapture
+
+              echo '<div class="bio_artistStatement ' | append: heigthAdjustment  | append: '" state="closed">'
+
+                echo '<div class="bioBlock">'
+                  echo '<h4>Description</h4>'
+                  echo '<p>' | append: collection.description | newline_to_br | append: '</p>'
+                echo '</div>'
+
+              echo '</div>'
+
+              echo '<div class="statementsActionBtn">'
+
+                echo '<span class="btnAction">Read More</span>'
+
+              echo '</div>'
+
+            endif
+
+          endif
+
+        echo '</div>'
+
+      echo '</div>'
+
+    echo '</div>'
+
+  echo '</div>'
+
+-%}

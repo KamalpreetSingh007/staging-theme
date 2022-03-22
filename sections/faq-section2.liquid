@@ -1,0 +1,257 @@
+<style>
+.accordion-bral {
+min-height: 0;
+min-width: 220px;
+width: 100%;
+height: 100%;
+background-color: #FFF;
+margin: 0px!important;
+}
+.accordion-bral .ac-label {
+padding: 5px 20px;
+position: relative;
+display: block;
+height: auto;
+cursor: pointer;
+color: #000;
+line-height: 33px;
+font-size: 19px;
+background: #EFEFEF;
+border: 1px solid #CCC;
+}
+.accordion-bral .ac-label:hover {
+background: #BBB;
+}
+.accordion-bral input + .ac-label {
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+-ms-transition: all 0.3s ease-in-out;
+transition: all 0.3s ease-in-out;
+}
+.accordion-bral input:checked + .ac-label,
+.accordion-bral input:checked + .ac-label:active {
+background-color: rgba(79, 79, 79, 0.5) !important;
+color: #FFF;
+box-shadow: 0px 0px 0px 1px rgba(155, 155, 155, 0.3), 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.accordion-bral input.ac-input {
+display: none;
+}
+.accordion-bral .article {
+background: white;
+overflow: hidden;
+height: 0px;
+max-height: auto;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+-ms-transition: all 0.3s ease-in-out;
+transition: all 0.3s ease-in-out;
+  margin-bottom:0px;
+}
+.accordion-bral .article p {
+color: #777;
+line-height: 23px;
+font-size: 14px;
+padding: 20px;
+}
+.accordion-bral input:checked ~ .article i {
+-webkit-transition: all 0.5s ease-in-out;
+-moz-transition: all 0.5s ease-in-out;
+-o-transition: all 0.5s ease-in-out;
+-ms-transition: all 0.5s ease-in-out;
+transition: all 0.5s ease-in-out;
+}
+.accordion-bral input:checked ~ .article.ac-content {
+height: auto;
+}
+
+.accordion-bral i {
+position: absolute;
+transform: translate(-30px, 0);
+margin-top: 16px;
+right: 0;
+}
+.accordion-bral input:checked ~ .ac-label i:before {
+transform: translate(2px, 0) rotate(-45deg);
+}
+.accordion-bral input:checked ~ .ac-label i:after {
+transform: translate(-2px, 0) rotate(45deg);
+}
+.accordion-bral i:before, .accordion-bral i:after {
+content: "";
+position: absolute;
+background-color: #808080;
+width: 3px;
+height: 9px;
+}
+.accordion-bral i:before {
+transform: translate(-2px, 0) rotate(-45deg);
+}
+.accordion-bral i:after {
+transform: translate(2px, 0) rotate(45deg);
+}
+ul.ac-list {
+padding-left: 40px;
+padding-top: 20px;
+list-style-type: disc;
+}
+
+table.ac-table {
+margin: 20px 0 20px 20px;
+}
+table.ac-table th{
+text-align: left;
+}
+  label.ac-label p {
+    margin-bottom: 0px;
+}
+  label.ac-label p:after {
+    position: absolute;
+    content: "";
+    background-image: url(https://cdn.shopify.com/s/files/1/0454/5514/7176/t/6/assets/arrow.svg?v=1607427419);
+    width: 16px;
+    height: 24px;
+    transition: 0.15s all ease-in-out;
+    right: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scaleY(-1);
+    opacity: .545;
+  }
+  
+  body .accordion-bral input:checked ~ p:after
+  {
+     transform: scaleY(1);
+  }
+.dataaa {
+    border-bottom: 1px solid #000;
+    padding-top: 15px;
+    padding-bottom: 25px;
+}
+@media (max-width: 550px) {
+.accordion-bral .ac-label {
+padding: 5px 20px;
+position: relative;
+display: block;
+height: auto;
+padding-right: 40px;
+cursor: pointer;
+color: #777;
+line-height: 33px;
+font-size: 19px;
+background: #EFEFEF;
+border: 1px solid #CCC;
+}
+.accordion-bral i {
+position: absolute;
+transform: translate(-30px, 0);
+margin-top: 2%;
+right: 0;
+}
+}
+/* ---------- accordion style end --------------------------------------- */
+
+</style>
+<div class="page-width faq-section">
+   {% if section.settings.section_title != blank %}
+        <div class="rich-text__heading--{{ section.settings.text_size }} text-center">
+          <h2 class="h3">{{ section.settings.section_title | escape }}</h2>
+        </div>
+      {% endif %}
+    <div class="accordion-bral">
+ 	{% for block in section.blocks %}
+          <div class="dataaa">
+          <!-- accordion item 1 -- start -->
+          <input class="ac-input" id="ac-{{forloop.index}}" name="accordion-1" type="checkbox" {%if forloop.index == 1%} checked {%endif%}/>
+          <label class="ac-label" for="ac-{{forloop.index}}">{{block.settings.question}}<i></i></label>
+          <div class="article ac-content">
+            {{block.settings.answer}}
+          </div>
+          </div>
+          <!-- accordion item 1 -- end -->
+	{%endfor%}
+
+    </div>
+  
+</div>
+{% schema %}
+  {
+    "name": "FAQ Section",
+    "settings": [  {
+      "type": "text",
+      "id": "section_title",
+      "label": {
+        "da": "Overskrift",
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "En-tête",
+        "hi": "शीर्षक",
+        "it": "Heading",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "da": "Fortæl om dit brand",
+        "de": "Rede über deine Marke",
+        "en": "Talk about your brand",
+        "es": "Habla de tu marca",
+        "fi": "Kerro brändistäsi",
+        "fr": "Parlez de votre marque",
+        "hi": "अपने ब्रांड के बारे में बात करें",
+        "it": "Parla del tuo brand",
+        "ja": "あなたのブランドについて語る",
+        "ko": "브랜드에 대해 이야기하기",
+        "nb": "Snakk om merkevaren din",
+        "nl": "Vertel over je merk",
+        "pt-BR": "Fale sobre a sua marca",
+        "pt-PT": "Fale sobre a sua marca",
+        "sv": "Prata om ditt varumärke",
+        "th": "พูดถึงแบรนด์ของคุณ",
+        "zh-CN": "介绍您的品牌",
+        "zh-TW": "描述您的品牌"
+      }
+    }],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": {
+        "en": "Column"
+      },
+      "settings": [
+    	{
+          "type": "richtext",
+          "id": "question",
+          "label": {
+            "en": "Question Title"
+          }
+        },
+		{
+          "type": "richtext",
+          "id": "answer",
+          "label": {
+            "en": "Answer"
+          }
+        }
+]
+}]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

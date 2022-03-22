@@ -1,0 +1,68 @@
+{%-liquid
+
+  assign ss           =   section.settings
+  assign scssFile     =   'thankYouHead.css' | asset_url
+
+  echo '<link rel="stylesheet" href="' | append:  scssFile | append: '">'
+
+  if ss.showHideSelectMenu
+
+    echo '<div class="thankYouHead">'
+
+      echo '<div class="page-width">'
+
+        echo '<div class="thankYouHead__grid">'
+
+          echo '<div class="thankYouHead__grid__title">'
+
+            echo ss.title
+
+          echo '</div>'
+
+          echo '<div class="thankYouHead__grid__detail">'
+
+            echo ss.detail | newline_to_br
+
+          echo '</div>'
+
+        echo '</div>'
+
+      echo '</div>'
+
+    echo '</div>'
+
+  endif
+
+-%}
+
+{% schema %}
+{
+  "name"      :   "Thank you Head",
+  "settings"  :   [
+    {
+      "type"      :   "checkbox",
+      "id"        :   "showHideSelectMenu",
+      "label"     :   "Show / Hide Select Menu",
+      "default"   :   true
+    },
+    {
+      "type"      :   "text",
+      "id"        :   "title",
+      "label"     :   "Header Title",
+      "default"   :   "Thank You!"
+    },
+    {
+      "type"      :   "textarea",
+      "id"        :   "detail",
+      "label"     :   "Detail",
+      "default"   :   "By hosting a LoCA show, you will be directly supporting local artists and expanding access and engagement with the arts in your community. We are excited to partner with you. So, what happens next?"
+    }
+  ],
+  "presets": [
+    {
+      "name"      :   "Thank you Head",
+      "category"  :   "Thank you"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,120 @@
+<div class="page-width rich-text">
+  <div class="grid">
+    <div class="grid__item {% unless section.settings.full_width %} medium-up--two-thirds medium-up--push-one-sixth{% endunless %}">
+      {% if section.settings.section_title != blank %}
+        <div class="rich-text__heading--{{ section.settings.text_size }} text-center">
+          <h2 class="h3">{{ section.settings.section_title | escape }}</h2>
+        </div>
+      {% endif %}
+      <form class="search-form search-bar__form" action="{{ routes.search_url }}" method="get" role="search">
+        <div class="search-form__input-wrapper">
+          
+          {% include 'icon-search' %}  <input
+            type="text"
+            name="q"
+           role="combobox"
+            aria-autocomplete="list"
+            aria-owns="predictive-search-results"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            class="search-form__input search-bar__input"
+            data-predictive-search-drawer-input
+          required/>
+          <label>Search by Artist Name, Location, or Style</label>
+          <input type="hidden" name="options[prefix]" value="last" aria-hidden="true" />
+          <div class="predictive-search-wrapper predictive-search-wrapper--drawer" data-predictive-search-mount="drawer"></div>
+        </div>
+
+        <button class="search-bar__submit search-form__submit"
+          type="submit"
+          data-search-form-submit>
+          <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Search Section",
+	"class": "index-section search-section-custom",
+    "settings": [{
+      "type": "text",
+      "id": "section_title",
+      "label": {
+        "da": "Overskrift",
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "En-tête",
+        "hi": "शीर्षक",
+        "it": "Heading",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "da": "Fortæl om dit brand",
+        "de": "Rede über deine Marke",
+        "en": "Talk about your brand",
+        "es": "Habla de tu marca",
+        "fi": "Kerro brändistäsi",
+        "fr": "Parlez de votre marque",
+        "hi": "अपने ब्रांड के बारे में बात करें",
+        "it": "Parla del tuo brand",
+        "ja": "あなたのブランドについて語る",
+        "ko": "브랜드에 대해 이야기하기",
+        "nb": "Snakk om merkevaren din",
+        "nl": "Vertel over je merk",
+        "pt-BR": "Fale sobre a sua marca",
+        "pt-PT": "Fale sobre a sua marca",
+        "sv": "Prata om ditt varumärke",
+        "th": "พูดถึงแบรนด์ของคุณ",
+        "zh-CN": "介绍您的品牌",
+        "zh-TW": "描述您的品牌"
+      }
+    }
+    ],
+  "presets": [
+    {
+      "name": {
+        "en": "Search Section"
+      },
+      "category": {
+        "da": "Tekst",
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fi": "Teksti",
+        "fr": "Texte",
+        "hi": "टेक्स्ट",
+        "it": "Testo",
+        "ja": "テキスト",
+        "ko": "텍스트",
+        "nb": "Tekst",
+        "nl": "Tekst",
+        "pt-BR": "Texto",
+        "pt-PT": "Texto",
+        "sv": "Text",
+        "th": "ข้อความ",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      }
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

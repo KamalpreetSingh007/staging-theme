@@ -1,0 +1,117 @@
+{%-liquid
+  assign ss                     =   section.settings
+  assign sb                     =   section.blocks
+
+  if ss.showHideSelectMenu
+
+    echo '<section class="spaceSignUp__list">'
+
+      echo '<div class="page-width">'
+
+        assign listArr          =   sb | where: 'type', 'list'
+
+        if listArr.size > 0
+
+          echo '<div class="spaceSignUp__list__grid">'
+
+            for block in listArr
+
+              assign b          =   block.settings
+
+              echo '<div class="spaceSignUp__list__grid__item">'
+
+                if b.title != blank
+
+                  echo '<h3 class="spaceSignUp__list__grid__item--title">'
+                    echo b.title
+                  echo '</h3>'
+
+                endif
+
+                if b.detail != blank
+
+                  echo '<div class="spaceSignUp__list__grid__item--detail">'
+                    echo b.detail | newline_to_br
+                  echo '</div>'
+
+                endif
+
+              echo '</div>'
+
+            endfor
+
+          echo '</div>'
+
+        endif
+
+      echo '</div>'
+
+      echo '<style>'
+        echo '.spaceSignUp__list__grid__item--title{color: ' | append: ss.titleColor | append: ';}'
+        echo '.spaceSignUp__list__grid__item--detail{color: ' | append: ss.detailColor | append: ';}'
+        echo '.spaceSignUp__list__grid__item{border-top-color: ' | append: ss.borderColor | append: ';}'
+      echo '</style>'
+
+    echo '</section>'
+
+  endif
+-%}
+
+
+{% schema %}
+{
+  "name"      :   "Spaces List",
+  "settings"  :   [
+    {
+      "type"      :   "checkbox",
+      "id"        :   "showHideSelectMenu",
+      "label"     :   "Show / Hide Select Menu",
+      "default"   :   true
+    },
+    {
+      "type"      :   "color",
+      "id"        :   "titleColor",
+      "label"     :   "Title Text Color",
+      "default"   :   "#000"
+    },
+    {
+      "type"      :   "color",
+      "id"        :   "detailColor",
+      "label"     :   "Color for Detail Content",
+      "default"   :   "#000"
+    },
+    {
+      "type"      :   "color",
+      "id"        :   "borderColor",
+      "label"     :   "Color for Border",
+      "default"   :   "#000"
+    }
+  ],
+  "blocks"    :   [
+    {
+      "type"      :   "list",
+      "name"      :   "List",
+      "settings"  :   [
+        {
+          "type"    :   "checkbox",
+          "id"      :   "showHideItem",
+          "label"   :   "Show / Hide Item",
+          "default" :   true
+        },
+        {
+          "type"    :   "text",
+          "id"      :   "title",
+          "label"   :   "Item Title",
+          "default" :   "New art every 3 months."
+        },
+        {
+          "type"    :   "textarea",
+          "id"      :   "detail",
+          "label"   :   "Detail",
+          "default" :   "LoCA will recommend 3 early emerging artists in your community that we believe will be a good fit with your business. The final selection will be made by you. Each show lasts approximately 3 months."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

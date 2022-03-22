@@ -1,0 +1,29 @@
+{%-liquid
+  assign ss       =   section.settings
+
+  if ss.showHideAnnoucementBar
+
+    echo '<style>.announcement-bar {display: none !important;}</style>'
+
+  endif
+-%}
+
+{% schema %}
+{
+  "name"      :   "Show Hide Annoucement Bar",
+  "settings"  :   [
+    {
+     "type"     :   "checkbox",
+     "id"       :   "showHideAnnoucementBar",
+     "label"    :   "Show / Hide Annoucement Bar",
+     "default"  :   true
+    }
+  ],
+  "presets"   :   [
+    {
+      "name"      :   "Show Hide Annoucement Bar",
+      "category"  :   "Annoucement Bar"
+    }
+  ]
+}
+{% endschema %}

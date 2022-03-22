@@ -1,0 +1,189 @@
+{%-liquid
+  assign ss                           =   section.settings
+  assign sb                           =   section.blocks
+
+  if ss.showHideSelectMenu
+
+    echo '<section class="spaceSignUp__plans">'
+
+      echo '<div class="page-width">'
+
+        echo '<div class="spaceSignUp__plans__wrap">'
+
+          if ss.title != blank
+
+            echo '<div class="spaceSignUp__plans__wrap__title">'
+              echo ss.title
+            echo '</div>'
+
+          endif
+
+          if ss.detail_2nd != blank
+
+            assign first_Col          =   '_firstCol_'
+            assign second_Col         =   '_secondCol_'
+            assign two_Cols           =   '_2cols_'
+
+          endif
+
+          if ss.detail != blank
+
+            echo '<div class="spaceSignUp__plans__wrap__detail ' | append: first_Col | append: ' ' | append: two_Cols | append: '">'
+              echo ss.detail | newline_to_br
+            echo '</div>'
+
+          endif
+
+          if ss.detail_2nd != blank
+
+            echo '<div class="spaceSignUp__plans__wrap__detail ' | append: second_Col | append: ' ' | append: two_Cols | append: '">'
+              echo ss.detail_2nd | newline_to_br
+            echo '</div>'
+
+          endif
+
+          if ss.getStartedContent != blank
+
+            echo '<div class="spaceSignUp__plans__wrap__getStarted">'
+              echo ss.getStartedContent
+            echo '</div>'
+
+          endif
+
+          if ss.chargebeeBtn and ss.chargebeeBtnContent != blank
+
+            echo '<div class="spaceSignUp__plans__wrap__linkWrap--fixed">'
+
+              echo ss.chargebeeBtnContent
+
+            echo '</div>'
+
+            echo '<div class="spaceSignUp__plans__wrap__linkWrap">'
+
+              echo ss.chargebeeBtnContent
+
+            echo '</div>'
+
+          else
+
+            if ss.btnLabel != blank
+
+              assign btnLInkIs          =   ss.btnLink | default: 'javascript:void(0)'
+
+              echo '<div class="spaceSignUp__plans__wrap__linkWrap--fixed">'
+                echo '<a href="' | append: btnLInkIs | append: '" class="spaceSignUp__plans__wrap__linkWrap__link">'
+                  echo ss.btnLabel
+                echo '</a>'
+              echo '</div>'
+
+              echo '<div class="spaceSignUp__plans__wrap__linkWrap">'
+                echo '<a href="' | append: btnLInkIs | append: '" class="spaceSignUp__plans__wrap__linkWrap__link">'
+                  echo ss.btnLabel
+                echo '</a>'
+              echo '</div>'
+
+            endif
+
+          endif
+
+          if ss.sectionFooterContent != blank
+
+            echo '<div class="spaceSignUp__plans__wrap__footerContent">'
+
+              echo ss.sectionFooterContent
+
+            echo '</div>'
+
+          endif
+
+        echo '</div>'
+
+      echo '</div>'
+
+    echo '</section>'
+
+    assign removeHashSignFromColor    =   ss.svgColor | remove: '#'
+
+    assign bgSvg                      =   "data:image/svg+xml,%3Csvg width='1440' height='792' viewBox='0 0 1440 792' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1440' height='792' fill='%23" | append: removeHashSignFromColor | append: "'/%3E%3Cmask id='mask0_9_3097' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='1440' height='792'%3E%3Crect width='1440' height='792' fill='%23" | append: removeHashSignFromColor | append: "'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_9_3097)'%3E%3Cpath d='M-192.577 228.774C-264.262 172.75 -167.375 26.1537 -167.375 26.1537C-167.375 26.1537 -145.159 -5.03306 -112.303 -66.2861C-71.2331 -142.852 -48.8312 -80.2921 -31.0965 -52.2801C-13.3618 -24.268 91.1796 183.955 120.115 281.997C149.051 380.04 118.248 409.919 51.9765 390.311C-14.2953 370.702 -102.97 298.805 -192.577 228.774Z' fill='white'/%3E%3Cpath d='M1123.08 1166.79C876.558 1086.91 950.056 822.126 969.003 673.725C984.052 600.407 999.149 521.434 1052.74 436.551C1119.73 330.448 1521.66 427.189 1585.3 455.276C1648.94 483.362 1635.55 633.156 1561.86 673.725C1488.17 714.294 1461.37 558.259 1350.84 658.121C1240.31 757.983 1578.6 820.397 1585.3 932.743C1592 1045.09 1431.23 1266.66 1123.08 1166.79Z' fill='white'/%3E%3C/g%3E%3C/svg%3E"
+
+    echo '<style>'
+      echo '.spaceSignUp__plans{background-image: url("' | append: bgSvg | append: '");}'
+      echo '.spaceSignUp__plans__wrap__linkWrap:after, .spaceSignUp__plans__wrap__linkWrap--fixed:after{background-color: ' | append: ss.svgColor | append: '}'
+    echo '</style>'
+
+  endif
+-%}
+
+
+{% schema %}
+{
+  "name"      :   "Spaces Plans",
+  "settings"  :   [
+    {
+      "type"      :   "checkbox",
+      "id"        :   "showHideSelectMenu",
+      "label"     :   "Show / Hide Select Menu",
+      "default"   :   true
+    },
+    {
+      "type"      :   "text",
+      "id"        :   "title",
+      "label"     :   "Header Title",
+      "default"   :   "This plan costs $9/month with a minimum commitment of 3 months."
+    },
+    {
+      "type"      :   "textarea",
+      "id"        :   "detail",
+      "label"     :   "Under Title Detail",
+      "default"   :   "Once you sign up, you'll be automatically billed monthly, but you can cancel up to [x] days before your next billing date."
+    },
+    {
+      "type"      :   "textarea",
+      "id"        :   "detail_2nd",
+      "label"     :   "Under Title 2nd Coloumn Detail",
+      "default"   :   "Once you sign up, you'll be automatically billed monthly, but you can cancel up to [x] days before your next billing date."
+    },
+    {
+      "type"      :   "text",
+      "id"        :   "getStartedContent",
+      "label"     :   "Get Started Content",
+      "default"   :   "Ready to get started?"
+    },
+    {
+      "type"      :   "url",
+      "id"        :   "btnLink",
+      "label"     :   "Button Link"
+    },
+    {
+      "type"      :   "text",
+      "id"        :   "btnLabel",
+      "label"     :   "Button Label",
+      "default"   :   "Sign Up Now"
+    },
+    {
+      "type"      :   "checkbox",
+      "id"        :   "chargebeeBtn",
+      "label"     :   "Is chargebee active",
+      "default"   :   true
+    },
+    {
+      "type"      :   "textarea",
+      "id"        :   "chargebeeBtnContent",
+      "label"     :   "Chargebee Button HTML",
+      "default"   :   "<a href='javascript:void(0)' data-cb-type='checkout' data-cb-item-0='LoCA-Community-USD-Monthly' data-cb-item-0-quantity='1' class='spaceSignUp__plans__wrap__linkWrap__link'>subscribe</a>"
+    },
+    {
+      "type"      :   "richtext",
+      "id"        :   "sectionFooterContent",
+      "label"     :   "Bottom Content",
+      "default"   :   "<p>Have more questions? Reach out to us at help@loca.art.</p>"
+    },
+    {
+      "type"      :   "color",
+      "id"        :   "svgColor",
+      "label"     :   "Background Color",
+      "default"   :   "#FFC3BF"
+    }
+  ]
+}
+{% endschema %}

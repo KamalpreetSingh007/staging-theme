@@ -1,0 +1,135 @@
+{%-liquid
+  assign ss                       =   section.settings
+  assign sb                       =   section.blocks
+
+  assign cssFile                  =   'commonQuestions.css' | asset_url
+
+  if ss.showHideSec
+
+    echo '<link rel="stylesheet" href="' | append: cssFile | append: '">'
+
+    echo '<section class="commonQuestions">'
+
+      echo '<div class="page-width">'
+
+        echo '<h3 class="commonQuestions__title">'
+          echo ss.title
+        echo '</h3>'
+
+        echo '<div class="commonQuestions__list">'
+
+          assign slideArr         =   sb | where: 'type', 'question'
+
+          for block in slideArr
+
+            assign b              =   block.settings
+
+            if forloop.first
+
+              assign isAvtive     =   ' active '
+
+            else
+
+              assign isAvtive     =   ''
+
+            endif
+
+            echo '<div class="commonQuestions__item' | append: isAvtive | append: '">'
+
+              echo '<div class="commonQuestions__question">'
+                echo b.title | newline_to_br
+              echo '</div>'
+
+              echo '<div class="commonQuestions__answer">'
+                echo b.answer | newline_to_br
+              echo '</div>'
+
+            echo '</div>'
+
+          endfor
+
+        echo '</div>'
+
+      echo '</div>'
+
+    echo '</section>'
+
+  endif
+-%}
+
+<script>
+  $( document )
+  .on(`click`, `.commonQuestions__question`, function( e ) {
+    try {
+
+      e.stopImmediatePropagation();
+      const isActive        =   $( this ).closest( `.commonQuestions__item` ).hasClass( `active` );
+
+      if ( isActive ) {
+
+        $( this ).closest( `.commonQuestions__item` ).removeClass( `active` );
+
+      } else {
+
+        $( this ).closest( `.commonQuestions__item` ).addClass( `active` );
+
+      }
+
+    }
+    catch ( err ) {
+      console.log( `ERROR .commonQuestions__item`, err.message );
+    }
+  })
+  ;
+</script>
+
+{% schema %}
+{
+  "name"      :   "Common Questions",
+  "settings"  :   [
+    {
+      "type"      :   "checkbox",
+      "id"        :   "showHideSec",
+      "label"     :   "Show / Hide Section",
+      "default"   :   true
+    },
+    {
+      "type"    :   "text",
+      "id"      :   "title",
+      "label"   :   "Title",
+      "default" :   "Why host a LoCA show?"
+    }
+  ],
+  "blocks"    :   [
+    {
+      "type"      :   "question",
+      "name"      :   "Question",
+      "settings"  :   [
+        {
+          "type"    :   "textarea",
+          "id"      :   "title",
+          "label"   :   "Question",
+          "default" :   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, tempore!"
+        },
+        {
+          "type"    :   "textarea",
+          "id"      :   "answer",
+          "label"   :   "Answer",
+          "default" :   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, tempore!"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name"      :   "Common Questions",
+      "category"  :   "Spaces Pages",
+      "blocks"    :   [
+        {
+          "type"      :   "question"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

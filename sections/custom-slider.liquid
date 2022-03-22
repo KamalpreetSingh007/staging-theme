@@ -1,0 +1,261 @@
+{%-liquid
+  assign ss                       =   section.settings
+  assign sb                       =   section.blocks
+
+  assign cssFile                  =   'customSlider.css' | asset_url
+
+  assign swipeJs                  =   'swipe.js' | asset_url
+
+  echo '<script src="' | append: swipeJs | append: '"></script>'
+
+  if ss.showHideSec
+
+    echo '<link rel="stylesheet" href="' | append: cssFile | append: '">'
+
+    echo '<section class="customSlider">'
+
+      echo '<div class="page-width">'
+
+        echo '<div class="customSlider__sliderWrapper">'
+
+          echo '<div class="customSlider__flex" id="swapFunc">'
+
+            assign slideArr         =   sb | where: 'type', 'slide'
+
+            for block in slideArr
+
+              assign b              =   block.settings
+
+              if forloop.first
+
+                assign isActive     =   'active'
+
+              else
+
+                assign isActive     =   ''
+
+              endif
+
+              assign loopIndex      =   forloop.index | minus: 1
+
+              echo '<div class="customSlider__itemImage ' | append: isActive | append: '" slide="' | append: loopIndex | append: '">'
+
+                assign bannerImg    =   b.slideImage | img_url: '800x'
+
+                echo '<img src="' | append: bannerImg | append: '">'
+
+                echo '<div class="customSlider__caption">'
+                  echo b.title
+                echo '</div>'
+
+              echo '</div>'
+
+            endfor
+
+          echo '</div>'
+
+          if ss.showHideArrows
+
+            echo '<div class="customSlider__arrowNext next">'
+
+              assign arrowNext      =   ss.rightArrow | img_url: '24x'
+              echo '<img src="' | append: arrowNext | append: '">'
+
+            echo '</div>'
+
+            echo '<div class="customSlider__arrowPrev prev">'
+              assign arrowPrev      =   ss.leftArrow | img_url: '24x'
+              echo '<img src="' | append: arrowPrev | append: '">'
+            echo '</div>'
+
+          endif
+
+          if ss.showHideControls == false
+            assign controls         =   ' hide '
+          endif
+
+          echo '<div class="customSlider__controls' | append: controls | append: '">'
+
+            assign slideArr         =   sb | where: 'type', 'slide'
+
+            for block in slideArr
+
+              if forloop.first
+
+                assign isActive     =   'active'
+
+              else
+
+                assign isActive     =   ''
+
+              endif
+
+              assign loopIndex      =   forloop.index | minus: 1
+
+              echo '<span class="' | append: isActive | append: '" slide="' | append: loopIndex | append: '"></span>'
+
+            endfor
+
+          echo '</div>'
+
+        echo '</div>'
+
+      echo '</div>'
+
+    echo '</section>'
+
+  endif
+-%}
+
+<script>
+  $( document )
+  .on(`click`, `.customSlider__controls span`, function( e ) {
+    try {
+
+      e.stopImmediatePropagation();
+      const getSlideNumber            =   $( this ).attr( `slide` );
+      const slideNumberWithMultiply   =   getSlideNumber * 100;
+
+      // console.log ( 'getSlideNumber', slideNumberWithMultiply );
+
+      $( this ).closest( `.customSlider` ).find( `.customSlider__itemImage` ).removeClass( `active` ).css( `transform`, `translateX(-${ slideNumberWithMultiply }%)` );
+      $( this ).closest( `.customSlider` ).find( `.customSlider__itemImage[slide="${ getSlideNumber }"]` ).addClass( `active` );
+
+
+      $( this ).closest( `.customSlider__controls` ).find( `span` ).removeClass( `active` );
+      $( this ).closest( `.customSlider` ).find( `.customSlider__controls span[slide="${ getSlideNumber }"]` ).addClass( `active` );
+
+    }
+    catch ( err ) {
+      console.log( `ERROR .customSlider__controls span`, err.message );
+    }
+  })
+
+  .on(`click`, `.customSlider__arrowNext, .customSlider__arrowPrev`, function( e ) {
+    try {
+
+      e.stopImmediatePropagation();
+      const isNext          =   $( this ).hasClass( `next` );
+      const isPrev          =   $( this ).hasClass( `prev` );
+
+      if ( isNext ) {
+
+        const totalSlides   =   $( this ).closest( `.customSlider` ).find( `.customSlider__itemImage` ).length - 1;
+
+        const currentSlide  =   $( this ).closest( `.customSlider` ).find( `.customSlider__itemImage.active` ).attr( `slide` ) * 1;
+
+        if ( currentSlide == totalSlides ) {
+
+          $( this ).closest( `.customSlider` ).find( `.customSlider__controls span[slide="0"]` ).click();
+
+        } else {
+
+          $( this ).closest( `.customSlider` ).find( `.customSlider__controls span.active` ).next().click();
+
+        }
+
+      } else if ( isPrev ) {
+
+        const totalSlides   =   $( this ).closest( `.customSlider` ).find( `.customSlider__itemImage` ).length - 1;
+
+        const currentSlide  =   $( this ).closest( `.customSlider` ).find( `.customSlider__itemImage.active` ).attr( `slide` ) * 1;
+
+        if ( currentSlide == 0 ) {
+
+          $( this ).closest( `.customSlider` ).find( `.customSlider__controls span[slide="${ totalSlides }"]` ).click();
+
+        } else {
+
+          $( this ).closest( `.customSlider` ).find( `.customSlider__controls span.active` ).prev().click();
+
+        }
+
+      }
+
+    }
+    catch ( err ) {
+      console.log( `ERROR .customSlider__arrowNext, .customSlider__arrowPrev`, err.message );
+    }
+  })
+  ;
+
+  document.getElementById('swapFunc').addEventListener('swiped-left', function(e) {
+
+    $( `.customSlider__arrowNext` ).click();
+
+  });
+
+  document.getElementById('swapFunc').addEventListener('swiped-right', function(e) {
+
+    $( `.customSlider__arrowPrev` ).click();
+
+  });
+
+</script>
+
+
+{% schema %}
+{
+  "name"      :   "Spaces Slider",
+  "settings"  :   [
+    {
+      "type"      :   "checkbox",
+      "id"        :   "showHideSec",
+      "label"     :   "Show / Hide Section",
+      "default"   :   true
+    },
+    {
+      "type"      :   "checkbox",
+      "id"        :   "showHideArrows",
+      "label"     :   "Show / Hide Arrows",
+      "default"   :   true
+    },
+    {
+      "type"    :   "image_picker",
+      "id"      :   "rightArrow",
+      "label"   :   "Upload Next arrow Icon"
+    },
+    {
+      "type"    :   "image_picker",
+      "id"      :   "leftArrow",
+      "label"   :   "Upload Previous arrow Icon"
+    },
+    {
+      "type"      :   "checkbox",
+      "id"        :   "showHideControls",
+      "label"     :   "Show / Hide Slider Footer Control",
+      "default"   :   true
+    }
+  ],
+  "blocks"    :   [
+    {
+      "type"      :   "slide",
+      "name"      :   "Slide",
+      "settings"  :   [
+        {
+          "type"    :   "image_picker",
+          "id"      :   "slideImage",
+          "label"   :   "Upload Slide Image"
+        },
+        {
+          "type"    :   "text",
+          "id"      :   "title",
+          "label"   :   "Caption",
+          "default" :   "Lorem ipsem"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name"      :   "Spaces Slider",
+      "category"  :   "Spaces Pages",
+      "blocks"    :   [
+        {
+          "type"      :   "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

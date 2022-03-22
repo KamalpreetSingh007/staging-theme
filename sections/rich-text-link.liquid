@@ -1,0 +1,161 @@
+<div class="page-width rich-text">
+  <div class="grid">
+    <div class="grid__item {% unless section.settings.full_width %} medium-up--two-thirds medium-up--push-one-sixth{% endunless %}">
+      {% if section.settings.section_title != blank %}
+        <div class="rich-text__heading--{{ section.settings.text_size }} text-center">
+          <h2 class="h3">{{ section.settings.section_title | escape }}</h2>
+        </div>
+      {% endif %}
+      {% if section.settings.button_link != blank %}
+      <div class="rich-text rte-setting text-center"><a href="{{section.settings.button_link}}" class="btn">{{ section.settings.button_label }}</a></div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": {
+    "da": "RTF",
+    "de": "Rich Text",
+    "en": "Rich text",
+    "es": "Texto enriquecido",
+    "fi": "Rich text",
+    "fr": "Texte enrichi",
+    "hi": "रिच टेक्स्ट",
+    "it": "Rich text",
+    "ja": "リッチテキスト",
+    "ko": "Rich text",
+    "nb": "Rich text",
+    "nl": "Tekst met opmaak",
+    "pt-BR": "Rich text",
+    "pt-PT": "Texto formatado",
+    "sv": "Rich text",
+    "th": "Rich Text",
+    "zh-CN": "格式文本",
+    "zh-TW": "RTF 文字"
+  },
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": {
+        "da": "Bred visning",
+        "de": "Breitbild-Display",
+        "en": "Wide display",
+        "es": "Pantalla ancha",
+        "fi": "Laaja näyttö",
+        "fr": "Affichage large",
+        "hi": "चौड़ा डिस्प्ले",
+        "it": "Visualizzazione ampia",
+        "ja": "ワイドディスプレイ",
+        "ko": "너비 표시",
+        "nb": "Bred visning",
+        "nl": "Brede weergave",
+        "pt-BR": "Exibição ampla",
+        "pt-PT": "Exibição ampla",
+        "sv": "Breddvisning",
+        "th": "การแสดงผลแบบกว้าง",
+        "zh-CN": "宽显示屏",
+        "zh-TW": "寬螢幕"
+      }
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": {
+        "da": "Overskrift",
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "En-tête",
+        "hi": "शीर्षक",
+        "it": "Heading",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "da": "Fortæl om dit brand",
+        "de": "Rede über deine Marke",
+        "en": "Talk about your brand",
+        "es": "Habla de tu marca",
+        "fi": "Kerro brändistäsi",
+        "fr": "Parlez de votre marque",
+        "hi": "अपने ब्रांड के बारे में बात करें",
+        "it": "Parla del tuo brand",
+        "ja": "あなたのブランドについて語る",
+        "ko": "브랜드에 대해 이야기하기",
+        "nb": "Snakk om merkevaren din",
+        "nl": "Vertel over je merk",
+        "pt-BR": "Fale sobre a sua marca",
+        "pt-PT": "Fale sobre a sua marca",
+        "sv": "Prata om ditt varumärke",
+        "th": "พูดถึงแบรนด์ของคุณ",
+        "zh-CN": "介绍您的品牌",
+        "zh-TW": "描述您的品牌"
+      }
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": {
+        "da": "Knaptekst",
+        "de": "Button-Etikett",
+        "en": "Button label",
+        "es": "Etiqueta de botón",
+        "fi": "Tekstipainike",
+        "fr": "Texte du bouton",
+        "hi": "बटन लेबल",
+        "it": "Etichetta pulsante",
+        "ja": "ボタンのラベル",
+        "ko": "버튼 레이블",
+        "nb": "Knappetikett",
+        "nl": "Knoplabel",
+        "pt-BR": "Etiqueta de botão",
+        "pt-PT": "Etiqueta do botão",
+        "sv": "Knappetikett",
+        "th": "ป้ายกำกับปุ่ม",
+        "zh-CN": "按钮标签",
+        "zh-TW": "按鈕標籤"
+      }
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": {
+        "da": "Knaplink",
+        "de": "Button-Link",
+        "en": "Button link",
+        "es": "Enlace de botón",
+        "fi": "Painikelinkki",
+        "fr": "Lien du bouton",
+        "hi": "बटन लिंक",
+        "it": "Link pulsante",
+        "ja": "ボタンのリンク",
+        "ko": "버튼 링크",
+        "nb": "Kobling for knapp",
+        "nl": "Knoplink",
+        "pt-BR": "Link de botão",
+        "pt-PT": "Ligação do botão",
+        "sv": "Knapplänk",
+        "th": "ลิงก์ปุ่ม",
+        "zh-CN": "按钮链接",
+        "zh-TW": "按鈕連結"
+      }
+    }
+      ]
+    }
+ 
+{% endschema %}
