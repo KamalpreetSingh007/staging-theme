@@ -1,0 +1,204 @@
+<!-- /snippets/social-meta-tags.liquid -->
+{%-liquid
+  assign og_title                         =   page_title | default: shop.name
+  assign og_url                           =   canonical_url | default: shop.url
+  assign og_type                          =   'website'
+  assign og_description                   =   page_description | default: shop.description | default: shop.name
+
+  if page_image
+
+    assign page_image__                   =   page_image | img_url: '1200x1200'
+
+    capture og_image_tags
+
+      echo '<meta property="og:image" content="http:' | append: page_image__ | append: '">'
+
+    endcapture
+
+    capture og_image_secure_url_tags
+
+      echo '<meta property="og:image:secure_url" content="https:' | append: page_image__ | append: '">'
+
+    endcapture
+
+  endif
+
+  comment
+    Template specific overides
+  endcomment
+
+  if request.page_type == 'product'
+
+    assign og_type                        =   'product'
+
+    if product.media.size > 0
+
+      capture og_image_tags
+
+        for media in product.media limit:3
+
+          assign media__                  =   media | img_url: '1200x1200'
+          echo '<meta property="og:image" content="http:' | append: media__ | append: '">'
+
+        endfor
+
+      endcapture
+
+      capture og_image_secure_url_tags
+
+        for media in product.media limit:3
+
+          assign media__                  =   media | img_url: '1200x1200'
+          echo '<meta property="og:image:secure_url" content="https:' | append: media__ | append: '">'
+
+        endfor
+
+      endcapture
+
+    endif
+
+  elsif request.page_type == 'article'
+
+    assign og_type                        =   'article'
+
+    if article.image
+
+      assign articleImage                 =   article.image | img_url: '1200x1200'
+
+      capture og_image_tags
+
+        echo '<meta property="og:image" content="http:' | append: articleImage | append: '">'
+
+      endcapture
+
+      capture og_image_secure_url_tags
+
+        echo '<meta property="og:image:secure_url" content="https:' | append: articleImage | append: '">'
+
+      endcapture
+
+    endif
+
+  elsif request.page_type == 'collection'
+
+    assign og_type                        =   'product.group'
+
+    if collection.image
+
+      assign collectionImage              =   collection.image | img_url: '1200x1200'
+
+      capture og_image_tags
+
+        echo '<meta property="og:image" content="http:' | append: collectionImage | append: '">'
+
+      endcapture
+
+      capture og_image_secure_url_tags
+
+        echo '<meta property="og:image:secure_url" content="https:' | append: collectionImage | append: '">'
+
+      endcapture
+
+    endif
+
+  elsif request.page_type == 'password'
+
+    assign og_url                         =   shop.url
+
+  endif
+
+  echo '<meta property="og:site_name" content="' | append: shop.name | append: '">'
+  echo '<meta property="og:url" content="' | append: og_url | append: '">'
+  echo '<meta property="og:title" content="' | append: og_title | append: '">'
+  echo '<meta property="og:type" content="' | append: og_type | append: '">'
+  echo '<meta property="og:description" content="' | append: og_description | append: '">'
+
+  if request.page_type == 'product'
+
+    assign productPrice                   =   product.price | money_without_currency | strip_html
+    echo '<meta property="og:price:amount" content="' | append: productPrice | append: '">'
+    echo '<meta property="og:price:currency" content="' | append: cart.currency.iso_code | append: '">'
+
+  endif
+
+  echo og_image_tags
+  echo og_image_secure_url_tags
+
+  unless settings.social_twitter_link == blank
+    assign settingsSocial_twitter_link    =   settings.social_twitter_link | split: 'twitter.com/' | last | prepend: '@'
+    echo '<meta name="twitter:site" content="' | append: settingsSocial_twitter_link | append: '">'
+  endunless
+
+  echo '<meta name="twitter:card" content="summary_large_image">'
+  echo '<meta name="twitter:title" content="' | append: og_title | append: '">'
+  echo '<meta name="twitter:description" content="' | append: og_description | append: '">'
+
+%}
+
+
+
+
+
+
+
+
+
+
+
+
+{%- comment -%}
+
+<!-- /snippets/social-meta-tags.liquid -->
+{%- assign og_title         =   page_title | default: shop.name -%}
+{%- assign og_url           =   canonical_url | default: shop.url -%}
+{%- assign og_type          =   'website' -%}
+{%- assign og_description   =   page_description | default: shop.description | default: shop.name -%}
+{% if page_image %}
+  {%- capture og_image_tags -%}<meta property="og:image" content="http:{{ page_image | img_url: '1200x1200' }}">{%- endcapture -%}
+  {%- capture og_image_secure_url_tags -%}<meta property="og:image:secure_url" content="https:{{ page_image | img_url: '1200x1200' }}">{%- endcapture -%}
+{% endif %}
+
+{% if request.page_type == 'product' %}
+  {%- assign og_type        =   'product' -%}
+  {% if product.media.size > 0 %}
+    {%- capture og_image_tags -%}{% for media in product.media limit:3 -%}<meta property="og:image" content="http:{{ media | img_url: '1200x1200' }}">{% endfor -%}{% endcapture -%}
+    {%- capture og_image_secure_url_tags -%}{% for media in product.media limit:3 -%}<meta property="og:image:secure_url" content="https:{{ media | img_url: '1200x1200' }}">{% endfor -%}{% endcapture -%}
+  {% endif %}
+
+{% elsif request.page_type == 'article' %}
+  {%- assign og_type        =   'article' -%}
+  {% if article.image %}
+    {%- capture og_image_tags -%}<meta property="og:image" content="http:{{ article.image | img_url: '1200x1200' }}">{%- endcapture -%}
+    {%- capture og_image_secure_url_tags -%}<meta property="og:image:secure_url" content="https:{{ article.image | img_url: '1200x1200' }}">{%- endcapture -%}
+  {% endif %}
+
+{% elsif request.page_type == 'collection' %}
+  {%- assign og_type        =   'product.group' -%}
+  {% if collection.image %}
+    {%- capture og_image_tags -%}<meta property="og:image" content="http:{{ collection.image | img_url: '1200x1200' }}">{%- endcapture -%}
+    {%- capture og_image_secure_url_tags -%}<meta property="og:image:secure_url" content="https:{{ collection.image | img_url: '1200x1200' }}">{%- endcapture -%}
+  {% endif %}
+
+{% elsif request.page_type == 'password' %}
+  {%- assign og_url         =   shop.url -%}
+{% endif %}
+
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:url" content="{{ og_url }}">
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:description" content="{{ og_description }}">
+{% if request.page_type == 'product' %}
+  <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html }}">
+  <meta property="og:price:currency" content="{{ cart.currency.iso_code }}">
+{% endif %}
+{{ og_image_tags }}
+{{ og_image_secure_url_tags }}
+
+{% unless settings.social_twitter_link == blank %}
+  <meta name="twitter:site" content="{{ settings.social_twitter_link | split: 'twitter.com/' | last | prepend: '@' }}">
+{% endunless %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ og_title }}">
+<meta name="twitter:description" content="{{ og_description }}">
+{%- endcomment -%}

@@ -1,0 +1,68 @@
+{% if type == 'toggle' %}
+  <div class="priceLabelIs body_2" {{ defaultSelection }} loading="show">
+    {{ 'products.product.select_kind' | t }}
+  </div>
+  <div class="priceToggler" loading-border="remove">
+    <div class="original {% if defaultSelection == 'original' %}selected{% endif %}" first-original-variant="{{ first_original_variant }}" loading="show">
+      {{ 'products.product.original' | t }}
+    </div>
+    <div class="prints {% if defaultSelection == 'print' %}selected{% endif %}" first-print-variant="{{ first_print_variant }}" loading="show">
+      {{ 'products.product.prints' | t }}
+    </div>
+  </div>
+{% elsif type == 'selectMenu' %}
+  <div class="priceLabelIs body_2" loading="show">
+    {{ 'products.product.select_print_size' | t }}
+  </div>
+  <div loading="show">
+    <select class="selectMenuIs">
+      {% for variant in product.variants %}
+        {% assign titleIs = variant.title | downcase %}
+        {% if titleIs contains 'print' %}
+          {% assign splitTitle = variant.title | split: ' / ' %}
+          {% assign getTitle = splitTitle[0] %}
+          {% assign getSize = splitTitle[1] | escape %}
+
+          {% if variant.inventory_quantity > 0 or variant.inventory_quantity == 0 and variant.inventory_policy == 'continue' %}
+            <option
+              value="{{ variant.id }}"
+              {%- if variant == current_variant %} selected="selected" {%- endif -%}
+            >
+              {% if getSize != blank %}
+                {{ getSize }}
+              {% else %}
+                {{ variant.title }} ({{ variant.price | money }})  {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+              {% endif %}
+            </option>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </select>
+  </div>
+
+  {% if product.options_with_values.size == 1 %}
+    <div loading="show">
+      <select class="selectMenuIs_onlyPrints" element-is="hide">
+        {% for variant in product.variants %}
+          {% assign titleIs = variant.title | downcase %}
+          {% if titleIs contains 'print' %}
+            <option
+              value="{{ variant.id }}"
+              {%- if variant == product.selected_variant %} selected="selected" {%- endif -%}
+              item-variant-id="{{ variant.id }}"
+              item-price="{{ variant.price | money }}"
+              {% if product.metafields.artwork.ag_original == '1' %}
+                type-is="{% if titleIs contains 'print' %}print{% else %}original{% endif %}"
+              {% endif %}
+              is-available="{{ variant.available }}"
+              item-quantity="{{ variant.inventory_quantity }}"
+            >
+              {{ variant.title }} ({{ variant.price | money }})  {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+            </option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+  {% endif %}
+
+{% endif %}

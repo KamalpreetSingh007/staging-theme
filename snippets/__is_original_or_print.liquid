@@ -1,0 +1,131 @@
+{%-liquid
+  if product != blank
+    assign agOriginal         =   product.metafields.artwork.ag_original
+    assign agLocaPrints       =   product.metafields.artwork.ag_loca_prints | downcase
+
+    capture original_or_print
+      if agOriginal == '1' and agLocaPrints == 'yes'
+
+        if product.has_only_default_variant == true
+
+          echo 'original'
+
+        else
+
+          echo 'original_and_print'
+
+        endif
+
+      elsif agOriginal == '1' and agLocaPrints != 'yes'
+
+        echo 'original'
+
+      elsif agOriginal == '0' and agLocaPrints == 'yes'
+
+        echo 'print'
+
+      elsif agOriginal == '0' and agLocaPrints != 'yes'
+
+        echo 'error'
+
+      elsif agOriginal == blank and agLocaPrints == 'yes'
+
+        echo 'print'
+
+      elsif agOriginal == blank and agLocaPrints == 'no'
+
+        echo 'error'
+
+      endif
+    endcapture
+
+    assign originalCount    =   0
+    assign printCount       =   0
+
+    for v in product.variants
+      assign vTitle   =   v.title | downcase
+
+      if original_or_print == 'original_and_print'
+
+        if vTitle contains 'print'
+
+          if v.inventory_quantity > 0
+
+            assign printCount   =   printCount | plus: 1
+
+          elsif v.inventory_quantity == 0 and v.inventory_policy == 'deny'
+
+            assign printCount   =   printCount
+
+          elsif v.inventory_quantity == 0 and v.inventory_policy == 'continue'
+
+            assign printCount   =   printCount | plus: 1
+
+          endif
+
+        else
+
+          if v.inventory_quantity > 0
+
+            assign originalCount    =   originalCount | plus: 1
+
+          elsif v.inventory_quantity == 0 and v.inventory_policy == 'deny'
+
+            assign originalCount    =   originalCount
+
+          elsif v.inventory_quantity == 0 and v.inventory_policy == 'continue'
+
+            assign originalCount    =   originalCount | plus: 1
+
+          endif
+
+        endif
+
+      elsif original_or_print == 'original'
+
+        if vTitle contains 'print'
+
+        else
+
+          if v.inventory_quantity > 0
+
+            assign originalCount    =   originalCount | plus: 1
+
+          elsif v.inventory_quantity == 0 and v.inventory_policy == 'deny'
+
+            assign originalCount    =   originalCount
+
+          elsif v.inventory_quantity == 0 and v.inventory_policy == 'continue'
+
+            assign originalCount    =   originalCount | plus: 1
+
+          endif
+
+        endif
+
+      elsif original_or_print == 'print'
+
+        if vTitle contains 'print'
+
+          if v.inventory_quantity > 0
+
+            assign printCount   =   printCount | plus: 1
+
+          elsif v.inventory_quantity == 0 and v.inventory_policy == 'deny'
+
+            assign printCount   =   printCount
+
+          elsif v.inventory_quantity == 0 and v.inventory_policy == 'continue'
+
+            assign printCount   =   printCount | plus: 1
+
+          endif
+
+        endif
+      endif
+    endfor
+
+    echo originalCount | append: ',' | append: printCount
+
+  endif
+-%}

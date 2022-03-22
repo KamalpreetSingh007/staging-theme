@@ -1,0 +1,89 @@
+{%-liquid
+  if locationType   ==    'currencyCode' and locationNameIs != blank
+    assign agLocation     =   locationNameIs | downcase
+    if agLocation contains ','
+      assign locationIs   =   agLocation | split: ',' | last
+      assign locationIs   =   locationIs | replace: ' ', ''
+
+      if locationIs == 'usa'
+        echo 'USD'
+      elsif locationIs == 'unitedstates'
+        echo 'USD'
+      elsif locationIs == 'unitedkingdom'
+        echo 'GBP'
+      elsif locationIs == 'edinburgh'
+        echo 'GBP'
+      elsif locationIs == 'london'
+        echo 'GBP'
+      elsif locationIs == 'greaterlondon'
+        echo 'GBP'
+      endif
+
+    elsif agLocation == 'usa'
+      echo 'USD'
+    elsif agLocation == 'california'
+      echo 'USD'
+    elsif agLocation == 'united states'
+      echo 'USD'
+    elsif agLocation == 'united kingdom'
+      echo 'GBP'
+    elsif agLocation == 'uk'
+      echo 'GBP'
+    elsif agLocation == 'edinburgh'
+      echo 'GBP'
+    elsif agLocation == 'london'
+      echo 'GBP'
+    elsif agLocation == 'greater london'
+      echo 'GBP'
+    elsif agLocation == 'pakistan'
+      echo 'PKR'
+    else
+      echo '00'
+      assign locationCompleteName   =   locationNameIs
+    endif
+
+  elsif locationType   ==    'countryName' and locationNameIs != blank
+
+    assign agLocation     =   locationNameIs | downcase
+    if agLocation contains ','
+      assign locationIs   =   agLocation | split: ',' | last
+      assign locationIs   =   locationIs | replace: ' ', ''
+
+      if locationIs == 'usa'
+        echo 'USA'
+      elsif locationIs == 'unitedstates'
+        echo 'USA'
+      elsif locationIs == 'unitedkingdom'
+        echo 'United Kingdom'
+      elsif locationIs == 'edinburgh'
+        echo 'United Kingdom'
+      elsif locationIs == 'london'
+        echo 'United Kingdom'
+      elsif locationIs == 'greaterlondon'
+        echo 'United Kingdom'
+      endif
+
+    elsif agLocation == 'usa'
+      echo 'USA'
+    elsif agLocation == 'california'
+      echo 'USA'
+    elsif agLocation == 'united states'
+      echo 'USA'
+    elsif agLocation == 'united kingdom'
+      echo 'United Kingdom'
+    elsif agLocation == 'uk'
+      echo 'United Kingdom'
+    elsif agLocation == 'edinburgh'
+      echo 'United Kingdom'
+    elsif agLocation == 'london'
+      echo 'United Kingdom'
+    elsif agLocation == 'greater london'
+      echo 'United Kingdom'
+    elsif agLocation == 'pakistan'
+      echo 'Pakistan'
+      assign locationCompleteName   =   'Pakistan'
+    else
+      echo locationNameIs
+    endif
+  endif
+-%}

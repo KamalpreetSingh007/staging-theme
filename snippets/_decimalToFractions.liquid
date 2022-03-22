@@ -1,0 +1,134 @@
+{%- liquid
+
+  if originalSizeIn_inches != blank
+
+    if originalSizeIn_inches contains 'x'
+
+      assign originalSizeIn_inches    = originalSizeIn_inches | replace: '&#x2033;', '' | replace: '“', '' | replace: '"', '' | replace: 'inches', '' | replace: 'inche', 'replace' | replace: 'in', ''
+      assign dimensionsARR_fraction   = originalSizeIn_inches | split: 'x'
+
+    endif
+
+    assign newSize    =   ''
+
+    if dimensionsARR_fraction
+
+      for f_size in dimensionsARR_fraction
+
+        if forloop.index != 1
+
+          assign newSize   =   newSize | append: ' x '
+
+        endif
+
+        if f_size contains '.'
+
+          assign makeSplit        =   f_size | split: '.'
+
+          for n in makeSplit
+
+            if forloop.first
+
+              assign numberIs = n | times: 1
+
+              if numberIs == 0
+
+                assign newSize    =   newSize | append: ''
+
+              else
+
+                assign newSize    =   newSize | append: numberIs
+
+              endif
+
+            endif
+
+            if forloop.last
+
+              assign decimalIs_   =   n | times: 1
+
+              if decimalIs_ > 0 and decimalIs_ <= 62
+
+                assign newSize    =   newSize | append: ' 1/16'
+
+              elsif decimalIs_ > 62 and decimalIs_ <= 125
+
+                assign newSize    =   newSize | append: ' 1/8'
+
+              elsif decimalIs_ > 125 and decimalIs_ <= 185
+
+                assign newSize    =   newSize | append: ' 3/16'
+
+              elsif decimalIs_ > 185 and decimalIs_ <= 250
+
+                assign newSize    =   newSize | append: ' 1/4'
+
+              elsif decimalIs_ > 250 and decimalIs_ <= 315
+
+                assign newSize    =   newSize | append: ' 5/16'
+
+              elsif decimalIs_ > 315 and decimalIs_ <= 375
+
+                assign newSize    =   newSize | append: ' 3/8'
+
+              elsif decimalIs_ > 375 and decimalIs_ <= 435
+
+                assign newSize    =   newSize | append: ' 7/16'
+
+              elsif decimalIs_ > 435 and decimalIs_ <= 500
+
+                assign newSize    =   newSize | append: ' 1/2'
+
+              elsif decimalIs_ > 500 and decimalIs_ <= 562
+
+                assign newSize    =   newSize | append: ' 9/16'
+
+              elsif decimalIs_ > 562 and decimalIs_ <= 625
+
+                assign newSize    =   newSize | append: ' 5/8'
+
+              elsif decimalIs_ > 625 and decimalIs_ <= 687
+
+                assign newSize    =   newSize | append: ' 11/16'
+
+              elsif decimalIs_ > 687 and decimalIs_ <= 750
+
+                assign newSize    =   newSize | append: ' 3/4'
+
+              elsif decimalIs_ > 750 and decimalIs_ <= 812
+
+                assign newSize    =   newSize | append: ' 13/16'
+
+              elsif decimalIs_ > 812 and decimalIs_ <= 875
+
+                assign newSize    =   newSize | append: ' 7/8'
+
+              elsif decimalIs_ > 875 and decimalIs_ <= 937
+
+                assign newSize    =   newSize | append: ' 15/16'
+
+              elsif decimalIs_ > 937
+
+                assign newSize    =   newSize | times: 1 | plus: 1
+
+              endif
+
+            endif
+
+          endfor
+
+        else
+
+          assign newSize    =   originalSizeIn_inches
+
+        endif
+
+      endfor
+
+    endif
+
+  endif
+
+  echo newSize
+
+-%}

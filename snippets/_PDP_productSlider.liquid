@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="{{ 'slick.scss.css' | asset_url }}">
+
+{% if sliderType == 'thumbnails' %}
+
+  <div class="imagePart mobile_show" slider-loading="show">
+    <div class="skeleton">
+      <div class="dots__">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <ul class="mobileSliderIs" total-silides="{{ product.media.size }}">
+      {% for media in product.media %}
+        {%-liquid
+          assign mediaSrc = media.preview_image | img_url
+          assign mediaSrc = mediaSrc | split: '/products'
+          assign mediaSrc = mediaSrc[1] | prepend: 'products' | split: '.'
+          assign mediaSrc = mediaSrc[0] | remove: '_small'
+        -%}
+        <li class="slideItem" match-src="{{ mediaSrc }}">
+          <img
+            class="product-single__thumbnail-image"
+            src="{{ media.preview_image | img_url: '350x350', scale: 2 }}"
+            match-src="{{ mediaSrc }}"
+            alt="{{ product.title }}"
+          >
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+<script type="text/javascript">
+  // const JQ = $;
+
+  $(document).ready(function(){
+    $('.mobileSliderIs').not('.slick-initialized').slick({
+      lazyLoad      :   'ondemand',
+      dots          :   true,
+      infinite      :   true,
+      speed         :   300,
+      slidesToShow  :   1,
+      slidesToScroll:   1,
+      arrows        :   false
+    });
+
+    setTimeout(() => {
+      if (typeof forMobileChangeImage === "function") {
+        forMobileChangeImage();
+      }
+      if (typeof skeleton === "function") {
+        skeleton( 'mainSliderHide' );
+      }
+    }, 150);
+
+  });
+
+</script>

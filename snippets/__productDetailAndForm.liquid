@@ -1,0 +1,463 @@
+<h1 class="titleIs" loading="show">{{ product.title }}</h1>
+{%-liquid
+  assign showPrintSizeDropdown                =   false
+  assign printSize                            =   0
+  assign afterCheckingQty_printSize           =   0
+
+  assign firstOriginalVariant                 =   ''
+  assign firstPrintVariant                    =   ''
+
+  assign currentVariantIs                     =   product.selected_variant.id
+
+  if currentVariantIs == blank
+
+    assign currentVariantIs                   =   product.selected_or_first_available_variant.id
+
+  endif
+
+  capture printSizeDropdown
+
+    for variant in product.variants
+
+      assign lowerCaseTitle                   =   variant.title | downcase
+
+      if lowerCaseTitle contains 'print'
+
+        assign afterCheckingQty_printSize     =   afterCheckingQty_printSize | plus: 1
+
+        if firstPrintVariant == blank
+
+          assign firstPrintVariant            =   variant.id
+
+        endif
+
+      else
+
+        if firstOriginalVariant == blank
+
+          assign firstOriginalVariant         =   variant.id
+
+        endif
+
+      endif
+
+    endfor
+
+  endcapture
+
+  capture printSizeDropdown
+
+    for variant in product.variants
+
+      assign lowerCaseTitle                   =   variant.title | downcase
+
+      if lowerCaseTitle contains 'print'
+
+        assign printSize                      =   printSize | plus: 1
+
+      endif
+
+    endfor
+
+  endcapture
+
+  assign locaPrints                           =   product.metafields.artwork.ag_loca_prints | downcase
+  assign agOriginal                           =   product.metafields.artwork.ag_original
+  assign variantSizeWithQty                   =   0
+
+  if agOriginal == '1' and locaPrints == 'yes'
+
+    if afterCheckingQty_printSize != 0
+
+      assign isOriginal                       =   'show'
+      assign isPrint                          =   'show'
+      assign dropDownSize                     =   printSize
+
+    else
+
+      assign isOriginal                       =   'hide'
+      assign isPrint                          =   'hide'
+      assign dropDownSize                     =   printSize
+
+    endif
+
+  elsif locaPrints == 'yes' and agOriginal == '0'
+
+    assign isOriginal                         =   'hide'
+    assign isPrint                            =   'show'
+    assign dropDownSize                       =   printSize
+
+  elsif agOriginal == '1' and locaPrints == 'no'
+
+    assign isOriginal                         =   'hide'
+    assign isPrint                            =   'hide'
+    assign dropDownSize                       =   printSize
+
+  endif
+
+  if isPrint == 'show' and printSize > 1
+
+    assign showPrintSizeDropdown              =   true
+
+  endif
+
+  capture is_original_or_print
+
+    for variant in product.variants
+
+      assign lowerCaseTitle                   =   variant.title | downcase
+
+      if variant.id   ==   currentVariantIs
+
+        if lowerCaseTitle contains 'print'
+
+          echo 'print'
+
+        else
+
+          echo 'original'
+
+        endif
+
+      endif
+
+    endfor
+
+  endcapture
+
+  if isPrint == 'show' and is_original_or_print == 'original'
+
+    assign isPrint                            =   'hide'
+
+  endif
+
+  capture dontUse
+
+    form 'localization'
+
+      capture currentCountryIs
+
+        render '__currencyCode_2_countryName' with { currencyCode: form.current_currency.iso_code }
+
+      endcapture
+
+      assign selectedCurrencyIs               =   form.current_currency.iso_code
+
+      capture restOfCountries
+
+        for currency in form.available_currencies
+
+          if form.current_currency.iso_code != currency.iso_code
+
+            echo '<div class="customDropdown__list__item" currency-is="' | append: currency.iso_code | append: '">'
+              render '__currencyCode_2_countryName' with { currencyCode: currency.iso_code }
+            echo '</div>'
+
+            comment
+              echo '<div class="item_location" currency-is="' | append: currency.iso_code | append: '">'
+                render '__currencyCode_2_countryName' with { currencyCode: currency.iso_code }
+              echo '</div>'
+            endcomment
+
+          else
+
+            echo '<div class="customDropdown__list__item selected" currency-is="' | append: currency.iso_code | append: '">'
+              render '__currencyCode_2_countryName' with { currencyCode: currency.iso_code }
+            echo '</div>'
+
+          endif
+
+        endfor
+
+      endcapture
+
+    endform
+
+  endcapture
+-%}
+
+<div class="pricesOriginalAndPrints" element-is="{{ isOriginal }}">
+  {% render 'originalAndPrints' with { type: 'toggle', defaultSelection: is_original_or_print, first_original_variant: firstOriginalVariant, first_print_variant: firstPrintVariant } %}
+</div>
+
+<div class="variantSelectMenu" element-is="{{ isPrint }}">
+  {% render 'originalAndPrints' with {type: 'selectMenu'} %}
+</div>
+
+<div class="priceIs" first-variant="{{ product.variants[0].id }}" vid="{{ product.selected_or_first_available_variant.id }}">
+  <div class="price" aa="{{ product.selected_or_first_available_variant.inventory_policy }}" acb="{{product.selected_or_first_available_variant.inventory_quantity}}" price="{% if product.selected_variant.price == blank %}empty{% endif %}" loading="show">
+    {% include '__pdpPriceLogic' with { product: product, type: 'price', selectedCurrencyIs: selectedCurrencyIs } %}
+  </div>
+
+  <div class="product__policies body_2 rte" data-product-policies loading="show">
+    {%-liquid
+      if selectedCurrencyIs == 'GBP'
+        if product.selected_or_first_available_variant.taxable
+          echo 'products.product.include_taxes' | t
+        endif
+      endif
+    -%}
+  </div>
+
+  <div class="printsOptionAvailable" element-is="{{ isOriginal }}">
+    <div class="printOptionWrap" loading="show">
+      {% render '_icons' with { icon: 'printOption' } %}
+      <div class="printContent">
+        {{ 'products.product.printsAvailable' | t }}<br>
+        {{ 'products.product.starting_at' | t }}:
+        <span class="priceChangeAble">
+          {%-liquid
+            capture dontUse
+
+              form 'localization'
+
+                assign currencyIs             =   form.current_currency.iso_code
+
+              endform
+
+            endcapture
+
+            if currencyIs == 'GBP'
+
+              capture minimumPrice
+
+                assign minPriceIs__           =   product.price_min | money
+
+                for variant in product.variants
+
+                  if variant.price == product.price_min
+
+                    assign minPriceVariant    =   variant
+
+                  endif
+
+                endfor
+
+                if minPriceVariant.taxable
+
+                  render '__collectionGBP_price' with { gbpPrice: minPriceIs__ }
+
+                else
+
+                  echo minPriceIs__
+
+                endif
+
+              endcapture
+
+            else
+
+              assign minimumPrice             =   product.price_min | money
+
+            endif
+
+            echo minimumPrice
+          -%}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="isFramed off">
+  <div class="frameBtn" loading="show">
+    {{ 'products.product.is_framed' | t }}
+  </div>
+</div>
+
+<div class="productDescription">
+
+  {%-liquid
+    render '__shippingLogic' with { type: 'ssr', product: product }
+  -%}
+
+</div>
+
+{%-liquid
+  capture "form_classes"
+
+    echo 'product-form product-form-' | append:  section.id
+    unless ss.show_variant_labels
+      echo ' product-form--hide-variant-labels '
+    endunless
+
+    if ss.enable_payment_button and product.has_only_default_variant
+
+      echo ' product-form--payment-button-no-variants '
+
+    endif
+
+    if current_variant.available == false
+
+      echo ' product-form--variant-sold-out '
+
+    endif
+
+  endcapture
+
+  assign optionsLoopSize                      =   product.options_with_values.size
+
+  unless product.has_only_default_variant
+
+    assign materialLoopSize                   =   0
+    assign sizeLoopSize                       =   0
+
+    for option in product.options_with_values
+
+      if option.name == 'Material'
+
+        assign materialLoopSize               =   option.values.size
+
+      elsif option.name == 'Size'
+
+        assign sizeLoopSize                   =   option.values.size
+
+      endif
+
+    endfor
+
+  endunless
+
+  capture formStatus
+
+    include '__pdpPriceLogic' with { product: product, type: 'formStatus' }
+
+  endcapture
+
+  render '__exhibition' with { product: product, typeIs: 'underDescription', viewAs: 'html' }
+
+  assign form_classes                         =   form_classes | append: ' form___' | append: formStatus
+
+  if formStatus contains 'disable'
+
+    echo '<style>.form___disable {display: none;}</style>'
+
+  endif
+-%}
+
+
+{% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
+
+  {% if product.has_only_default_variant %}
+
+    {%-liquid
+      assign metaDimensions       =   product.metafields.artwork.ag_dimensions
+
+      if metaDimensions == blank
+
+        assign metaDimensions     =   product.metafields.artwork.ag_dimensions.value
+
+      endif
+
+      assign metaMaterial         =   product.metafields.artwork.ag_medium_text
+
+      if metaMaterial == blank
+
+        assign metaMaterial    =   product.metafields.artwork.ag_medium_text.value
+
+      endif
+
+    -%}
+
+    {% if metaDimensions != blank %}
+
+      <input type="hidden" name="properties[size]" id="size" value="{{ metaDimensions }}">
+
+    {% endif %}
+
+    {% if metaMaterial != blank %}
+
+      <input type="hidden" name="properties[Material]" id="size" value="{{ metaMaterial }}">
+
+    {% endif %}
+
+  {% endif %}
+
+  <div class="alreadyInCart" loading>
+    <div class="dibIcon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0)"><path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z" stroke="#656565" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z" stroke="#656565" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6" stroke="#656565" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.5 6.99966L14.5 10.9997L10.5 6.99966" stroke="#656565" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="14.5" y1="8.99966" x2="14.5" y2="0.999664" stroke="#656565" stroke-width="2" stroke-linecap="round"/></g><defs><clipPath id="clip0"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>
+      This original artwork is already in your cart
+    </div>
+
+    <div class="checkoutBtn">
+      <a href="/checkout">
+        Check Out Now
+      </a>
+    </div>
+  </div>
+
+  <input type="hidden" name="id" class="productVariantID__" value="{{ product.selected_or_first_available_variant.id }}">
+
+  {% if ss.show_quantity_selector %}
+    <div class="product-form__controls-group" loading="show">
+      <div class="product-form__item">
+        <label for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+        <input type="number" id="Quantity-{{ section.id }}"
+          name="quantity" value="1" min="1" pattern="[0-9]*"
+          class="product-form__input product-form__input--quantity" data-quantity-input
+        >
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if ss.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
+    data-error-message-wrapper
+    role="alert"
+  >
+    <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+    {% include 'icon-error' %}
+    <span class="product-form__error-message" data-error-message>{{ 'products.product.quantity_minimum_message' | t }}</span>
+  </div>
+
+  <div class="product-form__controls-group product-form__controls-group--submit" loading="show">
+    <div class="product-form__item product-form__item--submit
+      {%- if ss.enable_payment_button %} product-form__item--payment-button {%- endif -%}
+      {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}"
+    >
+      <div class="product_alreadyInCart">
+        In Your Cart
+      </div>
+      <div class="add2Cart_Wrapper">
+        <button type="submit" name="add"
+          aria-label="{{ 'products.product.add_to_cart' | t }}"
+          class="btn product-form__cart-submit{% if ss.enable_payment_button %} btn--secondary-accent{% endif %}"
+          {% if settings.enable_ajax %}aria-haspopup="dialog"{% endif %}
+          data-add-to-cart
+        >
+          <span data-add-to-cart-text>
+            {{ 'products.product.add_to_cart' | t }}
+          </span>
+          <span class="hide" data-loader>
+            {% include 'icon-spinner' %}
+          </span>
+        </button>
+      </div>
+
+      {% if ss.enable_payment_button %}
+        {{ form | payment_button }}
+      {% endif %}
+    </div>
+  </div>
+{% endform %}
+
+<div class="disabledButton" loading="show">
+  <span class="btn"></span>
+</div>
+
+<div class="originalLocationAlert" currency="{{ selectedCurrencyIs }}" loading-border="remove">
+  <div class="artworkAvailableCountry" loading="show">
+    {{ 'products.product.alert_artworkAvailableCountry_html' | t: countryName: 'United Kingdom' }}
+  </div>
+
+  <div class="changeLocationOrPrintVersion" loading="show">
+    {{ 'products.product.alert_changeLocation' | t }}
+  </div>
+
+  {% render '__customDropdown' with { wrapperClass: 'locationChangerIs', attr: '', selectedIs: currentCountryIs, list: restOfCountries} %}
+</div>
+
+<script>
+  const userDetail  =   {
+    country   :   '{{ selectedCurrencyIs }}'
+  }
+</script>

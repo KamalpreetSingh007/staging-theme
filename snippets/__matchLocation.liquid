@@ -1,0 +1,82 @@
+{%-liquid
+  if section_locationManager != blank
+    assign getLocationsWithHTML   =   section_locationManager | remove: '<div id="shopify-section-locationManager" class="shopify-section">' | remove: '</div>' | strip_newlines
+
+    assign getLocationsWithHTML   =   getLocationsWithHTML | split: '#####'
+
+    for location in getLocationsWithHTML
+
+      if type == 'commaAvailable'
+
+        if location contains 'countriesList___'
+
+          assign remove_countriesList___  =   location | remove: 'countriesList___'
+
+          assign splitCountriesData       =   remove_countriesList___ | split: '*^*'
+
+          for countryRow in splitCountriesData
+
+            assign separateCountryDetail  =   countryRow | split: '^'
+
+            assign countryIs              =   separateCountryDetail[0] | remove: 'country__'
+            assign countryIs_downcase     =   separateCountryDetail[0] | remove: 'country__' | downcase | remove: ' '
+
+            assign currencyIs             =   separateCountryDetail[1] | remove: 'currency__'
+            assign currencyIs_downcase    =   separateCountryDetail[1] | remove: 'currency__' | downcase
+
+
+            if matchWith == countryIs_downcase
+              if getValue == 'currencyCode'
+                echo currencyIs
+              elsif getValue == 'countryName'
+                render '__currencyCode_2_countryName' with { currencyCode: currencyIs }
+              endif
+            endif
+
+          endfor
+
+        endif
+
+      elsif type == 'withoutComma'
+
+        if location contains 'citiesList___'
+
+          assign remove_citiesList___     =   location | remove: 'citiesList___'
+
+          assign splitCitiesData          =   remove_citiesList___ | split: '*^*'
+
+          for cityRow in splitCitiesData
+
+            assign separateCityDetail     =   cityRow | split: '^'
+
+            assign cityIs                 =   separateCityDetail[0] | remove: 'city__'
+            assign cityIs_downcase        =   separateCityDetail[0] | remove: 'city__' | downcase
+
+            assign countryIs              =   separateCityDetail[1] | remove: 'country__'
+            assign countryIs_downcase     =   separateCityDetail[1] | remove: 'country__' | downcase | remove: ' '
+
+            assign currencyIs             =   separateCityDetail[2] | remove: 'currency__'
+            assign currencyIs_downcase    =   separateCityDetail[2] | remove: 'currency__' | downcase
+
+            if matchWith == cityIs_downcase
+              if getValue == 'currencyCode'
+                echo currencyIs
+              elsif getValue == 'countryName'
+                render '__currencyCode_2_countryName' with { currencyCode: currencyIs }
+              endif
+            endif
+
+          endfor
+
+        endif
+
+      endif
+
+    endfor
+
+  endif
+
+  comment
+    render '__matchLocation' with { section_locationManager: getLocationsWithHTML, type: 'commaAvailable', getValue: 'currencyCode', matchWith: locationIs }
+  endcomment
+-%}

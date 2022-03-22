@@ -1,0 +1,24 @@
+{%-liquid
+
+  if productVariant != blank
+
+    if productVariant.inventory_quantity > 0
+
+      echo productVariant.price | money
+
+    elsif productVariant.inventory_quantity == 0 and productVariant.inventory_policy == 'deny'
+
+      echo 'products.product.sold_out' | t
+
+    elsif productVariant.inventory_quantity == 0 and productVariant.inventory_policy == 'continue'
+
+      echo productVariant.price | money
+
+    elsif productVariant.inventory_quantity < 0 and productVariant.inventory_policy == 'continue'
+
+      echo productVariant.price | money
+
+    endif
+
+  endif
+-%}

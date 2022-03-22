@@ -1,0 +1,20 @@
+{%- comment -%}
+CUSTOM DROPDOWN MAIN CSS / SCSS FILE IS 'customDropdown.scss'
+ITS JS FILE IS 'customDropdown.js'
+BOTH FILES INCLUDED IN theme.liquid file.
+{%- endcomment -%}
+
+<div class="customDropdown {{ wrapperClass }}" {{ attr }} loading="show">
+  <div class="customDropdown__selected__wrap">
+    <div class="customDropdown__selected">
+      <div class="customDropdown__selected__content">{{ selectedIs }}</div>
+      <div class="customDropdown__selected__arrow">
+        <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M4.91278 0.272742H3.6429V6.66905L1.21818 4.24433L0.348863 5.12217L4.27784 9.05115L8.21534 5.12217L7.32898 4.24433L4.91278 6.66905V0.272742Z" fill="black"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="customDropdown__list">
+    {{ list }}
+  </div>
+</div>

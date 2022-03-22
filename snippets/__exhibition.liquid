@@ -1,0 +1,330 @@
+{%-liquid
+
+  assign metaFieldArtSpaceExhibition      =   product.metafields.artwork.artspace_exhibition.value
+
+  if metaFieldArtSpaceExhibition == blank
+
+    assign metaFieldArtSpaceExhibition      =   product.metafields.artwork.artspace_exhibition
+
+  endif
+
+  if metaFieldArtSpaceExhibition != blank
+
+    assign artspaceExhibition             =   metaFieldArtSpaceExhibition
+
+    assign getCitiesName                  =   ''
+
+    assign moreThan1CIty                  =   false
+
+    assign todayDate                      =   "now" | date: "%Y/%m/%d" | append: ' 00:00:00'
+
+    assign todayTimestamp                 =   todayDate | date: "%s" | times: 1
+
+    if artspaceExhibition contains '&'
+
+      assign makeArtSpaceArr              =   artspaceExhibition | split: '&'
+
+      assign moreThan1CIty                =   true
+
+      for item in makeArtSpaceArr
+
+        assign newItem                    =   item | remove: '\n' | remove: '\r'
+
+        assign item_sDate                 =   newItem | split: '[Start-date](' | last | split: '[End-date](' | first | remove: ')' | strip
+        assign pureStartDate              =   item_sDate | split: '/' | reverse | join: '/' | append: ' 00:00:00'
+        assign startTimeStamp             =   pureStartDate | date: "%s" | times: 1
+
+        assign item_eDate                 =   newItem | split: '[End-date](' | last | split: ')' | first | strip
+        assign pureEndDate                =   item_eDate | split: '/' | reverse | join: '/' | append: ' 00:00:00'
+        assign endTimeStamp               =   pureEndDate | date: "%s" | times: 1
+
+        if endTimeStamp >= todayTimestamp and startTimeStamp <= todayTimestamp
+
+          assign getFirstItem             =   newItem
+
+          assign ArtSpaceCity__           =   newItem | split: '[ArtSpaceCity](' | last | split: '[Start-date](' | first | remove: ')' | strip
+
+          assign getCitiesName            =   ArtSpaceCity__
+
+          break
+
+        endif
+
+      endfor
+
+    else
+
+      assign getCitiesName                =   artspaceExhibition | split: '[ArtSpaceCity](' | last | split: '[Start-date](' | first | remove: ')' | strip
+
+    endif
+
+    if moreThan1CIty
+
+      assign currentExhibition            =   getFirstItem
+
+    else
+
+      assign currentExhibition            =   artspaceExhibition
+
+    endif
+
+    assign ArtSpace                       =   currentExhibition | split: '[ArtSpace](' | last | split: '[ArtSpaceCity](' | first | remove: ')' | strip
+    assign ArtSpaceCity                   =   currentExhibition | split: '[ArtSpaceCity](' | last | split: '[Start-date](' | first | remove: ')' | strip
+    assign StartDate                      =   currentExhibition | split: '[Start-date](' | last | split: '[End-date](' | first | remove: ')' | strip
+    assign EndDate                        =   currentExhibition | split: '[End-date](' | last | split: ')' | first | strip
+
+    assign startDate_Split                =   StartDate | split: '/'
+    assign startDate_dateIs               =   startDate_Split[0]
+    assign startDate_monthIs              =   startDate_Split[1]
+    assign startDate_yearIs               =   startDate_Split[2]
+
+    assign EndDate_Split                  =   EndDate | split: '/'
+    assign dateIs                         =   EndDate_Split[0]
+    assign monthIs                        =   EndDate_Split[1]
+    assign yearIs                         =   EndDate_Split[2]
+
+    assign monthAsNumber                  =   monthIs
+    assign dateAsNumber                   =   dateIs | times: 1
+
+    assign currentMonthIs                 =   "now" | date: "%m" | times: 1
+    assign currentDateIs                  =   "now" | date: "%d" | times: 1
+
+    capture getDateIs
+
+      if dateIs == '01' or dateIs == '1' or dateIs == '21' or dateIs == '31'
+
+        echo dateIs | remove: '0' | append: 'st'
+
+      elsif dateIs == '02' or dateIs == '2' or dateIs == '22'
+
+        echo dateIs | remove: '0' | append: 'nd'
+
+      elsif dateIs == '03' or dateIs == '3' or dateIs == '23'
+
+        echo dateIs | remove: '0' | append: 'rd'
+
+      else
+
+        echo dateIs | append: 'th'
+
+      endif
+
+    endcapture
+
+    capture monthIs
+
+      render '__monthNumber_to_Word' with { monthIs: monthIs }
+
+    endcapture
+
+    if typeIs == 'underDescription'
+
+      capture exhibitionContent
+
+        if moreThan1CIty and metaFieldArtSpaceExhibition != blank
+
+          assign ArtSpaceCity             =   getCitiesName | capitalize
+
+        endif
+
+        assign exhibitionStatement        =   settings.exhibitionFormat | replace: '{cityName}', ArtSpaceCity | replace: '{month}', monthIs | replace: '{date}', getDateIs
+
+        if viewAs == 'textOnlys'
+
+          echo exhibitionStatement
+
+        elsif viewAs == 'html'
+
+          echo '<div class="currentyExhibition" loading="show">'
+
+            echo exhibitionStatement
+
+          echo '</div>'
+
+        else
+
+          echo '<div class="currentyExhibition" loading="show">'
+
+            echo exhibitionStatement
+
+          echo '</div>'
+
+        endif
+
+      endcapture
+
+    elsif typeIs == 'aboveDescription'
+
+      echo '<p t="1_" detail-type="exhibition" loading="show">'
+        echo '<span class="svgArrowWrapper">'
+          render '_icons' with { icon: 'smallBullet' }
+        echo '</span>'
+
+        echo 'products.product.exhibitionText1_html' | t: month: monthIs, date: dateIs
+      echo '</p>'
+
+    elsif typeIs == 'collectionPage'
+
+      echo 'products.product.exhibitionTextCollectionPage_html' | t
+
+    elsif typeIs == 'exhibition_startDate'
+
+      echo startDate_yearIs | append: '/' | append: startDate_monthIs | append: '/' | append: startDate_dateIs | append: ' 00:00:00' | json
+
+    elsif typeIs == 'exhibition_endDate'
+
+      echo yearIs | append: '/' | append: monthAsNumber | append: '/' | append: dateIs | append: ' 00:00:00' | json
+
+    endif
+
+    if viewAs == 'html'
+
+      echo exhibitionContent
+
+    elsif viewAs == 'json'
+
+      echo exhibitionContent | json
+
+    elsif viewAs == 'textOnly'
+
+      echo exhibitionContent
+
+    endif
+
+  else
+
+    assign metaFieldAg_onExhibition       =   product.metafields.artwork.ag_on-exhibition.value
+
+    if metaFieldAg_onExhibition == blank
+
+      assign metaFieldAg_onExhibition     =   product.metafields.artwork.ag_on-exhibition
+
+    endif
+
+    if metaFieldAg_onExhibition == 'Yes' or metaFieldAg_onExhibition == 'yes'
+
+      assign metaFieldAg_CurrentExhibition    =   product.metafields.artwork.ag_current_exhibition.value
+
+      if metaFieldAg_CurrentExhibition == blank
+
+        assign metaFieldAg_CurrentExhibition  =   product.metafields.artwork.ag_current_exhibition
+
+      endif
+
+      if metaFieldAg_CurrentExhibition != blank
+
+        assign currentExhibition          =   metaFieldAg_CurrentExhibition | remove: '\n' | remove: '\r' | strip
+
+        assign ArtSpace                   =   currentExhibition | split: '[ArtSpace](' | last | split: '[ArtSpaceCity](' | first | remove: ')' | strip
+        assign ArtSpaceCity               =   currentExhibition | split: '[ArtSpaceCity](' | last | split: '[Start-date](' | first | remove: ')' | strip
+        assign StartDate                  =   currentExhibition | split: '[Start-date](' | last | split: '[End-date](' | first | remove: ')' | strip
+        assign EndDate                    =   currentExhibition | split: '[End-date](' | last | split: ')' | first | strip
+
+        assign startDate_Split            =   StartDate | split: '/'
+        assign startDate_dateIs           =   startDate_Split[0]
+        assign startDate_monthIs          =   startDate_Split[1]
+        assign startDate_yearIs           =   startDate_Split[2]
+
+        assign EndDate_Split              =   EndDate | split: '/'
+        assign dateIs                     =   EndDate_Split[0]
+        assign monthIs                    =   EndDate_Split[1]
+        assign yearIs                     =   EndDate_Split[2]
+
+        assign monthAsNumber              =   monthIs
+        assign dateAsNumber               =   dateIs | times: 1
+
+        assign currentMonthIs             =   "now" | date: "%m" | times: 1
+        assign currentDateIs              =   "now" | date: "%d" | times: 1
+
+        capture monthIs
+
+          render '__monthNumber_to_Word' with { monthIs: monthIs }
+
+        endcapture
+
+        if typeIs == 'underDescription'
+
+          capture exhibitionContent
+
+            if moreThan1CIty and metaFieldAg_CurrentExhibition != blank
+
+              assign ArtSpaceCity         =   ArtSpaceCity | append: ', ' | append: getCitiesName
+
+            elsif moreThan1CIty and metaFieldAg_CurrentExhibition == blank
+
+              assign ArtSpaceCity         =   getCitiesName
+
+            endif
+
+            assign exhibitionStatement    =   settings.exhibitionFormat | replace: '{cityName}', ArtSpaceCity | replace: '{month}', monthIs | replace: '{date}', dateIs
+
+            if viewAs == 'textOnlys'
+
+              echo exhibitionStatement
+
+            elsif viewAs == 'html'
+
+              echo '<div class="currentyExhibition" loading="show">'
+
+                echo exhibitionStatement
+
+              echo '</div>'
+
+            else
+
+              echo '<div class="currentyExhibition" loading="show">'
+
+                echo exhibitionStatement
+
+              echo '</div>'
+
+            endif
+
+          endcapture
+
+        elsif typeIs == 'aboveDescription'
+
+          echo '<p t="1_" detail-type="exhibition" loading="show">'
+            echo '<span class="svgArrowWrapper">'
+              render '_icons' with { icon: 'smallBullet' }
+            echo '</span>'
+
+            echo 'products.product.exhibitionText1_html' | t: month: monthIs, date: dateIs
+          echo '</p>'
+
+        elsif typeIs == 'collectionPage'
+
+          echo 'products.product.exhibitionTextCollectionPage_html' | t
+
+        elsif typeIs == 'exhibition_startDate'
+
+          echo startDate_yearIs | append: '/' | append: startDate_monthIs | append: '/' | append: startDate_dateIs | append: ' 00:00:00' | json
+
+        elsif typeIs == 'exhibition_endDate'
+
+          echo yearIs | append: '/' | append: monthAsNumber | append: '/' | append: dateIs | append: ' 00:00:00' | json
+
+        endif
+
+      endif
+
+
+      if viewAs == 'html'
+
+        echo exhibitionContent
+
+      elsif viewAs == 'json'
+
+        echo exhibitionContent | json
+
+      elsif viewAs == 'textOnly'
+
+        echo exhibitionContent
+
+      endif
+
+    endif
+
+  endif
+
+-%}

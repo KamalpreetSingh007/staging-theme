@@ -1,0 +1,355 @@
+{%-liquid
+
+  assign currentVariantIs           =   product.selected_variant.id
+
+  if currentVariantIs == blank
+    assign currentVariantIs         =   product.selected_or_first_available_variant.id
+    assign currentVariantImgSrc     =   product.selected_or_first_available_variant.image.src
+  else
+    assign currentVariantImgSrc     =   product.selected_variant.image.src
+  endif
+
+  if currentVariantImgSrc != blank
+    assign currentVariantImgSrc   =   currentVariantImgSrc | split: '.'
+    assign currentVariantImgSrc   =   currentVariantImgSrc[0] | json
+  endif
+
+  if currentVariantImgSrc == blank
+    assign currentVariantImgSrc   =   '""'
+  endif
+
+  assign showPrintSizeDropdown      =   false
+  assign printSize                  =   0
+  assign afterCheckingQty_printSize =   0
+
+  assign originalVariants_Count     =   0
+  assign printVariants_Count        =   0
+
+  assign firstOriginalVariant       =   ''
+  assign firstPrintVariant          =   ''
+
+  assign agOriginal         =   product.metafields.artwork.ag_original
+  assign agLocaPrints       =   product.metafields.artwork.ag_loca_prints | downcase
+
+  assign agMediumText       =   product.metafields.artwork.ag_medium_text | downcase
+
+  assign totalVariants      =   product.variants.size
+
+  capture new_original_or_print
+    if agOriginal == '1' and agLocaPrints == 'yes'
+      if product.has_only_default_variant == true
+        echo 'original'
+      else
+        echo 'original_and_print'
+      endif
+    elsif agOriginal == '1' and agLocaPrints != 'yes'
+      echo 'original'
+
+    elsif agOriginal == '0' and agLocaPrints == 'yes'
+      echo 'print'
+    elsif agOriginal == '0' and agLocaPrints != 'yes'
+      echo 'error'
+
+    elsif agOriginal == blank and agLocaPrints == 'yes'
+      echo 'print'
+    elsif agOriginal == blank and agLocaPrints == 'no'
+      echo 'error'
+    endif
+  endcapture
+
+  for option in product.options_with_values
+
+    if forloop.index == 1
+      if option.name == 'Material'
+        assign option_Material     =   1
+        assign option_Size         =   2
+      elsif option.name == 'Size'
+        assign option_Size         =   1
+        assign option_Material     =   2
+      endif
+      break
+    endif
+
+  endfor
+
+
+  capture is_original_or_print
+    for variant in product.variants
+      assign lowerCaseTitle   =   variant.title | downcase
+      if variant.id   ==   currentVariantIs
+        if lowerCaseTitle contains 'print'
+          echo 'print'
+        else
+
+          if product.metafields.artwork.ag_original == '0' and product.metafields.artwork.ag_loca_prints == 'Yes'
+            echo 'print'
+          else
+            echo 'original'
+          endif
+
+        endif
+
+        assign currentVariant           =   variant.title | split: ' / '
+
+        if option_Material == 1 and option_Size == 2
+          assign currentVariantTileOnly   =   currentVariant | first
+          assign currentVariantSizeOnly   =   currentVariant | last
+        elsif option_Material == 2 and option_Size == 1
+          assign currentVariantTileOnly   =   currentVariant | last
+          assign currentVariantSizeOnly   =   currentVariant | first
+        else
+          assign currentVariantTileOnly   =   currentVariant | first
+          assign currentVariantSizeOnly   =   currentVariant | last
+        endif
+
+      endif
+
+      if lowerCaseTitle contains 'print'
+        assign printVariants_Count        =   printVariants_Count | plus: 1
+
+        if firstPrintVariant == blank
+          assign firstPrintVariant        =   variant.id
+        endif
+
+      else
+
+        if product.metafields.artwork.ag_original == '0' and product.metafields.artwork.ag_loca_prints == 'Yes'
+
+          assign printVariants_Count        =   printVariants_Count | plus: 1
+
+          if firstPrintVariant == blank
+            assign firstPrintVariant        =   variant.id
+          endif
+
+        else
+
+          assign originalVariants_Count     =   originalVariants_Count | plus: 1
+
+          if firstOriginalVariant == blank
+            assign firstOriginalVariant     =   variant.id
+          endif
+
+        endif
+
+      endif
+    endfor
+  endcapture
+
+  capture printSizeDropdown
+    for variant in product.variants
+      assign lowerCaseTitle   =   variant.title | downcase
+      if variant.available
+        if lowerCaseTitle contains 'print'
+          assign afterCheckingQty_printSize    =   afterCheckingQty_printSize | plus: 1
+        endif
+      endif
+    endfor
+  endcapture
+
+  capture printSizeDropdown
+    for variant in product.variants
+      assign lowerCaseTitle   =   variant.title | downcase
+      if lowerCaseTitle contains 'print'
+        assign printSize    =   printSize | plus: 1
+      endif
+    endfor
+  endcapture
+
+  assign locaPrints           = product.metafields.artwork.ag_loca_prints | downcase
+  assign agOriginal           = product.metafields.artwork.ag_original
+  assign variantSizeWithQty   = 0
+
+  if agOriginal == '1' and locaPrints == 'yes'
+
+    if afterCheckingQty_printSize != 0
+      assign isOriginal   =   'show'
+      assign isPrint      =   'show'
+      assign dropDownSize =   printSize
+    else
+      assign isOriginal   =   'hide'
+      assign isPrint      =   'hide'
+      assign dropDownSize =   printSize
+    endif
+
+  elsif locaPrints == 'yes' and agOriginal == '0'
+
+    assign isOriginal  =   'hide'
+    assign isPrint     =   'show'
+    assign dropDownSize =   printSize
+
+  elsif agOriginal == '1' and locaPrints == 'no'
+
+    assign isOriginal  =   'hide'
+    assign isPrint     =   'hide'
+    assign dropDownSize =   printSize
+
+  endif
+
+  if isPrint == 'show' and printSize > 1
+    assign showPrintSizeDropdown  =   true
+  endif
+
+  assign formStatus       =   'enable'
+  capture variantPrice
+    if product.selected_or_first_available_variant.inventory_quantity > 0
+      if selectedCurrencyIs == 'GBP' and product.selected_or_first_available_variant.taxable
+        assign price__1   =   product.selected_or_first_available_variant.price | divided_by: 100 | times: 120
+        echo price__1 | money
+      else
+        echo product.selected_or_first_available_variant.price | money
+      endif
+    elsif product.selected_or_first_available_variant.inventory_quantity == 0 and product.selected_or_first_available_variant.inventory_policy == 'deny'
+      echo 'products.product.sold_out' | t
+      assign formStatus   =   'disable'
+    elsif product.selected_or_first_available_variant.inventory_quantity == 0 and product.selected_or_first_available_variant.inventory_policy == 'continue'
+      if selectedCurrencyIs == 'GBP' and product.selected_or_first_available_variant.taxable
+        assign price__1   =   product.selected_or_first_available_variant.price | divided_by: 100 | times: 120
+        echo price__1 | money
+      else
+        echo product.selected_or_first_available_variant.price | money
+      endif
+    elsif product.selected_or_first_available_variant.inventory_quantity < 0 and product.selected_or_first_available_variant.inventory_policy == 'continue'
+      if selectedCurrencyIs == 'GBP' and product.selected_or_first_available_variant.taxable
+        assign price__1   =   product.selected_or_first_available_variant.price | divided_by: 100 | times: 120
+        echo price__1 | money
+      else
+        echo product.selected_or_first_available_variant.price | money
+      endif
+    endif
+  endcapture
+
+
+  assign testingVariants        =   ''
+
+  if is_original_or_print == 'original'
+    assign getVariantsForPrint  =   ''
+  endif
+
+  capture originalLocation
+    assign agLocation     =   product.metafields.artwork.ag_location | downcase
+    if agLocation contains ','
+      assign locationIs   =   agLocation | split: ',' | last
+      assign locationIs   =   locationIs | replace: ' ', ''
+
+      if locationIs == 'usa'
+        echo 'USD'
+        assign locationCompleteName   =   'USA'
+      elsif locationIs == 'unitedstates'
+        echo 'USD'
+        assign locationCompleteName   =   'USA'
+      elsif locationIs == 'unitedkingdom'
+        echo 'GBP'
+        assign locationCompleteName   =   'United Kingdom'
+      elsif locationIs == 'edinburgh'
+        echo 'GBP'
+        assign locationCompleteName   =   'United Kingdom'
+      elsif locationIs == 'london'
+        echo 'GBP'
+        assign locationCompleteName   =   'United Kingdom'
+      elsif locationIs == 'greaterlondon'
+        echo 'GBP'
+        assign locationCompleteName   =   'United Kingdom'
+      endif
+
+    elsif agLocation == 'usa'
+      echo 'USD'
+      assign locationCompleteName   =   'USA'
+    elsif agLocation == 'united states'
+      echo 'USD'
+      assign locationCompleteName   =   'USA'
+    elsif agLocation == 'california'
+      echo 'USD'
+      assign locationCompleteName   =   'USA'
+    elsif agLocation == 'united kingdom'
+      echo 'GBP'
+      assign locationCompleteName   =   'United Kingdom'
+    elsif agLocation == 'uk'
+      echo 'GBP'
+      assign locationCompleteName   =   'United Kingdom'
+    elsif agLocation == 'edinburgh'
+      echo 'GBP'
+      assign locationCompleteName   =   'United Kingdom'
+    elsif agLocation == 'london'
+      echo 'GBP'
+      assign locationCompleteName   =   'United Kingdom'
+    elsif agLocation == 'greater london'
+      echo 'GBP'
+      assign locationCompleteName   =   'United Kingdom'
+    elsif agLocation == 'pakistan'
+      echo 'PKR'
+      assign locationCompleteName   =   'Pakistan'
+    else
+      echo '00'
+      assign locationCompleteName   =   product.metafields.artwork.ag_location
+      assign new_original_or_print  =   'error'
+    endif
+  endcapture
+
+  capture dontUse
+    form 'localization'
+      assign currencyIs   =   form.current_currency.iso_code
+    endform
+  endcapture
+
+  assign shippingObject = shippingObject | json
+
+  if currencyIs == 'AUD' or currencyIs == 'NZD'
+    assign variantPrice   =   variantPrice | split: '.' | first
+  endif
+
+  if new_original_or_print == 'error'
+    assign variantPrice   =   'general.temporarily_unavailable' | t
+  endif
+
+
+  if type == 'price'
+
+    if selectedCurrencyIs == 'GBP' and currentVariantIs.taxable
+      render '__collectionGBP_price' with { gbpPrice: variantPrice }
+    else
+      echo variantPrice
+    endif
+
+  elsif type == 'formStatus'
+
+    echo formStatus
+
+  endif
+
+  comment
+
+    echo '"variant_price"           :   "'  | append: variantPrice | append: '",'
+    echo '"isFrame"                 :   "'  | append: product.metafields.artwork.ag_framed | append: '",'
+    echo '"selectedVariantImg"      :   '   | append: currentVariantImgSrc | append: ','
+
+    echo '"is_original_or_print"    :   "'  | append: is_original_or_print | append: '",'
+
+    echo '"new_original_or_print"   :   "'  | append: new_original_or_print | append: '",'
+
+    echo '"original_ItemsCount"     :   "'  | append: originalVariants_Count | append: '",'
+    echo '"print_ItemsCount"        :   "'  | append: printVariants_Count | append: '",'
+
+    echo '"firstOriginalVariant"    :   "'  | append: firstOriginalVariant | append: '",'
+    echo '"firstPrintVariant"       :   "'  | append: firstPrintVariant | append: '",'
+
+    echo '"selectedCurrency"        :   "'  | append: currencyIs | append: '",'
+
+    echo '"formStatus"              :   "'  | append: formStatus | append: '",'
+
+    echo '"originalLocation"        :   "'  | append: originalLocation | append: '",'
+
+    echo '"locationName"            :   "'  | append: locationCompleteName | append: '",'
+
+    echo '"defaultVariant"          :   ' | append: product.has_only_default_variant | append: ','
+
+    echo '"materialNumber"          :   "'  | append: option_Material | append: '",'
+
+    echo '"sizeNumber"              :   "'  | append: option_Size | append: '",'
+
+    echo '"testVariants"            :   ['  | append: testingVariants | append: '],'
+
+    echo '"variants"                :   ['  | append: getVariantsForPrint | append: ']'
+
+  endcomment
+
+-%}

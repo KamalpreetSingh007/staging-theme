@@ -1,0 +1,38 @@
+{%-liquid
+
+  assign soldOut          =   'products.product.sold_out' | t
+  assign unavailable      =   'general.temporarily_unavailable' | t
+
+  if gbpPrice != blank and gbpPrice != soldOut and gbpPrice != unavailable
+
+    capture variantPrice
+
+      capture getSymbol
+        render '__getCurrencyDetail' with { getTypeIs: 'currencySymbol' }
+      endcapture
+
+      assign priceIs__        =   gbpPrice
+
+      assign priceIs__        =   priceIs__ | remove: getSymbol | remove: ',' | remove: ' '
+
+      assign priceIs__        =   priceIs__ | times: 1
+
+      assign getPercentage__  =   priceIs__ | times: 100
+
+      assign getPercentage__  =   getPercentage__ | divided_by: 100 | times: 20
+
+      assign priceIs__Only    =   priceIs__ | times: 100
+
+      echo priceIs__Only | plus: getPercentage__ | money
+
+    endcapture
+
+    echo variantPrice
+
+  else
+
+    echo gbpPrice
+
+  endif
+
+-%}

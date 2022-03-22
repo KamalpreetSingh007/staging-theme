@@ -1,0 +1,364 @@
+<link rel="stylesheet" href="{{ 'slick.scss.css' | asset_url }}">
+
+{% if sliderType == 'productsRecommendations' %}
+  <div class="productRecommendataionsAre" slider-loading="show">
+    {%- if heading != blank -%}
+      <div class="productRecommendataionsAre__title">
+        <h2 loading="show">{{ heading | escape }}</h2>
+      </div>
+    {%- endif -%}
+    <div class="skeleton">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <ul class="productRecommendataionsAre__items recommendataionsItems">
+      {%- for product in recommendationsAre.products -%}
+        {% capture img_id %}ProductCardImage-{{ section.id }}-{{ product.id }}{% endcapture %}
+        {% capture wrapper_id %}ProductCardImageWrapper-{{ section.id }}-{{ product.id }}{% endcapture %}
+        {%- assign preview_image    =   product.featured_media.preview_image -%}
+        {%- assign img_url          =   preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <li class="productRecommendataionsAre__items__item">
+          <a href="{{ product.url }}" class="productRecommendataionsAre__items__item__link">
+            <img
+              class="productRecommendataionsAre__items__item__image lazyload"
+              alt="{{ preview_image.alt }}"
+              data-src="{{ product.featured_image | img_url: '318x450', crop: 'center', scale: 1.5 }}"
+              data-sizes="auto"
+              data-image
+              width="300"
+            >
+            <div class="productRecommendataionsAre__items__item__title">{{ product.title }}</div>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{% elsif sliderType == 'productsRecommendations_JS' %}
+  <div class="productRecommendataionsAre page-width" slider-loading="show">
+    {%- if heading != blank -%}
+      <div class="productRecommendataionsAre__title">
+        <h2 loading="show">{{ heading | escape }}</h2>
+      </div>
+    {%- endif -%}
+    <div class="skeleton">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <ul class="productRecommendataionsAre__items recommendataionsItems"></ul>
+  </div>
+{% elsif sliderType == 'collections_sortBy_BestSelling' %}
+  <div class="productRecommendataionsAre page-width" slider-loading="show">
+    {%- if heading != blank -%}
+      <div class="productRecommendataionsAre__title">
+        <h2 loading="show">{{ heading | escape }}</h2>
+      </div>
+    {%- endif -%}
+    <div class="skeleton">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <ul class="productRecommendataionsAre__items recommendataionsItems checkDuplication">
+      {%- for collection in collections limit: 15 -%}
+        {% assign products = collection.products | sort: 'best-selling' %}
+        {% for product in collection.products %}
+          {% if forloop.first %}
+            {% if productsHandle contains product.handle %}
+            {% else %}
+              {% capture img_id %}ProductCardImage-{{ section.id }}-{{ product.id }}{% endcapture %}
+              {% capture wrapper_id %}ProductCardImageWrapper-{{ section.id }}-{{ product.id }}{% endcapture %}
+              {%- assign preview_image    =   product.featured_media.preview_image -%}
+              {%- assign img_url          =   preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <li class="productRecommendataionsAre__items__item" handleis="{{ product.handle }}">
+                <a href="{{ product.url }}" class="productRecommendataionsAre__items__item__link">
+                  <img
+                    class="productRecommendataionsAre__items__item__image lazyload"
+                    alt="{{ preview_image.alt }}"
+                    data-src="{{ product.featured_image | img_url: '318x450', crop: 'center', scale: 1.5 }}"
+                    data-sizes="auto"
+                    data-image
+                    width="300"
+                  >
+                  <div class="productRecommendataionsAre__items__item__title">{{ product.title }}</div>
+                </a>
+              </li>
+            {% endif %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      {%- endfor -%}
+    </ul>
+  </div>
+{% endif %}
+
+<script type="text/javascript">
+
+  const JQ      =   $;
+
+  window.addEventListener('load',async function() {
+
+    $(document).ready(function () {
+      try {
+
+        JQ( `.productRecommendataionsAre .recommendataionsItems` ).not('.slick-initialized').slick({
+          lazyLoad      :   'ondemand',
+          dots          :   false,
+          infinite      :   true,
+          speed         :   300,
+          slidesToShow  :   4,
+          slidesToScroll:   4,
+          arrows        :   true,
+          responsive: [
+            {
+              breakpoint  :   1024,
+              settings    :   {
+                slidesToShow    :   3,
+                slidesToScroll  :   3
+              }
+            },
+            {
+              breakpoint: 750,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
+        });
+
+        {% if sliderType == 'productsRecommendations' %}
+
+          if ( typeof skeleton === 'function' ) {
+
+            skeleton( 'sliderHide' );
+
+          }
+
+        {% endif %}
+
+        {% if sliderType == 'collections_sortBy_BestSelling' %}
+
+          if ( typeof skeleton === 'function' ) {
+
+            skeleton( 'sliderHide' );
+
+          }
+
+          hideDuplication();
+
+        {% endif %}
+
+        {% if sliderType == 'productsRecommendations_JS' %}
+
+          getCollectionData( `{{ vendorUrl }}?view=jsonData` );
+
+        {% endif %}
+
+      }
+      catch ( err ) {
+        console.log( `ERROR docReady`, err.message );
+      }
+    });
+
+  })
+
+  $(document).ready(function(){
+
+    // JQ( `.productRecommendataionsAre .recommendataionsItems` ).not('.slick-initialized').slick({
+    //   lazyLoad      :   'ondemand',
+    //   dots          :   false,
+    //   infinite      :   true,
+    //   speed         :   300,
+    //   slidesToShow  :   4,
+    //   slidesToScroll:   4,
+    //   arrows        :   true,
+    //   responsive: [
+    //     {
+    //       breakpoint  :   1024,
+    //       settings    :   {
+    //         slidesToShow    :   3,
+    //         slidesToScroll  :   3
+    //       }
+    //     },
+    //     {
+    //       breakpoint: 750,
+    //       settings: {
+    //         slidesToShow: 2,
+    //         slidesToScroll: 2
+    //       }
+    //     },
+    //     {
+    //       breakpoint: 480,
+    //       settings: {
+    //         slidesToShow: 1,
+    //         slidesToScroll: 1
+    //       }
+    //     }
+    //   ]
+    // });
+
+    // {% if sliderType == 'productsRecommendations' %}
+
+    //   if ( typeof skeleton === 'function' ) {
+
+    //     skeleton( 'sliderHide' );
+
+    //   }
+
+    // {% endif %}
+
+    // {% if sliderType == 'collections_sortBy_BestSelling' %}
+
+    //   if ( typeof skeleton === 'function' ) {
+
+    //     skeleton( 'sliderHide' );
+
+    //   }
+
+    //   hideDuplication();
+
+    // {% endif %}
+
+    // {% if sliderType == 'productsRecommendations_JS' %}
+
+    //   getCollectionData( `{{ vendorUrl }}?view=jsonData` );
+
+    // {% endif %}
+
+
+  });
+
+  async function getCollectionData( url ) {
+    try {
+
+      $.get(`${ url }`, function ( res ) {
+
+        const data     =   JSON.parse( res );
+
+        if ( data.allProducts.length > 1 ) {
+
+          populateData( data );
+
+        } else {
+
+          $( `.productRecommendataionsAre` ).hide();
+
+        }
+
+      });
+
+    }
+    catch( err ) {
+      console.log ( 'Error getCollectionData', err.message );
+    }
+  }
+
+  function populateData( res ) {
+    try {
+
+      console.log ( 'populateData res', res.allProducts );
+
+      const currentPage       =   `{{ pageHandle }}`;
+
+      const totalCards        =   res.allProducts.length;
+
+      if ( totalCards > 0 ) {
+
+        const sliderIs        =     $( `.productRecommendataionsAre .recommendataionsItems` );
+
+        for ( let i = 0; i < totalCards; i++ ) {
+
+          const r             =   res.allProducts[i];
+
+          if ( currentPage != r.handle ) {
+
+            const slideData   =     `
+              <li class="productRecommendataionsAre__items__item" pagehandle="${ r.handle }">
+                <a href="${ r.url }" class="productRecommendataionsAre__items__item__link">
+                  <img
+                    class="productRecommendataionsAre__items__item__image lazyload"
+                    alt="${ r.title }"
+                    data-src="${ r.img }"
+                    data-sizes="auto"
+                    data-image
+                    width="300"
+                  >
+                  <div class="productRecommendataionsAre__items__item__title">${ r.title }</div>
+                </a>
+              </li>
+            `;
+
+            try {
+
+              JQ('.productRecommendataionsAre .recommendataionsItems').slick( 'slickAdd', slideData );
+
+            }
+            catch( err ) {
+
+              console.log ( 'err', err );
+              console.log ( 'err.message', err.message );
+
+            }
+          }
+        }
+
+        skeleton( 'sliderHide' );
+        console.log ( 'hide DONE' );
+
+      }
+
+    }
+    catch ( err ) {
+      console.log( `ERROR populateData`, err.message );
+    }
+  }
+
+  function hideDuplication() {
+    try {
+
+      JQ( '.checkDuplication .productRecommendataionsAre__items__item:not(.slick-cloned)' )
+      .each(function() {
+
+        const getHandle           =   $( this ).attr( 'handleis' );
+
+        const getMatchingSlides   =   $( `.checkDuplication .productRecommendataionsAre__items__item:not(.slick-cloned)[handleis="${ getHandle }"]` ).length;
+
+        if ( getMatchingSlides >= 2 ) {
+
+          JQ( `.checkDuplication .productRecommendataionsAre__items__item:not(.slick-cloned)[handleis="${ getHandle }"]` )
+          .each(function( i ) {
+
+            if ( i > 0 ) {
+
+              $( this ).hide();
+
+            }
+
+          });
+
+        }
+
+      });
+
+    }
+    catch ( err ) {
+
+      console.log ( 'Error hideDuplication', err.message );
+
+    }
+  }
+
+</script>

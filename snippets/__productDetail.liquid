@@ -1,0 +1,54 @@
+{% if productType == 'original' %}
+
+  <p detail-type="framed" loading="show">
+    {%-liquid
+      if product.metafields.artwork.ag_framed == 'true'
+        echo 'products.product.with_framed' | t
+      else
+        echo 'products.product.without_framed' | t
+      endif
+    -%}
+  </p>
+
+  {% if product.metafields.artwork.ag_medium_text != blank %}
+    <p detail-type="metaMediumText" loading="show">{{ product.metafields.artwork.ag_medium_text }}</p>
+  {% endif %}
+
+  {% if agOriginal == '1' and locaPrints == 'no' %}
+    {% if product.metafields.artwork.ag_location != blank %}
+      <p t="1" detail-type="metaLocation_originalShipFrom" loading="show">{{ 'products.product.shipsFrom' | t }} {{ product.metafields.artwork.ag_location }}</p>
+    {% endif %}
+    <p t="2" detail-type="shipping_domestic">{{ 'products.product.shipping_domesticOnly' | t }}</p>
+  {% elsif agOriginal == '1' and locaPrints == 'yes' %}
+    {% if product.metafields.artwork.ag_location != blank %}
+      <p t="3" detail-type="metaLocation_originalShipFrom" loading="show">{{ 'products.product.shipsFrom' | t }} {{ product.metafields.artwork.ag_location }}</p>
+    {% endif %}
+    <p t="4" detail-type="shipping_domestic" loading="show">{{ 'products.product.shipping_domesticOnly' | t }}</p>
+  {% elsif printOriginalOptionIs == '' and originalAndPrintsIs == 'off' and agOriginal == '0' %}
+    <p t="5" detail-type="shippingWorldWide" loading="show">{{ 'products.product.shipping_worldWide' | t }}</p>
+  {% elsif agOriginal == '0' and locaPrints == 'yes' %}
+    <p t="6" detail-type="shippingWorldWide" loading="show">{{ 'products.product.shipping_worldWide' | t }}</p>
+  {% endif %}
+
+  {% render '_unitConversion' with { objectType : 'ag_dimensions', getSize: product.metafields.artwork.ag_dimensions, viewAs: 'json' } %}
+
+{%- elsif productType == 'print' -%}
+
+  <p detail-type="framed" loading="show">
+    <span class="svgArrowWrapper">{% render '_icons' with { icon: 'smallBullet' } %}</span>
+    {%-liquid
+      echo 'products.product.without_framed' | t
+    -%}
+  </p>
+
+  {% if V_Title != blank %}
+    <p detail-type="metaMediumText" loading="show">{{ V_Title }}</p>
+  {% endif %}
+
+  <p detail-type="shippingWorldWide" loading="show">{{ 'products.product.shipping_worldWide' | t }}</p>
+
+  {% if V_Size != blank %}
+    {% render '_unitConversion' with { objectType : 'ag_dimensions', getSize: V_Size, viewAs: 'json' } %}
+  {% endif %}
+
+{% endif %}

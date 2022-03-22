@@ -1,0 +1,267 @@
+{%-liquid
+  assign scssFile           =   'qrCode.scss.css' | asset_url
+  assign jsFile             =   'qrCode.js' | asset_url
+
+  capture dontUse
+    form 'localization'
+      assign currencyIs     =   form.current_currency.iso_code
+    endform
+  endcapture
+-%}
+
+<link rel="stylesheet" href="{{ scssFile }}">
+
+<div class="wizardSec _hide_">
+  <form action="" method="post" class="formObject">
+
+    {%- comment -%}
+      <div class="maxWidth_600 stepIs" step="1">
+        <div class="_title_">
+          Select QR code type
+        </div>
+
+        <div class="col2">
+          <input type="radio" id="collection" name="qrCodeType" value="collection" checked>
+          <label for="collection" class="item">
+            <span>Collection</span>
+          </label>
+
+          <input type="radio" id="product" name="qrCodeType" value="product">
+          <label for="product" class="item">
+            <span>Product</span>
+          </label>
+        </div>
+
+        <div class="btnWrapper db">
+          <span class="btn step1">Next</span>
+        </div>
+      </div>
+    {%- endcomment -%}
+
+    <div class="maxWidth_600 stepIs" step="2">
+      <div class="_title_">
+        Complete form
+      </div>
+
+      <div class="col2">
+        <div class="gtc_2">
+          <div class="currency">
+            <label class="tal w100 db" for="currency">
+              Currency<br>
+              <select name="currency" id="currency">
+                <option value="GBP" {% if currencyIs == 'GBP' %}selected{% endif %}>GBP</option>
+                <option value="USD" {% if currencyIs == 'USD' %}selected{% endif %}>USD</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="utm_source">
+            <label class="tal w100 db" for="utm_source">
+              UTM Source<br>
+              <select name="utm_source" id="utm_source">
+                {%- comment -%}
+                <option value="leaflet">Leaflet</option>
+                {%- endcomment -%}
+                <option value="show">Show</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <label class="tal w100 _hide_" for="utm_medium">
+          UTM Medium<br>
+          <input type="hidden" name="utm_medium" id="utm_medium" class="inputField" placeholder="UTM Medium" value="QR">
+        </label>
+
+        <label class="tal w100 db" for="pageURL">
+          URL<br>
+          <div class="inputGroup">
+            <input type="text" name="baseUrl" id="baseUrl" class="inputFieldReadyOnly" placeholder="www.loca.art/" value="www.loca.art/">
+            <input type="text" name="pageURL" id="pageURL" class="inputFieldReadyOnly" placeholder="london">
+          </div>
+        </label>
+
+        <label class="tal w100 db collectionDiv" for="collection_name" style="display: none;">
+          Collection Handle<br>
+          <input type="text" name="collection_name" id="collection_name" class="inputField" placeholder="Collection Handle" disabled>
+        </label>
+
+        <label class="tal w100 _hide_ productDiv" for="product_name">
+          Product Name<br>
+          <input type="text" name="product_name" id="product_name" class="inputField" placeholder="Product Name">
+        </label>
+
+        <div class="gtc_2">
+          <div class="utm_campaign">
+            <label class="tal w100 db" for="utm_campaign">
+              UTM Campaign, Name of Space<br>
+              <input type="text" name="utm_campaign" id="utm_campaign" maxlength="15" class="inputField" placeholder="UTM Campaign, Name of Space">
+            </label>
+          </div>
+
+          <div class="graphics">
+            <label class="tal w100 db" for="graphics">
+              Graphics<br>
+              <select name="graphics" id="graphics">
+                <option value="graphics">Graphics</option>
+                <option value="text">Text</option>
+              </select>
+            </label>
+          </div>
+
+        </div>
+
+        <div class="gtc_2">
+          <div class="prints_price">
+            <label class="tal db" for="prints_price">
+              Prints Price<br>
+              <input type="checkbox" name="prints_price" id="prints_price">
+
+              <div class="toggleOption">
+                <div class="circle"></div>
+              </div>
+            </label>
+          </div>
+
+          <div class="originals_price">
+            <label class="tal db" for="originals_price">
+              Original Price<br>
+              <input type="checkbox" name="originals_price" id="originals_price">
+
+              <div class="toggleOption">
+                <div class="circle"></div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="gtc_2">
+          <div class="printSize">
+            <label class="tal w100 db" for="printSize">
+              Print Sheet Size<br>
+              <select name="printSize" id="printSize">
+                <option value="A4" max="4" selected>A4</option>
+                <option value="Letter" max="4">Letter</option>
+              </select>
+            </label>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="btnWrapper dGrid">
+        <button type="button" class="btn goBack _hide_">BACK</button>
+        <button type="button" class="btn dib allDone">
+          <span class="_txt_">GENERATE QR CODE</span>
+          <span class="_loader_">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;display:block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><g><path d="M50 15A35 35 0 1 0 82.54217700608879 37.11564065603626" fill="none" stroke="#000000" stroke-width="12"></path><path d="M49 3L49 27L61 15L49 3" fill="#000000"></path><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.4492753623188404s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform></g></svg>
+          </span>
+        </button>
+
+        <button type="button" class="btn dib addSelectedCardExhibition" disabled>
+          <span class="_txt_">Selected Cards for Exhibition</span>
+          <span class="_loader_">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;display:block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><g><path d="M50 15A35 35 0 1 0 82.54217700608879 37.11564065603626" fill="none" stroke="#000000" stroke-width="12"></path><path d="M49 3L49 27L61 15L49 3" fill="#000000"></path><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.4492753623188404s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform></g></svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="previewQrCode">
+    <div class="centerCenter">
+      <div class="_close_">
+        <svg width="512px" height="512px" viewBox="0 0 512 512"><g><line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="10" x1="309.6" x2="202.4" y1="202.4" y2="309.6"/><line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="10" x1="309.6" x2="202.4" y1="309.6" y2="202.4"/></g></svg>
+      </div>
+
+      <img src="#" downloadimg>
+      <a href="#" class="btn" download="">
+        Download QR
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<div class="printIsReadyPopup noPrint"></div>
+
+<div class="printSettings noPrint">
+  <div class="sideBarControl">
+    <svg height="512px" viewBox="0 0 512 512" width="512px"><polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256"/></svg>
+  </div>
+
+  <div class="_title_">Print Settings</div>
+
+  {%- comment -%}
+    <div class="printSizeWrapper">
+      <div>Print Size</div>
+      <select class="printSize">
+        <option value="A4" max="4" selected>A4</option>
+        <option value="Letter" max="4">Letter</option>
+      </select>
+    </div>
+  {%- endcomment -%}
+
+  <div class="noOfCardsWrapper">
+    <div>Number of Card per sheet</div>
+    <input type="range" class="noOfCards" value="4" step="1" min="1" max="4" oninput="this.nextElementSibling.value = this.value">
+    <output>4</output>
+  </div>
+
+  <span class="btn printSizeApply">Apply</span>
+</div>
+
+<script>
+  const collectionPageURL   =   `https://loca.art/collections/{{ collection.handle }}`;
+  const collectionHandle    =   `{{ collection.handle }}`;
+  const collectionID        =   `{{ collection.id }}`;
+</script>
+
+<template t="loader">
+  <div class="loaderScreen">
+    <div class="centerCenter">
+      <img src="{{ 'logo.png' | asset_img_url: '100x' }}" class="logo"><br>
+      Please wait, it may take sometime ...
+    </div>
+  </div>
+</template>
+
+<template t="exhibitionBox">
+  <div class="centerCenter _confirmation_">
+    <div class="_title_">Do you want selected items for exhibition?</div>
+    <div class="_action_ dGrid">
+      <span class="btn cancel">Cancel</span>
+      <span class="btn confirm">Confirm</span>
+    </div>
+  </div>
+</template>
+
+<template t="exhibitionBoxDates">
+  <div class="centerCenter _confirmation_">
+    <div class="_title_">Please select date from and to</div>
+
+    <div class="exhibitionFromTo">
+      <div class="dateStart">
+        Start:<br>
+        <input type="date" name="from__" id="_from_" placeholder="dd-mm-yyyy" value="{{ "now" | date: "%Y-%m-%d" }}">
+      </div>
+
+      <div class="dateEnd">
+        End:<br>
+        {% assign days    =   90 | times: 86400 %}
+        <input type="date" name="to__" id="_to_" value="{{ "now" | date: "%s" | plus: days | date: "%Y-%m-%d" }}">
+      </div>
+    </div>
+
+    <div class="__action__ dGrid">
+      <span class="btn cancel">Cancel</span>
+      <span class="btn setDates">Set Dates</span>
+    </div>
+  </div>
+</template>
+
+<div class="confirmationModal"></div>
+
+<script src="{{ jsFile }}"></script>

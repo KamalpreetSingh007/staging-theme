@@ -1,0 +1,27 @@
+{%-liquid
+  assign img    =   product.featured_image | img_url: '400x400', scale: 2
+
+  capture variantPrice
+    if product.selected_or_first_available_variant.inventory_quantity > 0
+      echo product.selected_or_first_available_variant.price | money
+    elsif product.selected_or_first_available_variant.inventory_quantity == 0 and product.selected_or_first_available_variant.inventory_policy == 'deny'
+      echo 'products.product.sold_out' | t
+    elsif product.selected_or_first_available_variant.inventory_quantity == 0 and product.selected_or_first_available_variant.inventory_policy == 'continue'
+      echo product.selected_or_first_available_variant.price | money
+    endif
+  endcapture
+
+  echo '<div class="card__" ssr="true">'
+    echo '<a href="' | append: product.url | append: '" class="card__link">'
+      echo '<img src="' | append: img | append: '" alt="' | append: product.title | append: '" class="card__img" loading="lazy">'
+
+      echo '<div class="card__content">'
+
+        echo '<div class="card__vendor">' | append: product.vendor | append: '</div>'
+        echo '<h3 class="card__title">' | append: product.title | append: '</h3>'
+        echo '<div class="card__price">' | append: variantPrice | append: '</div>'
+
+      echo '</div>'
+    echo '</a>'
+  echo '</div>'
+-%}

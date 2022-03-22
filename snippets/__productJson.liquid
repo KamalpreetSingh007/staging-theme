@@ -1,0 +1,710 @@
+{%-liquid
+
+  assign agOriginal         =   product.metafields.artwork.ag_original
+  assign agLocaPrints       =   product.metafields.artwork.ag_loca_prints | downcase
+
+  assign agMediumText       =   product.metafields.artwork.ag_medium_text | downcase
+
+  assign totalVariants      =   product.variants.size
+
+  assign originalCount      =   0
+  assign originalSoldCount  =   0
+  assign printCount         =   0
+  assign printSoldCount     =   0
+
+  for v in product.variants
+
+    assign vTitle   =   v.title | downcase
+
+    if vTitle contains 'print'
+
+      if v.inventory_quantity > 0
+
+        assign printCount         =   printCount | plus: 1
+
+      elsif v.inventory_quantity <= 0 and v.inventory_policy == 'deny'
+
+        assign printSoldCount     =   printSoldCount | plus: 1
+
+      elsif v.inventory_quantity <= 0 and v.inventory_policy == 'continue'
+
+        assign printCount         =   printCount | plus: 1
+
+      endif
+
+    else
+
+      if v.inventory_quantity > 0
+
+        assign originalCount      =   originalCount | plus: 1
+
+      elsif v.inventory_quantity <= 0 and v.inventory_policy == 'deny'
+
+        assign originalSoldCount  =   originalSoldCount | plus: 1
+
+      elsif v.inventory_quantity <= 0 and v.inventory_policy == 'continue'
+
+        assign originalCount      =   originalCount | plus: 1
+
+      endif
+
+    endif
+
+  endfor
+
+  capture productMinPrice
+
+    for v in product.variants
+
+      if v.price == product.price_min
+
+        if v.inventory_quantity > 0
+
+          echo v.price | money
+
+        elsif v.inventory_quantity <= 0 and v.inventory_policy == 'deny'
+
+          echo soldOut
+
+        elsif v.inventory_quantity <= 0 and v.inventory_policy == 'continue'
+
+          echo v.price | money
+
+        endif
+        break
+
+      endif
+
+    endfor
+
+  endcapture
+
+
+  capture original_or_print
+
+    if agOriginal == '1' and agLocaPrints == 'yes'
+
+      if product.has_only_default_variant == true
+
+        echo 'original'
+
+      else
+
+        render '__determin_original_or_print_By_variants' with { originalCount: originalCount, printCount: printCount, originalSoldCount: originalSoldCount, printSoldCount: printSoldCount }
+
+        comment
+          echo 'original_and_print'
+        endcomment
+
+      endif
+
+    elsif agOriginal == '1' and agLocaPrints != 'yes'
+
+      echo 'original'
+
+    elsif agOriginal == '0' and agLocaPrints == 'yes'
+
+      echo 'print'
+
+    elsif agOriginal == '0' and agLocaPrints != 'yes'
+
+      echo 'error'
+
+    elsif agOriginal == blank and agLocaPrints == 'yes'
+
+      echo 'print'
+
+    elsif agOriginal == blank and agLocaPrints == 'no'
+
+      echo 'error'
+
+    endif
+
+  endcapture
+
+  assign justTesting  =   original_or_print
+
+  if original_or_print == 'original_and_print' and totalVariants > 1
+
+    if productMinPrice == soldOut
+
+      assign printCount   =   0
+
+      for v in product.variants
+
+        assign vTitleDownCase       =   v.title | downcase
+
+        if v.price != product.price_min
+
+          if vTitleDownCase contains 'print'
+
+            assign printCount   =   printCount | plus: 1
+
+            capture productMinPrice
+
+              if v.inventory_quantity > 0
+
+                echo v.price | money
+
+              elsif v.inventory_quantity <= 0 and v.inventory_policy == 'deny'
+
+                echo soldOut
+
+              elsif v.inventory_quantity <= 0 and v.inventory_policy == 'continue'
+
+                echo v.price | money
+
+              endif
+
+            endcapture
+
+          endif
+
+        endif
+
+      endfor
+
+      if printCount > 0
+
+        assign original_or_print    = 'original_and_print'
+
+      else
+
+        assign original_or_print    = 'original'
+
+      endif
+
+    else
+
+      assign vTitleDownCase_1       =   product.variants[1].title | downcase
+
+      if vTitleDownCase_1 contains 'print'
+
+        assign original_or_print    = 'original_and_print'
+
+      else
+
+          capture getOriginalAndPriceCount
+
+            render '__is_original_or_print' with { product: product }
+
+          endcapture
+
+          assign getCount = getOriginalAndPriceCount | split: ','
+
+          assign originalCountIs    =   getCount[0] | times: 1
+          assign printCountIs       =   getCount[1] | times: 1
+
+          if originalCountIs > 0 and printCountIs > 0
+
+            assign original_or_print    = 'original_and_print'
+
+          elsif originalCountIs == 0 and printCountIs > 0
+
+            assign original_or_print    = 'print'
+
+          elsif originalCountIs > 0 and printCountIs == 0
+
+            assign original_or_print    =   'original'
+
+          else
+
+            assign original_or_print    =   'original'
+
+          endif
+
+      endif
+
+    endif
+
+  endif
+
+  if original_or_print == 'original_and_print'
+
+    capture variantPrice
+
+      render '__collectionGetPrice', productVariant: product.variants[0]
+
+    endcapture
+
+    if originalCount == 0
+
+      assign variantPrice = 'products.product.sold_out' | t
+
+    endif
+
+    capture minPriceIs
+
+      echo productMinPrice
+
+    endcapture
+
+  elsif original_or_print == 'print'
+
+    capture variantPrice
+
+      if totalVariants == 1
+
+        echo ''
+
+      elsif totalVariants > 1
+
+        echo ''
+
+      else
+
+        echo productMinPrice
+
+      endif
+
+    endcapture
+
+    capture minPriceIs
+
+      if productMinPrice == soldOut
+
+        assign sortByPrice__forPrint    =   product.variants | sort: 'price'
+
+        for variant in sortByPrice__forPrint
+
+          if variant.inventory_quantity > 0
+
+            echo variant.price | money
+            assign minVariant_taxable   =   variant.taxable
+            break
+
+          elsif variant.inventory_quantity <= 0 and variant.inventory_policy == 'deny'
+
+            echo ''
+
+          elsif variant.inventory_quantity <= 0 and variant.inventory_policy == 'continue'
+
+            echo variant.price | money
+            assign minVariant_taxable   =   variant.taxable
+            break
+
+          endif
+
+        endfor
+
+      else
+
+        echo productMinPrice
+
+      endif
+
+    endcapture
+
+  elsif original_or_print == 'original'
+
+    capture variantPrice
+
+      render '__collectionGetPrice' with { productVariant: product.variants[0] }
+
+    endcapture
+
+    capture minPriceIs
+
+      echo ''
+
+    endcapture
+
+  elsif original_or_print == 'error'
+
+    capture variantPrice
+
+      echo unavailable
+
+    endcapture
+
+    capture minPriceIs
+
+      echo unavailable
+
+    endcapture
+
+  endif
+
+  assign displayMinPrice    =   false
+
+  capture isPrint
+
+    if totalVariants == 1
+
+      if product.variants[0].inventory_quantity > 0
+
+        assign displayMinPrice    =   true
+        echo productMinPrice
+
+      elsif product.variants[0].inventory_quantity <= 0 and product.variants[0].inventory_policy == 'deny'
+
+        assign displayMinPrice    =   false
+        echo ''
+
+      elsif product.variants[0].inventory_quantity <= 0 and product.variants[0].inventory_policy == 'continue'
+
+        assign displayMinPrice    =   true
+        echo productMinPrice
+
+      endif
+
+    elsif totalVariants > 1
+
+      if product.metafields.artwork.ag_loca_prints == 'Yes'
+
+        for variant in product.variants
+
+          assign titleDownCase    =   variant.title | downcase
+          assign getVariantPrice  =   variant.price | money
+
+          if getVariantPrice == productMinPrice
+
+            if variant.inventory_quantity > 0
+
+              assign displayMinPrice    =   true
+              echo getVariantPrice
+
+            elsif variant.inventory_quantity <= 0 and variant.inventory_policy == 'deny'
+
+              assign displayMinPrice    =   false
+              echo ''
+
+            elsif variant.inventory_quantity <= 0 and variant.inventory_policy == 'continue'
+
+              assign displayMinPrice    =   true
+              echo getVariantPrice
+
+            endif
+
+          endif
+
+        endfor
+
+      else
+
+        echo ''
+
+      endif
+
+    endif
+
+  endcapture
+
+  if variantPrice == unavailable and minPriceIs == unavailable
+
+    assign minPriceIs             =   ''
+
+  endif
+
+  capture exhibition
+
+    render '__exhibition' with { product: product, typeIs: 'collectionPage', viewAs: 'html'
+
+  endcapture
+
+  capture exhibitionStartDate
+
+    render '__exhibition' with { product: product, typeIs: 'exhibition_startDate' }
+
+  endcapture
+
+  capture exhibitionEndDate
+
+    render '__exhibition' with { product: product, typeIs: 'exhibition_endDate' }
+
+  endcapture
+
+  if exhibitionStartDate == blank
+
+    assign exhibitionStartDate      =   '' | json
+
+  endif
+
+  if exhibitionEndDate == blank
+
+    assign exhibitionEndDate        =   '' | json
+
+  endif
+
+  assign todayDateForExhibition   =   "now" | date: "%Y/%m/%d" | append: ' 00:00:00' | json
+
+  assign tax_content              =   ''
+
+  if currencyIs == 'GBP'
+
+    if product.variants[0].taxable
+
+      capture variantPrice
+
+        render '__collectionGBP_price' with { gbpPrice: variantPrice }
+
+      endcapture
+
+    endif
+
+    capture minPriceIs
+
+      if minVariant_taxable
+
+        render '__collectionGBP_price' with { gbpPrice: minPriceIs }
+
+      else
+
+        echo minPriceIs
+
+      endif
+
+    endcapture
+
+    if variantPrice != soldOut and variantPrice != unavailable and variantPrice != ''
+
+      if product.variants[0].taxable
+
+        assign tax_content    =   'products.product.include_taxes' | t
+
+      else
+
+        assign tax_content    =   ''
+
+      endif
+
+    endif
+
+  endif
+
+  if original_or_print == 'error'
+
+    if totalVariants == 1
+
+      if originalCount == 0 and originalSoldCount > 0
+
+        assign variantPrice   =   soldOut
+
+      elsif originalCount > 0 and originalSoldCount == 0
+
+        capture getPrice__
+
+          render '__collectionGetPrice' with { productVariant: product.variants[0] }
+
+        endcapture
+
+        if currencyIs == 'GBP' and product.variants[0].taxable
+
+          capture variantPrice
+
+            render '__collectionGBP_price' with { gbpPrice: getPrice__ }
+
+          endcapture
+
+        else
+
+          assign variantPrice   =   variantPrice
+
+        endif
+
+      endif
+
+    endif
+
+  endif
+
+  assign qrSoldPrice    =   product.price | money
+
+-%}
+
+{% if isDemo == 'Y' and product.handle == 'align-ace' %}
+  originalCount: {{ originalCount }}<br>
+  printCount: {{ printCount }}<br>
+  originalSoldCount: {{ originalSoldCount }}<br>
+  printSoldCount: {{ printSoldCount }}
+
+  <br>
+
+  {%-liquid
+    case original_or_print
+
+      when 'original_and_print'
+
+        if originalCount > 0 and printCount > 0
+
+          echo 'original_and_print'
+
+        elsif originalCount == 0 and printCount > 0
+
+          echo 'print'
+
+        elsif originalCount > 0 and printCount == 0
+
+          echo 'original'
+
+        elsif originalCount == 0 and printCount == 0
+
+          echo 'error'
+
+        endif
+
+    endcase
+
+    assign dateStart = product.created_at | date: '%s'
+    assign nowTimestamp   =   'now' | date: '%s'
+
+    assign diffSeconds    =   nowTimestamp | minus: dateStart
+
+    assign diffDays       =   diffSeconds | divided_by: 3600 | divided_by: 24
+
+    assign createdAt      =   '"' | append: diffDays | append: '"'
+
+  -%}
+  {% if collectionIs == 'new-artwork' %}
+    {% if if diffDays < 60 %}
+      {
+        "title"                   :   {{ product.title | json }},
+        "vendor"                  :   {{ product.vendor | json }},
+        "handle"                  :   {{ product.handle | json }},
+        "price"                   :   {{ variantPrice | json }},
+
+        "qrSoldPrice"             :   {{ qrSoldPrice | json }},
+
+        "originalCount"           :   {{ originalCount | json }},
+        "originalSoldCount"       :   {{ originalSoldCount | json }},
+        "printCount"              :   {{ printCount | json }},
+        "printSoldCount"          :   {{ printSoldCount | json }},
+
+        "tax_content"             :   {{ tax_content | json }},
+        "currency"                :   {{ currencyIs | json }},
+        "original_or_print"       :   {{ original_or_print | json }},
+        "min_price"               :   {{ minPriceIs | json }},
+        "url"                     :   {{ product.url | json }},
+
+        {%- comment -%}
+        "img"                     :   {{ product.featured_image | img_url: '400x400', scale: 2 | json }},
+        {%- endcomment -%}
+
+        "img"                     :   {{ product.featured_image | img_url: 'x600' | json }},
+        "totalVariants"           :   {{ totalVariants | json }},
+        "isDefaultVarianty"       :   {{ product.has_only_default_variant | json }},
+        "exhibition"              :   {{ exhibition | json }},
+        "exhibitionStartDate"     :   {{ exhibitionStartDate }},
+        "exhibitionEndDate"       :   {{ exhibitionEndDate }},
+        "todayDateForExhibition"  :   {{ todayDateForExhibition }}
+      }
+    {% endif %}
+  {% else %}
+    {
+      "title"                   :   {{ product.title | json }},
+      "vendor"                  :   {{ product.vendor | json }},
+      "handle"                  :   {{ product.handle | json }},
+      "price"                   :   {{ variantPrice | json }},
+
+      "qrSoldPrice"             :   {{ qrSoldPrice | json }},
+
+      "originalCount"           :   {{ originalCount | json }},
+      "originalSoldCount"       :   {{ originalSoldCount | json }},
+      "printCount"              :   {{ printCount | json }},
+      "printSoldCount"          :   {{ printSoldCount | json }},
+
+      "tax_content"             :   {{ tax_content | json }},
+      "currency"                :   {{ currencyIs | json }},
+      "original_or_print"       :   {{ original_or_print | json }},
+      "min_price"               :   {{ minPriceIs | json }},
+      "url"                     :   {{ product.url | json }},
+
+      {%- comment -%}
+      "img"                     :   {{ product.featured_image | img_url: '400x400', scale: 2 | json }},
+      {%- endcomment -%}
+
+      "img"                     :   {{ product.featured_image | img_url: 'x600' | json }},
+      "totalVariants"           :   {{ totalVariants | json }},
+      "isDefaultVarianty"       :   {{ product.has_only_default_variant | json }},
+      "exhibition"              :   {{ exhibition | json }},
+      "exhibitionStartDate"     :   {{ exhibitionStartDate }},
+      "exhibitionEndDate"       :   {{ exhibitionEndDate }},
+      "todayDateForExhibition"  :   {{ todayDateForExhibition }}
+    }
+  {% endif %}
+{% elsif isDemo == '' %}
+  {%-liquid
+    assign dateStart = product.created_at | date: '%s'
+    assign nowTimestamp   =   'now' | date: '%s'
+
+    assign diffSeconds    =   nowTimestamp | minus: dateStart
+
+    assign diffDays       =   diffSeconds | divided_by: 3600 | divided_by: 24
+
+    assign createdAt      =   '"' | append: diffDays | append: '"'
+  -%}
+
+  {% if collectionIs == 'new-artwork' %}
+    {% if diffDays <= 60 %}
+      {
+        "product_id"              :   {{ product.id | json }},
+        "title"                   :   {{ product.title | json }},
+        "vendor"                  :   {{ product.vendor | json }},
+        "handle"                  :   {{ product.handle | json }},
+        "price"                   :   {{ variantPrice | json }},
+
+        "qrSoldPrice"             :   {{ qrSoldPrice | json }},
+
+        "originalCount"           :   {{ originalCount | json }},
+        "originalSoldCount"       :   {{ originalSoldCount | json }},
+        "printCount"              :   {{ printCount | json }},
+        "printSoldCount"          :   {{ printSoldCount | json }},
+
+        "tax_content"             :   {{ tax_content | json }},
+        "currency"                :   {{ currencyIs | json }},
+        "original_or_print"       :   {{ original_or_print | json }},
+        "min_price"               :   {{ minPriceIs | json }},
+        "url"                     :   {{ product.url | json }},
+
+        {%- comment -%}
+        "img"                     :   {{ product.featured_image | img_url: '400x400', scale: 2 | json }},
+        {%- endcomment -%}
+
+        "img"                     :   {{ product.featured_image | img_url: 'x600' | json }},
+        "totalVariants"           :   {{ totalVariants | json }},
+        "isDefaultVarianty"       :   {{ product.has_only_default_variant | json }},
+        "exhibition"              :   {{ exhibition | json }},
+        "exhibitionStartDate"     :   {{ exhibitionStartDate }},
+        "exhibitionEndDate"       :   {{ exhibitionEndDate }},
+        "todayDateForExhibition"  :   {{ todayDateForExhibition }},
+        "created_at"              :   {{ createdAt }}
+      }
+    {% endif %}
+  {% else %}
+    {
+      "product_id"              :   {{ product.id | json }},
+      "title"                   :   {{ product.title | json }},
+      "vendor"                  :   {{ product.vendor | json }},
+      "handle"                  :   {{ product.handle | json }},
+      "price"                   :   {{ variantPrice | json }},
+
+      "qrSoldPrice"             :   {{ qrSoldPrice | json }},
+
+      "originalCount"           :   {{ originalCount | json }},
+      "originalSoldCount"       :   {{ originalSoldCount | json }},
+      "printCount"              :   {{ printCount | json }},
+      "printSoldCount"          :   {{ printSoldCount | json }},
+
+      "tax_content"             :   {{ tax_content | json }},
+      "currency"                :   {{ currencyIs | json }},
+      "original_or_print"       :   {{ original_or_print | json }},
+      "min_price"               :   {{ minPriceIs | json }},
+      "url"                     :   {{ product.url | json }},
+
+      {%- comment -%}
+      "img"                     :   {{ product.featured_image | img_url: '400x400', scale: 2 | json }},
+      {%- endcomment -%}
+
+      "img"                     :   {{ product.featured_image | img_url: 'x600' | json }},
+      "totalVariants"           :   {{ totalVariants | json }},
+      "isDefaultVarianty"       :   {{ product.has_only_default_variant | json }},
+      "exhibition"              :   {{ exhibition | json }},
+      "exhibitionStartDate"     :   {{ exhibitionStartDate }},
+      "exhibitionEndDate"       :   {{ exhibitionEndDate }},
+      "todayDateForExhibition"  :   {{ todayDateForExhibition }},
+      "created_at"              :   {{ createdAt }},
+      "justTesting"             :   {{ justTesting | json }}
+    }
+  {% endif %}
+{% endif %}
+

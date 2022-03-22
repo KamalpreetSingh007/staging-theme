@@ -1,0 +1,279 @@
+{%-liquid
+  capture smallBullet__
+    render '_icons' with { icon: 'smallBullet' }
+  endcapture
+
+  if type == 'ssr'
+
+  assign currentVariantIs           =   product.selected_variant.id
+
+    if currentVariantIs == blank
+      assign currentVariantIs         =   product.selected_or_first_available_variant.id
+      assign currentVariantImgSrc     =   product.selected_or_first_available_variant.image.src
+    else
+      assign currentVariantImgSrc     =   product.selected_variant.image.src
+    endif
+
+    if currentVariantImgSrc != blank
+      assign currentVariantImgSrc   =   currentVariantImgSrc | split: '.'
+      assign currentVariantImgSrc   =   currentVariantImgSrc[0] | json
+    endif
+
+    if currentVariantImgSrc == blank
+      assign currentVariantImgSrc   =   '""'
+    endif
+
+    assign showPrintSizeDropdown      =   false
+    assign printSize                  =   0
+    assign afterCheckingQty_printSize =   0
+
+    assign originalVariants_Count     =   0
+    assign printVariants_Count        =   0
+
+    assign firstOriginalVariant       =   ''
+    assign firstPrintVariant          =   ''
+
+    assign agOriginal         =   product.metafields.artwork.ag_original
+    assign agLocaPrints       =   product.metafields.artwork.ag_loca_prints | downcase
+
+    assign agMediumText       =   product.metafields.artwork.ag_medium_text | downcase
+
+    assign totalVariants      =   product.variants.size
+
+    capture is_original_or_print
+
+      for variant in product.variants
+
+        assign lowerCaseTitle   =   variant.title | downcase
+        if variant.id   ==   currentVariantIs
+          if lowerCaseTitle contains 'print'
+            echo 'print'
+          else
+
+            if product.metafields.artwork.ag_original == '0' and product.metafields.artwork.ag_loca_prints == 'Yes'
+              echo 'print'
+            else
+              echo 'original'
+            endif
+
+          endif
+
+          assign currentVariant           =   variant.title | split: ' / '
+
+          if option_Material == 1 and option_Size == 2
+            assign currentVariantTileOnly   =   currentVariant | first
+            assign currentVariantSizeOnly   =   currentVariant | last
+          elsif option_Material == 2 and option_Size == 1
+            assign currentVariantTileOnly   =   currentVariant | last
+            assign currentVariantSizeOnly   =   currentVariant | first
+          else
+            assign currentVariantTileOnly   =   currentVariant | first
+            assign currentVariantSizeOnly   =   currentVariant | last
+          endif
+
+        endif
+
+        if lowerCaseTitle contains 'print'
+          assign printVariants_Count        =   printVariants_Count | plus: 1
+
+          if firstPrintVariant == blank
+            assign firstPrintVariant        =   variant.id
+          endif
+
+        else
+
+          if product.metafields.artwork.ag_original == '0' and product.metafields.artwork.ag_loca_prints == 'Yes'
+
+            assign printVariants_Count        =   printVariants_Count | plus: 1
+
+            if firstPrintVariant == blank
+              assign firstPrintVariant        =   variant.id
+            endif
+
+          else
+
+            assign originalVariants_Count     =   originalVariants_Count | plus: 1
+
+            if firstOriginalVariant == blank
+              assign firstOriginalVariant     =   variant.id
+            endif
+
+          endif
+
+        endif
+      endfor
+    endcapture
+
+    capture shippingObject
+
+      if is_original_or_print == 'original'
+
+        if product.type == 'artwork'
+          echo '<p t="1" detail-type="framed" loading="show">'
+
+            if product.metafields.artwork.ag_framed == 'true'
+              echo 'products.product.with_framed' | t
+            else
+              echo 'products.product.without_framed' | t
+            endif
+
+          echo '</p>'
+        endif
+
+        if product.metafields.artwork.ag_medium_text != blank
+          echo '<p t="2" detail-type="metaMediumText" loading="show">'
+            echo product.metafields.artwork.ag_medium_text
+          echo '</p>'
+        endif
+
+        comment
+          if product.metafields.artwork.ag_edition_description != blank
+            echo '<p t="2_1" detail-type="metaEditionDescription" loading="show">'
+              echo product.metafields.artwork.ag_edition_description
+            echo '</p>'
+          endif
+        endcomment
+
+        if agOriginal == '1' and locaPrints != 'yes'
+
+          if product.metafields.artwork.ag_location != blank
+            echo '<p t="3" detail-type="metaLocation_originalShipFrom" loading="show">'
+              echo 'products.product.shipsFrom' | t
+              echo ' ' | append: product.metafields.artwork.ag_location
+            echo '</p>'
+          endif
+
+          echo '<p t="4" detail-type="shipping_domestic" loading="show">'
+            echo 'products.product.shipping_domesticOnly' | t
+          echo '</p>'
+
+        elsif agOriginal == '1' and locaPrints == 'yes'
+
+          if product.metafields.artwork.ag_location != blank
+            echo '<p t="5" detail-type="metaLocation_originalShipFrom" loading="show">'
+              echo 'products.product.shipsFrom' | t
+              echo ' ' | append: product.metafields.artwork.ag_location
+            echo '</p>'
+          endif
+
+          echo '<p t="6" detail-type="shipping_domestic" loading="show">'
+            echo 'products.product.shipping_domesticOnly' | t
+          echo '</p>'
+
+        elsif printOriginalOptionIs == '' and originalAndPrintsIs == 'off' and agOriginal == '0'
+
+          echo '<p t="7" detail-type="shippingWorldWide" loading="show">'
+            echo 'products.product.shipping_worldWide' | t
+          echo '</p>'
+
+        elsif agOriginal == '0' and locaPrints == 'yes'
+
+          echo '<p t="8" detail-type="shippingWorldWide" loading="show">'
+            echo 'products.product.shipping_worldWide' | t
+          echo '</p>'
+
+        endif
+
+        render '_unitConversion' with { objectType : 'ag_dimensions', getSize: product.metafields.artwork.ag_dimensions, viewAs: 'json' }
+
+      elsif is_original_or_print == 'print'
+
+        echo '<p t="9" detail-type="framed" loading="show">'
+          echo 'products.product.without_framed' | t
+        echo '</p>'
+
+        if currentVariantTileOnly != blank and currentVariantTileOnly != 'Default Title'
+
+          echo '<p t="10" detail-type="metaMediumText" loading="show">'
+            echo currentVariantTileOnly
+          echo '</p>'
+
+        endif
+
+        comment
+          if product.metafields.artwork.ag_edition_description != blank
+            echo '<p t="2_1" detail-type="metaEditionDescription" loading="show">'
+              echo product.metafields.artwork.ag_edition_description
+            echo '</p>'
+          endif
+        endcomment
+
+        echo '<p t="11" detail-type="shippingWorldWide" loading="show">'
+          echo 'products.product.shipping_worldWide' | t
+        echo '</p>'
+
+        if currentVariantSizeOnly != blank
+          render '_unitConversion' with { objectType : 'ag_dimensions', getSize: currentVariantSizeOnly, viewAs: 'json' }
+        endif
+
+      endif
+
+    endcapture
+
+  else
+
+    capture shippingObject
+
+      if agOriginal == '1' and locaPrints == 'no'
+
+        if product.metafields.artwork.ag_location != blank
+          echo '<p t="12" detail-type="metaLocation_originalShipFrom" loading="show">'
+            echo 'products.product.shipsFrom' | t
+            echo ' ' | append: product.metafields.artwork.ag_location
+          echo '</p>'
+        endif
+
+        echo '<p t="13" detail-type="shipping_domestic" loading="show">'
+          echo 'products.product.shipping_domesticOnly' | t
+        echo '</p>'
+
+      elsif agOriginal == '1' and locaPrints == 'yes'
+
+        if product.metafields.artwork.ag_location != blank
+          echo '<p t="14" detail-type="metaLocation_originalShipFrom" loading="show">'
+            echo 'products.product.shipsFrom' | t
+            echo ' ' | append: product.metafields.artwork.ag_location
+          echo '</p>'
+        endif
+
+        echo '<p t="15" detail-type="shipping_domestic" loading="show">'
+          echo 'products.product.shipping_domesticOnly' | t
+        echo '</p>'
+
+      elsif printOriginalOptionIs == '' and originalAndPrintsIs == 'off' and agOriginal == '0'
+
+        echo '<p t="16" detail-type="shippingWorldWide" loading="show">'
+          echo 'products.product.shipping_worldWide' | t
+        echo '</p>'
+
+      elsif agOriginal == '0' and locaPrints == 'yes'
+
+        echo '<p t="17" detail-type="shippingWorldWide" loading="show">'
+          echo 'products.product.shipping_worldWide' | t
+        echo '</p>'
+
+      endif
+
+    endcapture
+
+  endif
+
+  echo shippingObject
+-%}
+{%- comment -%}
+  {% if agOriginal == '1' and locaPrints == 'no' %}
+    {% if product.metafields.artwork.ag_location != blank %}
+      <p t="1" detail-type="metaLocation_originalShipFrom" loading="show"><span class="svgArrowWrapper">{% render '_icons' with { icon: 'smallBullet' } %}</span> {{ 'products.product.shipsFrom' | t }} {{ product.metafields.artwork.ag_location }}</p>
+    {% endif %}
+    <p t="2" detail-type="shipping_domestic" loading="show"><span class="svgArrowWrapper">{% render '_icons' with { icon: 'smallBullet' } %}</span> {{ 'products.product.shipping_domesticOnly' | t }}</p>
+  {% elsif agOriginal == '1' and locaPrints == 'yes' %}
+    {% if product.metafields.artwork.ag_location != blank %}
+      <p t="3" detail-type="metaLocation_originalShipFrom" loading="show"><span class="svgArrowWrapper">{% render '_icons' with { icon: 'smallBullet' } %}</span> {{ 'products.product.shipsFrom' | t }} {{ product.metafields.artwork.ag_location }}</p>
+    {% endif %}
+    <p t="4" detail-type="shipping_domestic" loading="show"><span class="svgArrowWrapper">{% render '_icons' with { icon: 'smallBullet' } %}</span> {{ 'products.product.shipping_domesticOnly' | t }}</p>
+  {% elsif printOriginalOptionIs == '' and originalAndPrintsIs == 'off' and agOriginal == '0' %}
+    <p t="5" detail-type="shippingWorldWide" loading="show"><span class="svgArrowWrapper">{% render '_icons' with { icon: 'smallBullet' } %}</span> {{ 'products.product.shipping_worldWide' | t }}</p>
+  {% elsif agOriginal == '0' and locaPrints == 'yes' %}
+    <p t="6" detail-type="shippingWorldWide" loading="show"><span class="svgArrowWrapper">{% render '_icons' with { icon: 'smallBullet' } %}</span> {{ 'products.product.shipping_worldWide' | t }}</p>
+  {% endif %}
+{%- endcomment -%}

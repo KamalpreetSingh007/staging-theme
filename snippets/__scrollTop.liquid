@@ -1,0 +1,24 @@
+{%-liquid
+  assign scssFile     =   'scrollTop.scss.css' | asset_url
+
+  echo '<link rel="stylesheet" href="' | append: scssFile | append: '">'
+
+  echo '<div class="_scrollTop_"><svg viewBox="0 0 100 100"><polygon fill="#010101" points="22.4,64.1 50.8,36.5 79.3,64.1 80.8,63.2 50.8,34.1 20.8,63.2 22.4,64.1 "/></svg></div>'
+-%}
+
+<script>
+  window.addEventListener('load', function() {
+    $( document ).on('click', '._scrollTop_', function( e ) {
+      try {
+        e.stopImmediatePropagation();
+
+        $( 'html, body' ).animate({
+          scrollTop: 0
+        }, 500);
+      }
+      catch ( err ) {
+        console.log ( 'ERROR _scrollTop_', err.message );
+      }
+    })
+  });
+</script>

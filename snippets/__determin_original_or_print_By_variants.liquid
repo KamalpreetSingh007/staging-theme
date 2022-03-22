@@ -1,0 +1,15 @@
+{%-liquid
+  if originalCount != blank and printCount != blank and originalSoldCount != blank and printSoldCount != blank
+    if originalCount > 0 and printCount > 0
+      echo 'original_and_print'
+    elsif originalCount == 0 and originalSoldCount > 0 and printCount > 0
+      echo 'original_and_print'
+    elsif originalCount == 0 and printCount > 0
+      echo 'print'
+    elsif originalCount > 0 and printCount == 0
+      echo 'original'
+    elsif originalCount == 0 and printCount == 0
+      echo 'error'
+    endif
+  endif
+-%}

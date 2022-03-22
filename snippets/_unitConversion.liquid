@@ -1,0 +1,408 @@
+{% if getSize != blank %}
+  {%- liquid
+
+    assign dimensions                     =   getSize | downcase | replace: ' ', ''
+
+    assign dimension_in                   =   ''
+    assign dimension_withFraction         =   ''
+    assign dimension_mm                   =   ''
+    assign dimension_cm                   =   ''
+    assign dimension_m                    =   ''
+
+    assign measurementUni_mm              =   'mm'
+    assign measurementUni_in              =   'in'
+    assign measurementUni_cm              =   'cm'
+    assign measurementUni_meter           =   'meter'
+
+    if dimensions contains '&#x2033;' or dimensions contains '“' or dimensions contains '"' or dimensions contains 'in' or dimensions contains '″'
+
+      if dimensions contains 'x'
+
+        assign dimensions                 =   dimensions | replace: '&#x2033;', '' | replace: '“', '' | replace: '"', '' | replace: '″', '' | replace: 'inches', '' | replace: 'inche', '' | replace: 'in', ''
+        assign dimensionsARR              =   dimensions | split: 'x'
+
+      endif
+
+      assign measurementUni               =   'Inches'
+
+      if dimensionsARR
+
+        for sizeIs in dimensionsARR
+
+          assign for_inches               =   sizeIs | prepend: '<span class="jsConvert">' | append: '</span>'
+          assign for_fraction             =   sizeIs
+          assign for_mm                   =   sizeIs | times: 1 | times: 25.4 | round: 1
+          assign for_cm                   =   sizeIs | times: 1 | times: 2.54 | round: 1
+          assign for_meters               =   sizeIs | times: 1 | times: 0.0254
+
+          if forloop.first
+
+            assign dimension_in           =   dimension_in | append: for_inches
+            assign dimension_withFraction =   dimension_withFraction | append: for_fraction
+            assign dimension_mm           =   dimension_mm | append: for_mm
+            assign dimension_cm           =   dimension_cm | append: for_cm
+            assign dimension_m            =   dimension_m  | append: for_meters
+
+          else
+
+            assign dimension_in           =   dimension_in | append: ' x ' | append: for_inches
+            assign dimension_withFraction =   dimension_withFraction | append: ' x ' | append: for_fraction
+            assign dimension_mm           =   dimension_mm | append: ' x ' | append: for_mm
+            assign dimension_cm           =   dimension_cm | append: ' x ' | append: for_cm
+            assign dimension_m            =   dimension_m  | append: ' x ' | append: for_meters
+
+          endif
+
+          if forloop.last
+
+            assign dimension_in           =   dimension_in | append: ' ' | append: measurementUni_in
+            assign dimension_mm           =   dimension_mm | append: ' ' | append: measurementUni_mm
+            assign dimension_cm           =   dimension_cm | append: ' ' | append: measurementUni_cm
+            assign dimension_m            =   dimension_m  | append: ' ' | append: measurementUni_meter
+
+          endif
+
+        endfor
+
+      endif
+
+    elsif dimensions contains 'mm' or dimensions contains 'millimeter'
+
+      if dimensions contains 'x'
+
+        assign dimensions                 =   dimensions | replace: 'mm', '' | replace: 'millimeters', '' | replace: 'millimeter', ''
+        assign dimensionsARR              =   dimensions | split: 'x'
+
+      endif
+
+      assign measurementUni               =   'mm'
+
+      if dimensionsARR
+
+        for sizeIs in dimensionsARR
+
+          assign for_inches               =   sizeIs | times: 1 | divided_by: 25.4 | round: 2
+
+          assign for_inches               =   for_inches | prepend: '<span class="jsConvert">' | append: '</span>'
+
+          assign for_fraction             =   sizeIs | times: 1 | divided_by: 25.4 | round: 2
+
+          assign for_mm                   =   sizeIs | round: 1
+          assign for_cm                   =   sizeIs | times: 1 | divided_by: 10 | round: 1
+          assign for_meters               =   sizeIs | times: 1 | times: 0.001
+
+          if forloop.first
+
+            assign dimension_in           =   dimension_in | append: for_inches
+            assign dimension_withFraction =   dimension_withFraction | append: for_fraction
+            assign dimension_mm           =   dimension_mm | append: for_mm
+            assign dimension_cm           =   dimension_cm | append: for_cm
+            assign dimension_m            =   dimension_m  | append: for_meters
+
+          else
+
+            assign dimension_in           =   dimension_in | append: ' x ' | append: for_inches
+            assign dimension_withFraction =   dimension_withFraction | append: ' x ' | append: for_fraction
+            assign dimension_mm           =   dimension_mm | append: ' x ' | append: for_mm
+            assign dimension_cm           =   dimension_cm | append: ' x ' | append: for_cm
+            assign dimension_m            =   dimension_m  | append: ' x ' | append: for_meters
+
+          endif
+
+          if forloop.last
+
+            assign dimension_in           =   dimension_in | append: ' ' | append: measurementUni_in
+            assign dimension_mm           =   dimension_mm | append: ' ' | append: measurementUni_mm
+            assign dimension_cm           =   dimension_cm | append: ' ' | append: measurementUni_cm
+            assign dimension_m            =   dimension_m  | append: ' ' | append: measurementUni_meter
+
+          endif
+
+        endfor
+
+      endif
+
+    elsif dimensions contains 'cm' or dimensions contains 'centimeter'
+
+      if dimensions contains 'x'
+
+        assign dimensions                 =   dimensions | replace: 'cm', '' | replace: 'centimeters', '' | replace: 'centimeter', ''
+        assign dimensionsARR              =   dimensions | split: 'x'
+
+      endif
+
+      assign measurementUni               =   'cm'
+
+      if dimensionsARR
+
+        for sizeIs in dimensionsARR
+
+          assign for_inches               =   sizeIs | times: 1 | times: 0.393701 | round: 2
+
+          assign for_inches               =   for_inches | prepend: '<span class="jsConvert">' | append: '</span>'
+
+          assign for_fraction             =   sizeIs | times: 1 | times: 0.393701 | round: 2
+
+          assign for_mm                   =   sizeIs | times: 1 | times: 10 | round: 1
+          assign for_cm                   =   sizeIs | round: 1
+          assign for_meters               =   sizeIs | times: 1 | times: 0.01
+
+          if forloop.first
+
+            assign dimension_in           =   dimension_in | append: for_inches
+            assign dimension_withFraction =   dimension_withFraction | append: for_fraction
+            assign dimension_mm           =   dimension_mm | append: for_mm
+            assign dimension_cm           =   dimension_cm | append: for_cm
+            assign dimension_m            =   dimension_m  | append: for_meters
+
+          else
+
+            assign dimension_in           =   dimension_in | append: ' x ' | append: for_inches
+            assign dimension_withFraction =   dimension_withFraction | append: ' x ' | append: for_fraction
+            assign dimension_mm           =   dimension_mm | append: ' x ' | append: for_mm
+            assign dimension_cm           =   dimension_cm | append: ' x ' | append: for_cm
+            assign dimension_m            =   dimension_m  | append: ' x ' | append: for_meters
+
+          endif
+
+          if forloop.last
+
+            assign dimension_in           =   dimension_in | append: ' ' | append: measurementUni_in
+            assign dimension_mm           =   dimension_mm | append: ' ' | append: measurementUni_mm
+            assign dimension_cm           =   dimension_cm | append: ' ' | append: measurementUni_cm
+            assign dimension_m            =   dimension_m  | append: ' ' | append: measurementUni_meter
+
+          endif
+
+        endfor
+
+      endif
+
+    elsif dimensions contains 'm' or dimensions contains 'meter'
+
+      if dimensions contains 'x'
+
+        assign dimensions                 =   dimensions | replace: 'meters', '' | replace: 'meter', '' | replace: 'm', ''
+        assign dimensionsARR              =   dimensions | split: 'x'
+
+      endif
+
+      assign measurementUni               =   'Meter'
+
+      if dimensionsARR
+
+        for sizeIs in dimensionsARR
+
+          assign for_inches               =   sizeIs | times: 1 | times: 39.37 | round: 2
+
+          assign for_inches               =   for_inches | prepend: '<span class="jsConvert">' | append: '</span>'
+
+          assign for_fraction             =   sizeIs | times: 1 | times: 39.37 | round: 2
+
+          assign for_mm                   =   sizeIs | times: 1 | times: 1000 | round: 1
+          assign for_cm                   =   sizeIs | times: 1 | times: 100 | round: 1
+          assign for_meters               =   sizeIs
+
+          if forloop.first
+
+            assign dimension_in           =   dimension_in | append: for_inches
+            assign dimension_withFraction =   dimension_withFraction | append: for_fraction
+            assign dimension_mm           =   dimension_mm | append: for_mm
+            assign dimension_cm           =   dimension_cm | append: for_cm
+            assign dimension_m            =   dimension_m  | append: for_meters
+
+          else
+
+            assign dimension_in           =   dimension_in | append: ' x ' | append: for_inches
+            assign dimension_withFraction =   dimension_withFraction | append: ' x ' | append: for_fraction
+            assign dimension_mm           =   dimension_mm | append: ' x ' | append: for_mm
+            assign dimension_cm           =   dimension_cm | append: ' x ' | append: for_cm
+            assign dimension_m            =   dimension_m  | append: ' x ' | append: for_meters
+
+          endif
+
+          if forloop.last
+
+            assign dimension_in           =   dimension_in | append: ' ' | append: measurementUni_in
+            assign dimension_mm           =   dimension_mm | append: ' ' | append: measurementUni_mm
+            assign dimension_cm           =   dimension_cm | append: ' ' | append: measurementUni_cm
+            assign dimension_m            =   dimension_m  | append: ' ' | append: measurementUni_meter
+
+          endif
+
+        endfor
+
+      endif
+
+    elsif dimensions contains 'a0'
+
+      assign measurementUni               =   'A0'
+      assign dimension_in                 =   '33.110 x 46.811'     | append: ' ' | append: measurementUni_in
+      assign dimension_withFraction       =   '33 1/8 x 46 13/16'
+      assign dimension_mm                 =   '841 x 1189'          | append: ' ' | append: measurementUni_mm
+      assign dimension_cm                 =   '84.1 x 118.9'        | append: ' ' | append: measurementUni_cm
+      assign dimension_m                  =   '0.841 x 1.189'       | append: ' ' | append: measurementUni_meter
+
+    elsif dimensions contains 'a1'
+
+      assign measurementUni               =   'A1'
+      assign dimension_in                 =   '23.388 x 33.110'     | append: ' ' | append: measurementUni_in
+      assign dimension_withFraction       =   '23 3/8 x 33 1/8'
+      assign dimension_mm                 =   '594 x 841'           | append: ' ' | append: measurementUni_mm
+      assign dimension_cm                 =   '59.4 x 84.1'         | append: ' ' | append: measurementUni_cm
+      assign dimension_m                  =   '0.594 x 0.841'       | append: ' ' | append: measurementUni_meter
+
+    elsif dimensions contains 'a2'
+
+      assign measurementUni               =   'A2'
+      assign dimension_in                 =   '16.535 x 23.388'     | append: ' ' | append: measurementUni_in
+      assign dimension_withFraction       =   '16 9/16 x 23 3/8'
+      assign dimension_mm                 =   '420 x 594'           | append: ' ' | append: measurementUni_mm
+      assign dimension_cm                 =   '42.0 x 59.4'         | append: ' ' | append: measurementUni_cm
+      assign dimension_m                  =   '0.420 x 0.594'       | append: ' ' | append: measurementUni_meter
+
+    elsif dimensions contains 'a3'
+
+      assign measurementUni               =   'A3'
+      assign dimension_in                 =   '11.693 x 16.535'     | append: ' ' | append: measurementUni_in
+      assign dimension_withFraction       =   '11 11/16 x 16 9/16'
+      assign dimension_mm                 =   '297 x 420'           | append: ' ' | append: measurementUni_mm
+      assign dimension_cm                 =   '29.7 x 42.0'         | append: ' ' | append: measurementUni_cm
+      assign dimension_m                  =   '0.297 x 0.420'       | append: ' ' | append: measurementUni_meter
+
+    elsif dimensions contains 'a4'
+
+      assign measurementUni               =   'A4'
+      assign dimension_in                 =   '8.268 x 11.693'      | append: ' ' | append: measurementUni_in
+      assign dimension_withFraction       =   '8 1/4 x 11 11/16'
+      assign dimension_mm                 =   '210 x 297'           | append: ' ' | append: measurementUni_mm
+      assign dimension_cm                 =   '21.0 x 29.7'         | append: ' ' | append: measurementUni_cm
+      assign dimension_m                  =   '0.210 x 0.297'       | append: ' ' | append: measurementUni_meter
+
+    elsif dimensions contains 'a5'
+
+      assign measurementUni               =   'A5'
+      assign dimension_in                 =   '5.827 x 8.268'       | append: ' ' | append: measurementUni_in
+      assign dimension_withFraction       =   '5 13/16 x 8 1/4'
+      assign dimension_mm                 =   '148 x 210'           | append: ' ' | append: measurementUni_mm
+      assign dimension_cm                 =   '14.8 x 21.0'         | append: ' ' | append: measurementUni_cm
+      assign dimension_m                  =   '0.148 x 0.210'       | append: ' ' | append: measurementUni_meter
+
+    elsif dimensions contains 'a6'
+
+      assign measurementUni               =   'A6'
+      assign dimension_in                 =   '4.134 x 5.827'       | append: ' ' | append: measurementUni_in
+      assign dimension_withFraction       =   '4 1/8 x 5 13/16'
+      assign dimension_mm                 =   '105 x 148'           | append: ' ' | append: measurementUni_mm
+      assign dimension_cm                 =   '10.5 x 14.8'         | append: ' ' | append: measurementUni_cm
+      assign dimension_m                  =   '0.105 x 0.148'       | append: ' ' | append: measurementUni_meter
+
+    endif
+  -%}
+
+  {% if objectType == 'ag_dimensions' %}
+
+    {% if viewAs == 'json' %}
+
+      {%-liquid
+        if dimension_in != blank
+
+          echo '<p class="sizeIn_inches" detail-type="metaDimensions" loading="show">'
+            echo dimension_in | append: contentAfterIs
+          echo '</p>'
+
+        endif
+
+        if dimension_mm != blank
+
+          echo '<p class="sizeIn_mm" detail-type="metaDimensions" loading="show">'
+            echo dimension_mm | append: contentAfterIs
+          echo '</p>'
+
+        endif
+
+        if dimension_cm != blank
+
+          echo '<p class="sizeIn_cm" detail-type="metaDimensions" loading="show">'
+            echo dimension_cm | append: contentAfterIs
+          echo '</p>'
+
+        endif
+
+        if dimension_m != blank
+
+          echo '<p class="sizeIn_meters" detail-type="metaDimensions" loading="show">'
+            echo dimension_m | append: contentAfterIs
+          echo '</p>'
+
+        endif
+      -%}
+
+    {% else %}
+
+      {%-liquid
+
+        if section.settings.sizeToDisplay_inches and dimension_in != blank
+
+          echo '<p detail-type="metaDimensions" loading="show">'
+            echo dimension_in | append: contentAfterIs
+          echo '</p>'
+
+        endif
+
+        if section.settings.sizeToDisplay_mm and dimension_mm != blank
+          echo '<p detail-type="metaDimensions" loading="show">'
+            echo dimension_mm | append: contentAfterIs
+          echo '</p>'
+
+        endif
+
+        if section.settings.sizeToDisplay_cm and dimension_cm != blank
+
+          echo '<p detail-type="metaDimensions" loading="show">'
+            echo dimension_cm | append: contentAfterIs
+          echo '</p>'
+
+        endif
+
+
+        if section.settings.sizeToDisplay_meters and dimension_m != blank
+
+          echo '<p detail-type="metaDimensions" loading="show">'
+            echo dimension_m | append: contentAfterIs
+          echo '</p>'
+
+        endif
+
+      -%}
+
+    {% endif %}
+
+  {% elsif objectType == 'json' %}
+
+    {%- capture outputJson -%}
+      {
+        "printSizes": [
+          {"blank":""}
+          {% if section.settings.sizeToDisplay_inches and dimension_in != blank %},{"unit":"inches","content":"{{ dimension_in | escape }}"}{% endif %}
+          {% if section.settings.sizeToDisplay_mm and dimension_mm != blank %},{"unit":"millimeters","content":"{{ dimension_mm }}"}{% endif %}
+          {% if section.settings.sizeToDisplay_cm and dimension_cm != blank %},{"unit":"centimeters","content":"{{ dimension_cm }}"}{% endif %}
+          {% if section.settings.sizeToDisplay_meters and dimension_m != blank %},{"unit":"meters","content":"{{ dimension_m }}"}{% endif %}
+        ]
+      }
+    {%- endcapture -%}
+    {{ outputJson | escape | trim }}
+
+  {% elsif objectType == 'decimalToFractions' %}
+
+    {%-liquid
+      capture decimal2Fraction
+        include '_decimalToFractions' with { originalSizeIn_inches : dimension_withFraction | strip }
+      endcapture
+
+      echo decimal2Fraction | append: ' ' | append: measurementUni_in
+    -%}
+
+  {% endif %}
+
+{% endif %}
